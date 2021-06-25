@@ -1,0 +1,28 @@
+{
+    "id": "bungalow",
+    "name": "Bungalow core framework",
+    "type": "plugin",
+    "views": {
+        "config": {
+            "regexp": "^bungalow:config"
+        },
+        "service": {
+            "regexp": "^bungalow:service"
+        },
+        "appviewstack": {
+            "regexp": "^bungalow:app:(.*)"
+        },
+        "plugin": {
+            "regexp": "^bungalow:plugin"
+        },
+        "start": {
+            "regexp": "^bungalow:internal:start"
+        },
+        "search": {
+            "regexp": "^bungalow:search:(.*)"
+        },
+        "hashtag": {
+            "regexp": "^bungalow:hashtag:(.*)"
+        }
+    }
+}

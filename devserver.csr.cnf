@@ -1,0 +1,14 @@
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+distinguished_name = dn
+
+[dn]
+C=SE
+ST=Västra Götaland
+L=Lidköping
+O=Buddhalow
+OU=R&D
+emailAddress=info@buddhalow.com
+CN = buddhalow.app

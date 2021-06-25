@@ -1,0 +1,235 @@
+:root {
+    --background-color: var(--now-playing-brand-accent);
+    --image-size: 128pt;
+    --vibrant-header-color: rgba(255, 255, 255, 0.28);
+    --vibrant-header-color-transparent: rgba(255, 255, 255, 0);
+}
+
+body {
+    
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+}
+
+th {
+    background-color: var(--background-color);
+    text-transform: uppercase;
+    font-size: 8pt;
+}
+
+sp-tab {
+    text-transform: uppercase;
+}
+
+sp-appheader {
+    display: none;
+}
+input {
+    padding: 6pt !important;
+    border-radius: 28pt !important;
+}
+.big {
+    font-size: 50pt;
+}
+.header-description {
+    justify-content: flex-end;
+    flex-direction: column;
+    display: flex;
+}
+.header-description sp-toolbar {
+}
+sp-appheader, sp-appfooter {
+    
+}
+.type {
+    display: flex;
+    text-transform: uppercase;
+}
+sp-header {
+    padding: 23pt;
+    height: 160pt;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#ffffff+0,ffffff+100&0.69+0,0+75 */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#ffffff+0,ffffff+100&0.15+0,0+75 */
+background: -moz-linear-gradient(top,  var(--vibrant-header-color)  0%, var(--vibrant-header-color-transparent) 100%); /* FF3.6-15 */
+background: linear-gradient(to bottom,  var(--vibrant-header-color)  0%,var(--vibrant-header-color-transparent)  100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#26ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+background-position: fixed;
+
+}
+sp-trackcontext {
+    background-color: rgba(255, 255, 255, .02);
+    box-shadow: 0pt 0pt 15pt rgba(0, 0, 0, .02);
+}
+table {
+    border-collapse: collapse;
+}
+small {
+    display: none;
+}
+.sp-track-unavailable, .error {
+    opacity: 0.5;
+    color: #Fdd;
+}
+sp-searchform a {
+    margin-right: 12pt;
+}
+sp-tabbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.sp-2014 {
+    display: flex;
+}
+.sp-2014-hidden {
+    display: none;
+}
+sp-infobar {
+    background-color: var(--brand-primary);
+    padding: 3pt;
+}
+.sp-view {
+}
+sp-searchform {
+    left: 300pt;
+    position: fixed;
+}
+
+sp-floatingbar {
+    display: flex;
+    flex-direction: row;
+    padding: 8pt;
+    height: 48pt;
+
+}
+
+table {
+    width: 100%;
+}
+.btn-small {
+    color: var(--brand-primary);
+}
+.btn-small:active {
+    -webkit-filter: brightness(0.6);
+}
+.open td {
+    background-color: rgba(0, 0, 0, .2);
+    border-bottom: none;
+}
+.open:last-child td {
+    border-bottom: 1px solid rgba(0, 0, 0.5);
+}
+sp-table tr:hover td {
+    background-color: rgba(255, 255, 255, .1);
+}
+
+td, th {
+    padding: 3pt;
+    padding: 10pt;
+}
+sp-appfooter {
+    background-color: rgba(255, 255, 255, .1);
+}
+sp-menuitem {
+    opacity: 0.8;
+}
+
+.new {
+    color: var(--brand-primary);
+}
+sp-sidebar {
+    background-color: rgba(0, 0, 0, .28);
+}
+sp-menuitem:hover {
+    opacity: 1;
+}
+sp-divider {
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+
+}
+sp-menuitem.active {
+    opacity: 1;
+    color: var(--brand-primary);
+    font-weight: bold;
+}
+.container, sp-tabbar {
+    padding-left: 15% !important;
+    padding-right: 15% !important;
+}
+button {
+    background: transparent;
+    padding: 7pt;
+    padding: 2pt 23pt;
+    margin-right: 12pt;
+    border-radius: 50pt;
+    font-size: 15pt;
+    -webkit-transition: transform 0.1s;
+}
+button:hover {
+    -webkit-transform: scale(1.11);
+}
+button:active {
+    border: 1pt solid rgba(255, 255, 255, .5);
+    color: rgba(255, 255, 255, .5);
+    -webkit-transform: scale(0.98);
+}
+input:focus {
+    outline: none;
+}
+button {
+    background-image: url('/themes/maestro/images/btn_overlay.png');
+    background-size: 100% 100%;
+}
+input {
+    border: none;
+    padding: 3pt;
+    border-radius: 10pt;
+}
+sp-tabbar {
+    background-color: transparent;
+}
+sp-tabbar sp-tab {
+    padding-bottom: 5pt;
+}
+button.primary {
+    background-color: var(--brand-primary);
+    border: 1pt solid var(--brand-primary);
+    color: white;
+    
+}
+a {
+    text-decoration: none;
+    color: var(--brand-primary);
+}
+sp-toolbar {
+    border-radius: 14pt;
+    padding: 3pt;
+}
+.sp-current-track {
+    color: var(--brand-primary);
+}
+sp-image {
+    box-shadow: 0pt 0pt 12pt rgba(0, 0, 0, .1);
+}
+.sp-track-selected {
+    background-color: rgba(255, 255, 255, .1);
+}
+sp-trackcontext tr:hover td {
+    background-color: rgba(255, 255, 255, .05);
+}
+
+
+::-webkit-scrollbar, ::-webkit-scrollbar-corner {
+    background: none;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--foreground-color);
+    border-radius: 12pt;
+    opacity: 0.1;
+}
+
+.form-control {
+    background-color: white;
+    border: none;
+}

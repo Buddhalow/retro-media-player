@@ -1,0 +1,134 @@
+:root {
+    --background-color: #373737;
+    --foreground-color: rgba(255, 255, 255, .8);
+    --sidebar-background-color: #484848;
+    --brand-primary: #BBDEFB;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    font-family: "Tahoma";
+    font-size: 11px;}
+*:focus {
+    outline: none;
+}
+
+sp-sidebar {
+    background-color: var(--sidebar-background-color);
+    border-right: 1px solid black;
+
+}
+table thead tr td {
+    background-color: #888;
+}
+sp-trackcontext table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.zebra {
+    background-image: url('/themes/spotify-2010/images/table-bg.png');
+}
+tr:nth-child(2n+1) td {
+    background-color: #323232;
+}
+tr:nth-child(2n) td {
+    background-color: #383838;
+}
+sp-link, a {
+    color: rgba(255, 255, 255, .6);
+    text-decoration: none;
+}
+sp-link:hover, a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, sp-link {
+    margin: 0pt;
+    margin-bottom: 6pt;
+    color: white;
+}
+th, td {
+   padding: 3pt;
+}
+
+
+.sp-image {
+}
+img {
+
+}
+
+
+
+
+
+sp-sidebarmenu label {
+    opacity: 0.5;
+
+}
+sp-header {
+  /* background-color: #383838;*/
+}
+
+
+.sp-2016 {
+    display: none;
+
+
+}
+.sp-view-linen {
+    background: url('../images/ios-linen.png');
+}
+.sp-view > sp-tabbar {
+    display: block;
+    background: rgba(255, 255, 255, .5);
+}
+sp-divider {
+    background-color: rgba(255, 255, 255, .2) !important;
+    border: none;
+    box-shadow: none;
+}
+sp-taginput {
+    background-color: white !important;
+}
+
+
+tr.open.first-child {
+    border-top: 1pt solid rgba(255, 255, 255, .1);
+}
+tr.open.last-child {
+
+    border-bottom: 1pt solid rgba(255, 255, 255, .1);
+}
+tr.open {
+    border-radius: 14pt 14pt 14pt 14pt;
+}
+tr.open:nth-child(2n+1) td {
+    background-color: rgba(0, 0, 0, .35);
+}
+tr.open:nth-child(2n) td {
+
+    background-color: rgba(0, 0, 0, .25);
+
+}
+tr.open td {
+
+}
+tr.open  td {
+}
+.sp-dragover {
+    border-top: 1px solid white;
+}
+.sp-current-track {
+    background-color: black !important;
+}
+
+.overview-hidden {
+    display: none;
+}
+sp-menuitem.dragover {
+    background-color: white;
+    color: black;
+}

@@ -1,0 +1,107 @@
+
+<!doctype html>
+<html lang="en" ng-app>
+  <head>
+    <title>Buddhalow</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/css/buddhalow-font.css">
+    <link rel="stylesheet" href="/css/montserrat.css">
+    <link rel="stylesheet" href="/css/throbber.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/css/bungalow.css">
+    <link rel="stylesheet" href="/css/roamnia.css">
+    <link rel="stylesheet" href="/css/ohu-font.css">
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/parse.js"></script>
+    <script src="js/vendor/chart.js"></script>
+    <script src="js/vendor/moment.js" charset="UTF-8"></script>
+    <script src="js/vendor/numeral.js" charset="UTF-8"></script>
+    <script src="js/vendor/vibrant.js"></script>
+    <script src="js/vendor/slick.min.js"></script>
+    <script src="js/vendor/numeral.js"></script>
+    <script src="js/vendor/idb.js"></script>
+    <script src="js/vendor/i18n.js"></script>
+    <script src="js/vendor/sprintf.js"></script>
+    <script src="js/vendor/underscore.js"></script>
+    <script type="module" src="js/main.js"></script>
+ 
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script>
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        let session = JSON.parse(localStorage.getItem('spotify.session'));
+        if (session instanceof Object) {
+          const token = session.access_token;
+        
+          const player = new Spotify.Player({
+            name: 'Bungalow',
+            getOAuthToken: cb => { cb(token); }
+          });
+          player.connect();
+          window.spotifyToken = token;
+          window.spotifyPlayer = player;  
+          if (window.playerStore) {
+            window.playerStore.initPlayer();
+          }
+        }
+      } 
+      window.addEventListener('mousemove', (e) => {
+        window.mousePosition = {
+          x: e.pageX,
+          y: e.pageY,
+        }
+      });
+      window.clearContextMenus = function (contextMenu) {
+        $('sp-contextmenu').each(function (i) {
+          if (this !== contextMenu) {
+            $(this).remove();
+          }
+        })
+      }
+      window.addEventListener('mousedown', (e) => {
+        window.clearContextMenus();
+      })
+    </script>
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+  </head>
+  <body oncontextmenu="return(false);">
+    <template type="text/template" id="aboutArtistTemplate">
+
+      </div>
+    </template>
+    <template type="text/template" id="playlistTemplate">
+
+
+    </template>
+    <template type="text/template" id="bookTemplate">
+
+
+    </template>
+    <template type="text/template" id="searchHeaderTemplate">
+
+    </template>
+    <template type="text/template" id="feedTemplate">
+
+
+    </template>
+    <template type="text/template" id="headerTemplate">
+
+    </template>
+    <template type="text/template" id="attachmentTemplate">
+
+    </template>
+
+    <template type="text/template" id="postTemplate">
+
+    </template>
+    <div class="mainbody body-root splatter"></div>
+    <div style="display: none" class="mainbody body"></div>
+    <div id="loading" class="spinner origo"><div class="dot1"></div><div class="dot2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>
+  </body>
+</html>

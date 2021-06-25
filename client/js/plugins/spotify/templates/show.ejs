@@ -1,0 +1,15 @@
+<div style="flex: 0 0 <%=width%>; padding: 8pt" class="sp-image">
+    <sp-image width="<%=width%>" height="<%=height%>" src="<%=obj.images ? obj.images[0].url : ''%>"></sp-image>
+</div>
+<div style="flex: 2; padding: 8pt">
+    <h1><%=title%>  <%= strReleaseDate != '' ? ' <span><%=('+  strReleaseDate + ')' : '' %></h1>
+
+    <div class="contents">
+        <%=(obj.description ? '<p>' + obj.description + '</p>' : '') %>
+    </div>
+
+    <% obj && obj.copyrights instanceof Array ? obj.copyrights.map((c) => { %>
+        <span style="opacity: 0.5; font-size: 6pt">(<%= c.type %>)  <%=c.text%></span><br>
+    <% }) : null; %>
+
+</div>

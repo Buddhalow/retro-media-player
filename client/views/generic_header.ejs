@@ -1,0 +1,65 @@
+<div class="container">
+    <% if (!!object.image_url) { %>
+    <div class="<%=type%>_cover_image" style="flex: 0 0 <%=size%> ; margin-right: 12pt">
+        <sp-image width="<%=size%>" height="<%=size%>" src="<%=object.image_url %>"></sp-image>
+    </div>
+    <% } %>
+    <% if (modern) { %>
+    <div style="flex: 2;" class="header-description">
+        <% if (!major) {%>
+            <small class="type"><%=_(object.type) %></small>
+            <% } %>
+        <h1 class="<% if (major) {%>big<%}%> <%=type%>_title"><%= _e(title) %></h1>
+        <% if (object.description) {%>
+        <p style="opacity: 0.5"><%= (object.description ? object.description.hashtagify() : '') %></p>
+        <% } %>
+        <% if (object.owner) { %>
+        <p style="opacity: 0.5">Created by <sp-link uri="<%=object.owner.uri%>"><%=object.owner.id%></sp-link>
+            <% } %>
+            <% if (object.release_date) { %>
+        on <%= moment(object.release_date).format('YYYY-MM-DD') %> <% } %>
+            <% if (object.updated_at) { %>
+        , updated on <%= moment(object.updated_at).fromNow() %>
+        <% } %></p>
+        <sp-toolbar>
+        <div style="float: right; text-align: right; opacity: 0.5">
+            <% if ('followers' in object) { %>
+                <span><%=_e('Followers')%></span><br>
+            <span><%= numeral(object.followers.total).format('0,0') %></span>
+
+            <% } %>
+            <% if ('following' in object && 'followers' in object) { %><hr><% } %>
+                <% if ('following' in object) { %>
+            <b><%= numeral(object.following.total).format('0,0') %></b><br>
+            <span><%=_e('Following')%></span>
+            <% } %>
+            <sp-hook data-hook-id="<%=type%>_header_right"></sp-hook>
+        </div>
+        <% } else { %>
+            <div style="flex: 2; justify-content: flex-start !important" class="header-description">
+            <% if (object.type !== 'artist') { %><h1 class="<%=type%>_title"><%= _e(title) %> <% if (object.followers) { %> <span style="float: right; opacity: 0.28"><%= numeral(object.followers.total).format('0,0') %> followers</span><% } %></h1><% } %>
+            <sp-toolbar>
+
+            </sp-toolbar>
+
+            <% if (object.description) {%>
+            <p style="opacity: 0.5"><%= (object.description ? object.description.hashtagify() : '').substr(0, 455) %></p>
+            <% } %>
+        </div>
+        <% }%>
+    <% if (true) { %>
+    <div style="float: right; text-align: right; flex: 0 0 30%; opacity: 0.5">
+        <% if ('listeners' in object) { %>
+        <span><%=_e('Proximal listeners')%></span><br>
+        <span><%= numeral(object?.listeners?.proximal).format('0,0') %></span>
+
+        <% } %>
+        <% if ('following' in object && 'followers' in object) { %><hr><% } %>
+        <% if ('following' in object) { %>
+        <b><%= numeral(object.following.total).format('0,0') %></b><br>
+        <span><%=_e('Following')%></span>
+        <% } %>
+        <sp-hook data-hook-id="<%=type%>_header_right"></sp-hook>
+    </div>
+    <% } %>
+</div>

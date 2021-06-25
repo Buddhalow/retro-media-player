@@ -1,0 +1,36 @@
+<% if (object.insights) { %>
+    <div style="display: flex; flex-direction: row">
+      <div style="flex: 1; padding: 28pt">
+        
+          <% if (object.insights.monthly_listeners_delta / 28 > 0) {%>
+            <p style="text-align: center" class="primary"><i class="fa fa-arrow-up"></i> <%=numeral(object.insights.monthly_listeners_delta / 28).format('0,0')%> new listeners today </p>
+            <% } %>
+          <h1 style="font-size: 78pt !important; text-align: center"><%-numeral(parseInt(object.insights.monthly_listeners) + 1000000).format('0,0')%></h1>
+          <p>Monthly listeners</p>
+          <h3><%=_('Biography')%></h3>
+          <p><%=object.insights.autobiography.body%></p>
+      
+      </div>
+      <div style="padding: 28pt; flex: 1">
+        <h3>Top locations</h3>
+        <h3>Discovered on on</h3>
+        <table>
+          <tbody>
+            <% for (var i = 0; i < object.insights.playlists.entries.length; i++) {
+              var playlist = object.insights.playlists.entries[i]
+              console.log(i)
+              %>
+              <tr>
+                <td width="96pt">
+                  <sp-image src="<%=playlist.image_url%>" width="96pt" height="96pt"></sp-image>
+                </td>
+                <td>
+                  <sp-link uri="<%=playlist.uri%>"><h3><%=playlist.name%></h3></sp-link>
+                  <small><%= numeral(playlist.listeners).format('0,0')%> listeners</small>
+                </td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+      </div>
+<% } %>

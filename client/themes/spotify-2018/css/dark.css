@@ -1,0 +1,41 @@
+:root {
+    --background-color: #101010;
+    --foreground-color: #fff;
+    --header-height: 0pt;
+    --footer-height: 30pt;
+    --brand-primary: #8BC34A;
+    --secondary-color: rgba(255, 255, 100, 1);
+}
+sp-sidebar {
+    background-color: #000;
+}
+button {
+    color: white;
+    border: 1pt solid white;
+}
+th {
+    color: rgba(255, 255, 255, .5);
+}
+.sp-current-track {
+    color: var(--brand-primary);
+}
+td, th {
+    
+    
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+body {
+    text-shadow: 0pt -1pt 0pt rgba(0, 0, 0, .05);
+}
+
+sp-tab {
+    color: rgba(255, 255, 255, .5);
+}
+sp-tab.sp-tab-active {
+    color: white;
+}
+
+.sp-tab-active {
+    font-weight: bold;
+    border-bottom: 1pt solid var(--secondary-color);
+}

@@ -1,0 +1,558 @@
+:root {
+    --header-height: 48pt;
+    --footer-height: 30pt;
+    --sidebar-width: 268pt;
+    --is-light: true;
+    --contextmenu-light: #eeeeee;
+    --contextmenu-bg: #bbbbaa;
+    --contextmenu-shadow: #888877;
+    --contextmenu-dark-shadow: #555544;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --is-light: false;
+    }
+}
+
+sp-dragelement {
+    background: #aaa;
+    border: 1pt solid black;
+    color: black;
+    width: auto;
+    padding: 5pt;
+    height: 22pt;
+    text-shadow: none;
+}
+
+@import url('roamnia.css');
+
+.nowplayingimage {
+    background-image: url('/images/disc.png');
+    background-position: top;
+    background-size: contain;
+    height: 100%;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th.sort-ascending:after {
+    content: '↑';
+}
+th.sort-descending:after {
+    content: '↓';
+}
+main {
+    min-height: 0;
+}
+
+sp-viewstack {
+    min-height: 0;
+}
+
+sp-infobar {
+    padding: 15pt;
+    border-bottom: 1pt solid #866;
+}
+
+.sp-view-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sp-infected * {
+    color: #888822; /*#aa7777;*/
+}
+
+.sp-infected.sp-track-selected * {
+    color: #333322; /*#aa7777;*/
+}
+sp-newheader {
+    display: none;
+}
+.primary {
+    color: var(--brand-primary);
+}
+sp-searchform.floating {
+    display: none;
+}
+
+/* The animation code */
+@keyframes flash {
+    0% {-webkit-filter: brightness(1);}
+    25% {-webkit-filter: brightness(0.5);}
+    50% {-webkit-filter: brightness(1);}
+    75% {-webkit-filter: brightness(0.5);}
+    100% {-webkit-filter: brightness(1);}
+}
+
+.flashing {
+    animation-name: flash;
+    animation-duration: 0.3s;
+    animation-iteration-count: 2;
+}
+
+.topspace {
+    display: none;
+    height: 20pt;
+}
+sp-audiobook {
+    display: flex;
+    flex-direction: row;
+
+}
+sp-audiobook div {
+    padding: 9pt;
+}
+body,html {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding: 0pt !important;
+    font-family: "Tahoma";
+    font-size: 11pt;
+    cursor: default !important;
+ -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+sp-header{
+    display: block;
+}
+sp-appheader {
+    padding-top:18pt;
+    padding-left: 6pt;
+}
+sp-menuitem ul li {
+    margin: 0pt;
+    display: block;
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+}
+.highlight {
+    color: var(--brand-primary);
+}
+h1, h2, h3, h4 {
+    margin: 0pt;
+    margin-bottom: 3pt;
+}
+sp-image {
+    background-size: cover;
+    display: block;
+    border-radius: 5pt;
+}
+sp-toolbar {
+    display: flex;
+    flex-direction: row;
+    padding-left: 3pt;
+}
+sp-appfooter {
+    display: flex;
+    align-items: center;
+    padding: 6pt;
+    flex-direction: column;
+    flex: 0 0 auto !important;
+}
+sp-appfooter button {
+    margin-right: 12pt;
+}
+sp-chrome {
+    left: 0pt;
+    top: 0pt;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    position: fixed;
+}
+.btn-gigantic {
+    font-size: 28pt;
+    padding: 28pt;
+}
+main, sp-chrome, sp-appheader, sp-appfooter {
+    display: flex;
+    justify-content: space-between;
+}
+sp-appheader {
+    flex: 0 0 var(--header-height);
+    display: flex;
+    flex-direction: row;
+}
+sp-appfooter {
+    flex: 0 0 var(--footer-height);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+main {
+    flex: 10;
+    flex-direction: row;
+}
+
+input {
+}
+
+sp-infobar {
+    display: none;
+    flex: 0 0 auto;
+    height: auto;
+}
+
+sp-divider {
+    padding: 16pt;
+    padding-top: 12pt;
+    padding-bottom: 12pt;
+    display: block;
+    width: 100%;
+}
+td {
+    padding-left: 3pt;
+}
+sp-link, a {
+    cursor: pointer !important;
+}
+sp-toolbar button {
+}
+sp-menuitem {
+    display: block;
+    width: 100%;
+}
+sp-header table td, sp-album table td, sp-playlist table td, sp-toptracks td {
+    padding-left: 16pt;
+}
+.sp-track-unavailable, .sp-track-unavailable sp-link {
+    color: #aa7777;
+}
+sp-sidebar {
+
+    width: var(--sidebar-width);
+}
+sp-rightsidebar {
+    display: block;
+    width: var(--sidebar-width);
+}
+sp-searchform {
+}
+sp-menuitem {
+    box-sizing: border-box;
+    width: var(--sidebar-width);
+}
+sp-main {
+
+}
+p {
+    margin-top: 2pt;
+    margin-bottom: 3pt;
+}
+.btn-primary {
+    background-color: var(--brand-primary);
+    border: var(--brand-primary);
+    color: white;
+}
+.btn {
+    text-transform: uppercase;
+}
+sp-spider {
+    display: block;
+    overflow: scroll;
+}
+sp-viewstack {
+    flex-grow: 2;
+    display: flex;
+}
+
+sp-floatingbar {
+    display: none;
+}
+
+
+sp-viewstack, sp-view, .sp-view {
+}
+
+sp-album table, sp-playlist table, sp-toptracks table {
+    margin-top: 1pt;
+    margin-bottom: 1pt;
+}
+
+sp-main {
+    display: flex;
+    flex-direction: column;
+    flex: 10;
+
+}
+.sp-view {
+    width: 100%;
+    flex: 12;
+    overflow: scroll;
+}
+sp-view {
+
+}
+
+sp-toolbar {
+    display: block;
+    width: 100%;
+    padding: 6pt;
+}
+sp-tabcontent {
+    display: block;
+}
+sp-header > .container     , sp-album, sp-playlist {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10pt;
+    padding-right: -20pt;
+}
+sp-header > div:first-child, sp-album > div, sp-playlist > div:first-child {
+    padding-right: 12pt;
+}
+sp-header table td {
+}
+.header-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+sp-tabbar {
+    display: flex;
+    flex: 0 0 auto;
+    padding: 3pt;
+    justify-content: center;
+ align-items: flex-start;
+}
+sp-tabbar sp-tab {
+    padding-left: 25pt;
+    padding-right: 25pt;
+}
+sp-main {
+    flex-grow: 2;
+}
+sp-tabbar {
+}
+td, sp-menu * {
+       white-space: -moz-pre-wrap; /* Firefox */
+white-space: -o-pre-wrap; /* Opera */
+white-space: pre-wrap; /* Chrome */
+word-wrap: break-word; /* IE */
+overflow-x: none;
+overflow: hidden;
+}
+sp-menuitem, sp-sidebarmenu > label {
+    padding: 1pt 3pt;
+
+}
+sp-sidebarmenu {
+     flex: 2;
+}
+sp-sidebar {
+    display: flex;
+    flex-direction: column;
+}
+sp-nowplaying {
+    flex: 0 0 var(--sidebar-width);
+    height: calc(var(--sidebar-width) + 56pt);
+    background-size: cover;
+}
+sp-themeeditor {
+    display: block;
+    position: relative;
+}
+sp-viewstack {
+}
+sp-themeeditor * {
+    display: inline-block;
+}
+sp-themeeditor select {
+
+   transform: translate(0pt, -50%);
+}
+sp-searchform {
+    display: block;
+}
+sp-sidebarmenu label {
+
+}
+sp-nowplaying {
+    cursor: pointer;
+}
+sp-sidebarmenu sp-searchform {
+   padding: 13pt 11pt;
+}
+sp-sidebarmenu {
+}
+
+sp-appheader button, sp-appfooter button {
+
+    min-width: 28pt;
+}
+button:focus {
+    outline: none;
+}
+
+
+
+
+@-webkit-keyframes MOVE-BG {
+	from {
+		-webkit-transform: translateX(0);
+	}
+	to {
+		-webkit-transform: translateX(46px);
+	}
+}
+
+@keyframes MOVE-BG {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(46px);
+	}
+}
+
+
+.loading {
+	height: auto;
+    text-align: center;
+    color: #4c3f2e;
+    position: relative;
+    overflow: hidden;
+	padding: 1rem;
+	margin: 3%;
+	font-style: italic;
+}
+table {
+
+}
+td, th {
+}
+
+.loading-bg {
+    position: absolute;
+    left: -46px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+
+  background: -webkit-repeating-linear-gradient(
+    145deg,
+    transparent 1px,
+    rgba(0, 0, 0, .01) 2px,
+    rgba(0, 0, 0, .01) 11px,
+    transparent 12px,
+    transparent 20px
+  );
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent 1px,
+    rgba(0, 0, 0, .01) 2px,
+    rgba(0, 0, 0, .01) 11px,
+    transparent 12px,
+    transparent 20px
+	);
+
+    -webkit-animation-name: MOVE-BG;
+	-webkit-animation-duration: .6s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+
+    animation-name: MOVE-BG;
+	animation-duration: .6s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+
+
+sp-playlist {
+    margin-top: 30pt;
+    margin-bottom: 30pt;
+}
+.sp-invalid-link {
+    opacity: 0.7 !important;
+    cursor: default !important;
+    pointer-events: none;
+}
+.sp-invalid-link:hover {
+    opacity: 0.6 !important;
+    text-decoration: none;
+}
+sp-apptoolbar {
+    display: none;
+}
+sp-hook {
+    width: 100%;
+    display: block;
+}
+sp-trackcontrols {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+sp-sidebarmenu label {
+    display: block;
+}
+td {
+white-space: nowrap;;
+}
+
+.btn {
+    padding: 5pt;
+    padding-right: 12pt;
+
+}
+.form-control {
+    background: white;
+    border: 1pt solid black;
+}
+sp-appheader {
+
+    padding-top: 20pt !important;
+}
+
+sp-infobar {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#bbdefb+0,a4bfdb+100 */
+    background: rgb(222, 187,111); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255, 237,200,1) 0%, rgba(255, 237,131,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255, 237,200,1) 0%,rgba(255, 237,131,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255, 237,200,1) 0%,rgba(255, 237,131,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbdefb', endColorstr='#a4bfdb',GradientType=0 ); /* IE6-9 */
+    font-family: "Times New Roman" !important;
+    padding: 12px;
+    border-bottom: 1px solid #2E4251;
+    font-size: 16px;
+    color: black !important;;
+}
+
+sp-contextmenu {
+    position: fixed;
+    text-shadow: none;
+    width: auto;
+    height: auto;
+    background: var(--contextmenu-bg) ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .5), inset 1px 1px 1px var(--contextmenu-bg),inset 2px 2px 0 white,  inset -1px -1px 0 var(--contextmenu-dark-shadow), inset -2pt -2pt 0 var(--contextmenu-shadow);
+        display: none;
+    padding: 0pt;
+    box-sizing: border-box;
+    color: black;
+    padding: 3pt;
+}
+sp-contextmenuitem {
+    display: block;
+    padding: 3pt 8pt;
+}
+sp-contextmenuitem:hover {
+    background: #000088;
+    color: white;
+}

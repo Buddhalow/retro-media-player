@@ -1,0 +1,162 @@
+:root {
+    --background-color: rgba(222, 222, 222, 1);
+    --foreground-color: #373737;
+    --sidebar-background-color: rgba(255, 255, 255, .6);
+    --brand-primary: #BBDEFB;
+}
+
+
+body {
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    font-family: "Tahoma";
+    font-size: 11px;}
+*:focus {
+    outline: none;
+}
+
+sp-sidebar {
+    background-color: var(--sidebar-background-color);
+    border-right: 1px solid black;
+
+}
+
+fieldset, fieldset legend {
+    background-color: rgba(188, 188, 188, 1);
+}
+
+table thead tr td {
+    background-color: #888;
+}
+sp-trackcontext table {
+    border-collapse: collapse;
+    width: 100%;
+}
+sp-link, .sp-tabble td sp-link {
+    color: black !important;
+}
+.zebra {
+    background-image: url('/themes/spotify-2010/images/table-bg.png');
+    filter: invert(1);
+}
+tr:nth-child(2n+1) td {
+    background-color: white;
+}
+tr:nth-child(2n) td {
+    background-color: rgba(244, 244, 244, 1);
+}
+sp-link, a {
+    color: rgba(255, 255, 255, .6);
+    text-decoration: none;
+}
+sp-link:hover, a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+    margin: 0pt;
+    margin-bottom: 6pt;
+}
+sp-menuitem.active, .sp-track-selected td {
+    background-color: var(--brand-primary) !important;
+    color: rgba(0, 0, 0, .7);
+    text-shadow: none;
+}
+sp-menuitem.active a, .sp-track-selected sp-link, .sp-track-selected sp-link:hover {
+    color: rgba(0, 0, 0, .7);
+    text-shadow: none;
+
+}
+sp-menuitem:active {
+    background-color: rgba(255, 255, 255, .3);
+}
+th, td {
+    padding: 3pt;
+}
+
+sp-tabbar {
+
+    background: rgba(0, 0, 0, .1);
+    border-bottom: 1pt solid rgba(0, 0, 0, .1) !important;
+}
+
+.sp-image {
+}
+img {
+
+}
+
+
+sp-sidebarmenu label {
+    opacity: 0.5;
+
+}
+sp-header {
+    /* background-color: #383838;*/
+}
+
+.sp-tab-active, sp-tab:active {
+    background-color: var(--background-color) !important;
+    color: rgba(0, 0, 0, 0.8);
+    box-shadow: inset 0px 1px 1pt rgba(0, 0, 0, 0.8), inset 0pt -1pt 1pt rgba(255, 255, 255, .2);
+}
+
+.sp-2016 {
+    display: none;
+
+
+}
+.sp-view > sp-tabbar {
+    background: rgba(255, 255, 255, .5);
+}
+sp-divider {
+    background-color: rgba(255, 255, 255, .2) !important;
+    border: none;
+    box-shadow: none;
+}
+sp-taginput {
+    background-color: white !important;
+}
+
+
+tr.open.first-child {
+    border-top: 1pt solid rgba(255, 255, 255, .1);
+}
+tr.open.last-child {
+
+    border-bottom: 1pt solid rgba(255, 255, 255, .1);
+}
+tr.open {
+    border-radius: 14pt 14pt 14pt 14pt;
+}
+tr.open:nth-child(2n+1) td {
+    background-color: rgba(0, 0, 0, .35);
+}
+tr.open:nth-child(2n) td {
+
+    background-color: rgba(0, 0, 0, .25);
+
+}
+tr.open td {
+
+}
+tr.open  td {
+}
+.sp-dragover {
+    border-top: 1px solid white;
+}
+.sp-current-track {
+    background-color: black !important;
+}
+
+.overview-hidden {
+    display: none;
+}
+sp-menuitem.dragover {
+    background-color: white;
+    color: black;
+}
+sp-tabbar {
+    text-shadow: 0 1pt 0 #fff !important;
+}

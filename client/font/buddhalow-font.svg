@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2017 by original authors @ fontello.com</metadata>
+<defs>
+<font id="buddhalow-font" horiz-adv-x="1000" >
+<font-face font-family="buddhalow-font" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="buddhalow" unicode="&#xe800;" d="M496 850c273 0 495-222 495-496 0-273-222-495-495-495-274 0-496 222-496 495 0 274 222 496 496 496z m-104-179l1 16c16 2 33 5 50 7 17 2 32 5 46 7 16 2 32 5 47 8l5-13c-4-5-8-27-11-66-3-38-6-90-7-153 18 13 34 24 48 32 13 9 22 13 26 13 21 0 39-4 55-11 16-7 30-17 41-30 12-13 21-29 27-48 6-19 9-40 9-64 0-26-5-50-13-73-9-22-21-41-36-57-16-15-34-28-55-37-22-8-45-13-71-13-13 0-27 1-40 2-13 1-25 2-36 4-12 2-23 4-33 5l-7 7 0 390c-100-36-170-132-170-242 0-142 116-258 258-258 85 0 164 42 212 112l71-49c-64-93-170-149-283-149-190 0-344 154-344 344 0 141 86 264 210 316z m127-414c5-2 12-5 22-7 9-2 19-3 29-3 22 0 39 8 51 25 12 16 18 40 18 71 0 34-6 62-19 82-12 20-28 30-48 30-9 0-17-2-27-6-9-4-17-9-24-16l-2-176z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>

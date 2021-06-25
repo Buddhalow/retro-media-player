@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  
+</head>
+<body>
+  <script type='text/javascript'>//<![CDATA[ 
+    var target = window.self === window.top ? window.opener : window.parent;
+
+    
+        var token = window.location.href.split('&')[0].split('=')[1];
+        service = sessionStorage.getItem('logging_into')
+        
+        if (!service) {
+          var pathname = window.location.pathname
+          var parts = pathname.split('/')
+          var service = pathname[pathname.length - 1]
+          service = pathname[pathname.length - 1]
+          
+          
+        }
+        // target.postMessage(token, 'http://example.com/'); // v0.7.0 and below
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+          if (xmlHttp.readyState == 4) {
+            if (xmlHttp.status == 200) {
+              localStorage.setItem(service + '.session', xmlHttp.responseText);
+              localStorage.removeItem('logging_into')
+              window.close();
+            } else {
+              alert(xmlHttp.status + ' ' + xmlHttp.responseText);
+            }
+          }
+        } 
+        xmlHttp.open('GET', window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/api/' + sessionStorage.getItem('logging_into') + '/authenticate?code=' + token, true);
+        xmlHttp.send(null);
+
+    
+
+
+  </script>
+</body> 
+</html>

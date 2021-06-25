@@ -1,0 +1,16 @@
+<view>
+    <sp-header uri="${uri}">
+
+    </sp-header>
+    <div class="container">
+        <sp-tabcontent id="overview" title="Overview">
+            <sp-divider>Top tracks</sp-divider>
+            <sp-playlist uri="${uri}:top:5"></sp-playlist>
+            <sp-divider>Playlists</sp-divider>
+            <sp-flow uri="${uri}:single"></sp-flow>
+            <sp-divider>Playlists</sp-divider>
+            <sp-flow uri="${uri}:album"></sp-flow>
+            <sp-divider>Playlists</sp-divider>
+        </sp-tabcontent>
+    </div>
+</view>
