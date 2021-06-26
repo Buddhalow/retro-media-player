@@ -48,6 +48,7 @@ class SPContextMenuElement extends HTMLElement {
             let menuItem = document.createElement(element);
             menuItem.innerHTML = item.label;
             menuItem.object = this.object;
+            menuItem.obj = item.obj;
             menuItem.item = item;
 
             menuItem.render();

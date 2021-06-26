@@ -30,7 +30,8 @@ class SPContextMenuItemElement extends HTMLElement {
                     this.item.onCommand({
                         target: e.target,
                         targetEvent: e,
-                        object: this.object
+                        object: this.object,
+                        obj: this.obj
                     })
                 }
             });
