@@ -349,7 +349,7 @@ sp-divider {
     gap: 1pt;
     flex: 1;
 }
-.app-title {
+.app-title, .app-title a {
     color: black !important;
     text-shadow: 0pt 1pt 0pt rgba(255, 255, 255, .8);
     font-weight: bold;
