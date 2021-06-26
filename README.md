@@ -1,3 +1,4 @@
+![screencapture-oldify-buddhalow-2021-06-26-15_56_13](https://user-images.githubusercontent.com/5108695/123515294-196e5900-d697-11eb-9950-f61d0ff489b9.png)
 # OldSpot
 
 An OldOS spinoff for Spotify.
