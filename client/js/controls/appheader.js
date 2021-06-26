@@ -4,7 +4,7 @@
             this.style.display = 'flex';
             this.style.flexDirection = 'row';
             this.titleBar = document.createElement('div');
-            this.titleBar.innerHTML = `Oldify`;
+            this.titleBar.innerHTML = `Oldify (Community Technical Preview 0.2.8)`;
             this.titleBar.classList.add('app-title');
             this.appendChild(this.titleBar);
             this.buttons = document.createElement('div');
