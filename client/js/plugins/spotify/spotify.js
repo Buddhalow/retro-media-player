@@ -63,7 +63,7 @@ document.addEventListener('mainmenuload', (e) => {
     sidebarmenu.menu = document.createElement('sp-menu');
     sidebarmenu.label = document.createElement('label');
     sidebarmenu.label.innerHTML = '<i class="fa fa-spotify"></i> ' + _e('Spotify');
-    sidebarmenu.appendChild(sidebarmenu.label);
+  //  sidebarmenu.appendChild(sidebarmenu.label);
 
     var data =  [
         {

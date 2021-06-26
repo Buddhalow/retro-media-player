@@ -167,7 +167,7 @@ import { VERIFIED_PROFILES } from '/js/constants.js'
 	    	this.toggleSidebar.addEventListener('click', (e) => {
 	    		$('sp-rightsidebar').css({display: $('sp-rightsidebar').css('display') === 'block' ? 'none' : 'block'})
 	    	})
-	    	this.appendChild(this.toggleSidebar);
+	    //	this.appendChild(this.toggleSidebar);
 
 	        var spacing = document.createElement('div');
 	        spacing.classList.add('sp-2012');

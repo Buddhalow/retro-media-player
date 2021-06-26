@@ -40,6 +40,18 @@ button, .btn {
 .btn-group .btn {
     border-radius: none;
 }
+sp-appfootersection {
+    border-right: 1pt solid #333;
+    border-bottom: 1pt solid #333;
+    border-top: 1pt solid #222;/* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#636363+0,3a3a3a+100 */
+    border-left: 1pt solid rgba(255, 255, 255, .1)  ;/* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#636363+0,3a3a3a+100 */
+  
+    box-shadow:inset 0pt 1pt 0pt rgba(255, 255, 255, .1);
+    border-bottom: 1pt solid #333;
+    border-top: 1pt solid #222;/* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#636363+0,3a3a3a+100 */
+  
+    box-shadow:inset 0pt 1pt 0pt rgba(255, 255, 255, .1);
+}
 .btn-group .btn:first-child {
     border-radius: 15pt 0pt 0pt 15pt;
 }
@@ -322,7 +334,46 @@ sp-divider {
     text-shadow: none;
     font-weight: bold;
 }
+.nowplayingheader {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+.nowplayingtitle {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5pt;
+    gap: 1pt;
+    flex: 1;
+}
+.app-title {
+    color: black !important;
+    text-shadow: 0pt 1pt 0pt rgba(255, 255, 255, .8);
+    font-weight: bold;
+}
+.nowplayingbutton {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 10pt;
+}
+.nowplayingbutton button {
+    width: 32pt;
+    height: 32pt;
+}
 
+.nowplayingheader sp-link { 
+}
+.nowplayingheader sp-link:first-child {
+    font-weight: bold; font-size: 28pt;
+}
+sp-nowplaying sp-link {
+    color: black !important;
+    text-shadow: 0pt 1pt 1pt rgba(255, 255, 255, .5);
+}
 
 
 sp-main > sp-tabbar {
@@ -444,16 +495,13 @@ sp-menuitem {
 
 sp-appfooter {
     background-image: url('/themes/spotify-2009/images/appfooer.png');
-    border-bottom: 1pt solid #333;
-    border-top: 1pt solid #222;/* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#636363+0,3a3a3a+100 */
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#444444+0,3a3a3a+100 */
+     /* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#444444+0,3a3a3a+100 */
     background: #444444; /* Old browsers */
     background: -moz-linear-gradient(top,  #444444 0%, #3a3a3a 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top,  #444444 0%,#3a3a3a 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom,  #444444 0%,#3a3a3a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', endColorstr='#3a3a3a',GradientType=0 ); /* IE6-9 */
-
-    box-shadow:inset 0pt 1pt 0pt rgba(255, 255, 255, .1);
+  
 }
 
 
@@ -509,4 +557,32 @@ h1 {
 sp-image {
     border-radius: 0 !important;
     box-shadow: 0 0 2pt rgba(0, 0, 0, .5);
+}
+
+input[type='range'] { 
+    -webkit-appearance: none;
+    border-radius: 50pt !important;
+    background-color: rgba(60, 60, 60);
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    border-radius: 50pt !important;
+    -webkit-appearance: none;
+    background-color: rgba(50, 50, 50, 1);
+    margin-top: -1px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb { 
+    -webkit-appearance: none; 
+    width: 8pt;
+    height: 8pt;
+    cursor: ew-resize;
+    border: 1pt solid rgba(10, 10, 10, 1);
+    border-radius: 50pt;
+    background: rgba(180, 180, 180, 1);
+  }
+sp-splitter {
+    flex: 0 0 1pt;
+    background-color: rgba(10, 10, 10, 1);
 }

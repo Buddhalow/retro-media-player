@@ -16,6 +16,7 @@ export default class SPUriFormElement extends HTMLElement {
       return false;
     });
     this.form.searchDiv = document.createElement('div');
+    this.form.searchDiv.style.visiblility = 'none';
     this.form.searchDiv.style.display = 'inline-block';
     this.form.searchDiv.innerHTML = '<i style="opacity: 0.5; color: black; text-shadow: none; margin-right: 5pt; margin-left: 5pt" class="fa fa-search"></i>';
     this.form.searchDiv.classList.add('form-control');

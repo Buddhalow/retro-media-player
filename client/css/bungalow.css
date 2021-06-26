@@ -156,8 +156,7 @@ sp-toolbar {
 }
 sp-appfooter {
     display: flex;
-    align-items: center;
-    padding: 6pt;
+    align-items: center; 
     flex-direction: column;
     flex: 0 0 auto !important;
 }
@@ -241,11 +240,17 @@ sp-rightsidebar {
     display: block;
     width: var(--sidebar-width);
 }
+.app-title {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3pt;
+    z-index: 10;
+}
 sp-searchform {
 }
 sp-menuitem {
     box-sizing: border-box;
-    width: var(--sidebar-width);
 }
 sp-main {
 
@@ -351,6 +356,13 @@ sp-menuitem, sp-sidebarmenu > label {
     padding: 1pt 3pt;
 
 }
+sp-appfootersection {
+    display: flex;
+    padding: 6pt;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
 sp-sidebarmenu {
      flex: 2;
 }
@@ -359,8 +371,7 @@ sp-sidebar {
     flex-direction: column;
 }
 sp-nowplaying {
-    flex: 0 0 var(--sidebar-width);
-    height: calc(var(--sidebar-width) + 56pt);
+    flex: 0 0 calc(var(--sidebar-width) + 55pt); 
     background-size: cover;
 }
 sp-themeeditor {
@@ -382,8 +393,23 @@ sp-searchform {
 sp-sidebarmenu label {
 
 }
+sp-sidebarmenu, sp-menu {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+}
+sp-splitter {
+    cursor: col-resize;
+    flex: 0 0 1pt;
+}
 sp-nowplaying {
     cursor: pointer;
+}
+sp-appfootersection  button {
+    width: 28pt;
+    height: 28pt;
+    border-radius: 50pt;
 }
 sp-sidebarmenu sp-searchform {
    padding: 13pt 11pt;
@@ -499,6 +525,7 @@ sp-trackcontrols {
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: stretch;
 }
 sp-sidebarmenu label {
     display: block;

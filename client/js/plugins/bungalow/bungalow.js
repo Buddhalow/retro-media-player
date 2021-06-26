@@ -9,18 +9,6 @@ document.addEventListener('mainmenuload', (e) => {
             {
                 name: _e('Start'),
                 uri: 'bungalow:internal:start'
-            },
-            {
-                name: _e('Settings'),
-                uri: 'bungalow:config'
-            },
-            {
-                name: _e('Services'),
-                uri: 'bungalow:service'
-            },
-            {
-                name: _e('Plugins'),
-                uri: 'bungalow:plugin'
             }
         ]
     );

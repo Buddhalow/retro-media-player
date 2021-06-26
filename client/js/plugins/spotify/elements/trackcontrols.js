@@ -2,28 +2,44 @@ import store from '/js/plugins/spotify/store.js';
 
 export default class SPTrackControls extends HTMLElement {
     connectedCallback() {
+        this.playerControls = document.createElement('sp-appfootersection');
+
         this.previousButton = document.createElement('button');
         this.previousButton.classList.add('fa');
         this.previousButton.classList.add('fa-step-backward');
-        this.appendChild(this.previousButton);
-        this.previousButton.addEventListener('click', (e) => {
+         this.previousButton.addEventListener('click', (e) => {
             store.skipBack();
         })
+        this.playerControls.appendChild(this.previousButton);
+        this.appendChild(this.playerControls);
         this.playButton = document.createElement('button');
         this.playButton.classList.add('fa');
         this.playButton.setAttribute('id', 'playButton');
         this.playButton.classList.add('fa-play');
-        this.appendChild(this.playButton);
+        this.playerControls.appendChild(this.playButton);
         this.playButton.addEventListener('click', (e) => {
             store.playPause();
         })
+        this.playButton.style.transform = 'scale(1.2)';
         this.nextButton = document.createElement('button');
         this.nextButton.classList.add('fa');
         this.nextButton.classList.add('fa-step-forward');
-        this.appendChild(this.nextButton);
+        this.playerControls.appendChild(this.nextButton);
         this.nextButton.addEventListener('click', (e) => {
             store.skipNext();
-        });
+        }); 
+        this.volumethumb = document.createElement('input');
+        this.volumethumb.setAttribute('type', 'range');
+        this.volumethumb.setAttribute('id', 'volumethumb');
+        this.volumethumb.style.flex = '5';
+        this.volumethumb.addEventListener('change', (e) => {
+            let value = e.target.value;
+   //         store.setVolume(value);
+        })
+        this.playerControls.appendChild(this.volumethumb);
+
+        this.player = document.createElement('sp-appfootersection');
+        this.player.style.flex = '1';
         this.playthumb = document.createElement('input');
         this.playthumb.setAttribute('type', 'range');
         this.playthumb.setAttribute('id', 'playthumb');
@@ -32,8 +48,13 @@ export default class SPTrackControls extends HTMLElement {
             let value = e.target.value;
             store.seek(value);
         })
-        this.appendChild(this.playthumb);
-        let btn = document.createElement('button');
+        this.player.appendChild(this.playthumb); 
+        this.appendChild(this.player);
+        this.rightSection = document.createElement('sp-appfootersection');
+        this.rightSection.innerHTML = `<img src="/images/oldify.svg" height="80%" style="transform: rotate(-5deg); opacity: 1; filter: drop-shadow(0 1pt 0pt rgba(255, 255, 255, .3))">`;
+        this.rightSection.style.flex = '0 0 100pt';
+        this.appendChild(this.rightSection);
+        /*let btn = document.createElement('button');
         btn.classList.add('fa');
         btn.classList.add('fa-paint-brush');
         this.appendChild(btn);
@@ -47,6 +68,7 @@ export default class SPTrackControls extends HTMLElement {
             store.hue = hue;
         });
         this.created = true;
+        */
         store.on('change', (e) => {
             let trackItems = document.querySelectorAll('.sp-track');
             let playButton = document.querySelector('#playButton');

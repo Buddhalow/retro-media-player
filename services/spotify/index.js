@@ -1782,7 +1782,7 @@ class SpotifyService {
           }
         }
         if (parts[0] == 'search') {
-          url = 'https://api.spotify.com/v1/search?q=' + encodeURIComponent(payload.q) + '&type=' + (payload.type || 'track') + '&limit=' + (payload.limit || 39) + '&offset=' + (payload.offset || 1);
+          url = 'https://api.spotify.com/v1/    ?q=' + encodeURIComponent(payload.q) + '&type=' + (payload.type || 'track') + '&limit=' + (payload.limit || 39) + '&offset=' + (payload.offset || 1);
           request({
               url,
               headers
@@ -3466,7 +3466,7 @@ class SpotifyService {
       if (req.body) {
         body = (req.body);
       }
-      music.search(req.query.q, req.query.limit, req.query.offset, req.query.type).then(result => {
+      music.search(req.query.q, req.query.offset, req.query.limit,  req.query.type).then(result => {
         result.images = [{
           url: ''
         }]
