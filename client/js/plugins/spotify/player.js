@@ -20,69 +20,69 @@ class PlayerStore extends EventEmitter {
 
     }
     initPlayer() {
-            // Error handling
-            let player = this.player;
-            player.addListener('initialization_error', ({ message }) => { console.error(message); });
-            player.addListener('authentication_error', ({ message }) => { console.error(message); });
-            player.addListener('account_error', ({ message }) => { console.error(message); });
-            player.addListener('playback_error', ({ message }) => { console.error(message); });
+        // Error handling
+        let player = this.player;
+        player.addListener('initialization_error', ({ message }) => { console.error(message); });
+        player.addListener('authentication_error', ({ message }) => { console.error(message); });
+        player.addListener('account_error', ({ message }) => { console.error(message); });
+        player.addListener('playback_error', ({ message }) => { console.error(message); });
 
-            // Playback status updates
-            player.addListener('player_state_changed', ({ position, duration, paused, shuffle, track_window: { current_track } }) => {
-                        this.state.player = {
-                            item: current_track,
-                            is_playing: !paused,
-                            shuffle
-                        };
+        // Playback status updates
+        player.addListener('player_state_changed', ({ position, duration, paused, shuffle, track_window: { current_track } }) => {
+                    this.state.player = {
+                        item: current_track,
+                        is_playing: !paused,
+                        shuffle
+                    };
+                    this.emit('change');
+                    this.saveState();
+                    try {
+                        this.isRequesting = false;
                         this.emit('change');
-                        this.saveState();
-                        try {
-                            this.isRequesting = false;
-                            this.emit('change');
-                            $('tr').removeClass('sp-current-track')
-                            $('tr[data-uri="' + this.state.player.item.uri + '"]').addClass('sp-current-track')
-                            $('#player_position').val(this.state.player.progress_ms);
-                            if (this.state.player && this.state.player.item != null && this.state.player.is_playing) {
-                                $('sp-nowplaying .nowplayingimage').attr('data-uri', this.state.player.item.album.uri)
-                                $('sp-nowplaying .nowplayingimage').css({ 'background-image': 'url("' + this.state.player.item.album.images[0].url + '")' })
+                        $('tr').removeClass('sp-current-track')
+                        $('tr[data-uri="' + this.state.player.item.uri + '"]').addClass('sp-current-track')
+                        $('#player_position').val(this.state.player.progress_ms);
+                        if (this.state.player && this.state.player.item != null && this.state.player.is_playing) {
+                            $('sp-nowplaying .nowplayingimage').attr('data-uri', this.state.player.item.album.uri)
+                            $('sp-nowplaying .nowplayingimage').css({ 'background-image': 'url("' + this.state.player.item.album.images[0].url + '")' })
 
-                                $('sp-nowplaying .nowplayingtitle').html(`
-                            <sp-link uri="${this.state.player.item.uri}">${this.state.player.item.name}</sp-link><br>
-                            ${this.state.player.item.artists.map(a => `
-                                <sp-link uri="${a.uri}">${a.name}</sp-link>
-                            `).join(', ')}
-                        `)
-                document.querySelector('sp-nowplaying').resize();
-                $('#playthumb').attr('max', this.state.player.item.duration_ms);
-                $('#playthumb').val(position); 
-                $('#playButton').addClass('fa-pause');
-                $('#playButton').removeClass('fa-play');
-    
-              } else {
-    
-                $('#playButton').addClass('fa-play');
-                $('#playButton').removeClass('fa-pause');
-              } 
-            } catch (e) {
-              console.log(e);
-            }
-        });
+                            $('sp-nowplaying .nowplayingtitle').html(`
+                        <sp-link uri="${this.state.player.item.uri}">${this.state.player.item.name}</sp-link><br>
+                        ${this.state.player.item.artists.map(a => `
+                            <sp-link uri="${a.uri}">${a.name}</sp-link>
+                        `).join(', ')}
+                    `)
+            document.querySelector('sp-nowplaying').resize();
+            $('#playthumb').attr('max', this.state.player.item.duration_ms);
+            $('#playthumb').val(position); 
+            $('#playButton').addClass('fa-pause');
+            $('#playButton').removeClass('fa-play');
 
-        // Ready
-        player.addListener('ready', ({ device_id }) => {
-            this.state.device_id = device_id;
-            debugger;
-            console.log('Ready with Device ID', device_id);
-        });
+            } else {
 
-        // Not Ready
-        player.addListener('not_ready', ({ device_id }) => {
-            this.state.device_id = device_id;
-        });
+            $('#playButton').addClass('fa-play');
+            $('#playButto n').removeClass('fa-pause');
+            } 
+        } catch (e) {
+            console.log(e);
+        }
+    });
 
-        // Connect to the player!
-        player.connect();
-        this.player = player;
+    // Ready
+    player.addListener('ready', ({ device_id }) => {
+        this.state.device_id = device_id;
+        debugger;
+        console.log('Ready with Device ID', device_id);
+    });
+
+    // Not Ready
+    player.addListener('not_ready', ({ device_id }) => {
+        this.state.device_id = device_id;
+    });
+
+    // Connect to the player!
+    player.connect();
+    this.player = player;
     }
     getDiscoveredTracks(track, playlist = null) {
 
