@@ -404,7 +404,7 @@ function login(service) {
 if (localStorage.getItem('service.spotify.enabled') != 'true') { 
 } else {
     localStorage.setItem('service.spotify.enabled', 'true');
-    location.reload();
+    
 }
 login('spotify').then((result) => {
     init().then(() => {
