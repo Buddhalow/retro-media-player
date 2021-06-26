@@ -52,7 +52,7 @@ export default class SPTrackControls extends HTMLElement {
         this.appendChild(this.player);
         this.rightSection = document.createElement('sp-appfootersection');
         
-        this.rightSection.innerHTML = `<img src="/images/oldify.svg" height="10pt" width="30pt" style="transform: rotate(-5deg); opacity: 1; filter: drop-shadow(0 1pt 0pt rgba(255, 255, 255, .3))">`;
+        this.rightSection.innerHTML = `<img src="/images/oldify.svg" height="50pt" width="80pt" style="transform: rotate(-5deg); opacity: 1; filter: drop-shadow(0 1pt 0pt rgba(255, 255, 255, .3))">`;
         this.devicesButton = document.createElement('button');
         this.devicesButton.innerHTML = `<img src="/images/speakers.svg" height="30pt" width="30pt" style="opacity: 1; filter: drop-shadow(0 1pt 0pt rgba(255, 255, 255, .3))">`;
         this.devicesButton.addEventListener('click', (event) => {
@@ -69,7 +69,9 @@ export default class SPTrackControls extends HTMLElement {
                     })));
                 });
             }
-        });   
+        });  
+        // this.rightSection.appendChild(this.devicesButton);
+        this.rightSection.style.flex = '0 0 80pt';
         this.appendChild(this.rightSection);
         /*let btn = document.createElement('button');
         btn.classList.add('fa');
