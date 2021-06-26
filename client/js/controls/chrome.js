@@ -8,6 +8,7 @@ export default class SPChromeElement extends HTMLElement {
         this.applyTheme(value);
 
     }
+
     saveTheme(value) {
         localStorage.setItem('theme', JSON.stringify(value));
     }
@@ -81,9 +82,29 @@ export default class SPChromeElement extends HTMLElement {
         this.infoBar = document.createElement('sp-infobar');
         this.appendChild(this.infoBar);
         this.main = document.createElement('main');
+        this.main.addEventListener('mousemove', (event) => {
+            if (event.currentTarget.activeSplitter) {
+                let previousSibling = event.currentTarget.activeSplitter.previousElementSibling;
+                if (!previousSibling) return;
+                let width = event.clientX - previousSibling.getBoundingClientRect().left;
+                console.log(event.currentTarget.activeSplitter.previousElementSibling.tagName);
+                if (event.currentTarget.activeSplitter.previousElementSibling.tagName == 'SP-SIDEBAR') {
+                    document.body.style.setProperty('--sidebar-width', width + 'px');
+                } else {
+                    previousSibling.style.flex = '0 0 ' + width + 'px';
+                }
+            }
+        });
+        this.main.addEventListener('mouseup', (event) => {
+            event.currentTarget.activeSplitter = null;
+              
+        });
         this.appendChild(this.main);
         this.sidebar = document.createElement('sp-sidebar');
+        this.main.splitter = document.createElement('sp-splitter');
+     //   this.main.activeSplitter = this.main.splitter;
         this.main.appendChild(this.sidebar);
+        this.main.appendChild(this.main.splitter);
         this.mainView = document.createElement('sp-main');
         this.main.appendChild(this.mainView);
         this.rightsidebar = document.createElement('sp-rightsidebar');

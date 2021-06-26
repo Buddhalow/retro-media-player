@@ -8,6 +8,7 @@ import SPDragElement from '/js/controls/dragelement.js';
 import SPThrobberElement from '/js/controls/throbber.js';
 import SPAttachmentElement from '/js/controls/attachment.js';
 import SPEmbeddedResourceElement from '/js/controls/embeddedresource.js';
+import SPSplitterElement from '/js/controls/splitter.js';
 import SPHookElement from '/js/controls/hook.js';
 import SPExpanderElement from '/js/controls/expander.js';
 import SPAboutElement from '/js/controls/about.js';
@@ -262,6 +263,7 @@ window.resolve = function (method, uri, query, headers, data) {
 window.store = new Store(new BrowserStorage())
 localStorage.setItem("showHeaders", true);
 customElements.define('sp-button', SPButtonElement);
+customElements.define('sp-splitter', SPSplitterElement);
 customElements.define('sp-uriform', SPUriFormElement);
 customElements.define('sp-flow', SPFlowElement);
 customElements.define('sp-item', SPItemElement);
@@ -320,7 +322,7 @@ customElements.define('sp-floatingbar', SPFloatingBarElement);
 customElements.define('sp-spider', SPSpiderElement);
 customElements.define('sp-statusicon', SPStatusIconElement);
 customElements.define('sp-dragelement', SPDragElement);
-(async () => {
+const init = async () => {
 
     await new Promise(async (resolve, fail) => {
         let result = await fetch('/api/plugin', {
@@ -378,9 +380,32 @@ customElements.define('sp-dragelement', SPDragElement);
 
     });
     $('#loading').fadeOut(function () {
-        document.querySelector('.body').appendChild(document.createElement('sp-chrome'));
+        document.querySelector('.body').appendChild(document.createElement('sp-chrome'));        
     });
-})();
+    
+};
+
+function login(service) {
+    sessionStorage.setItem('logging_into', service);
+
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            var loginWindow = window.open('/api/' + service + '/login');
+            var t = setInterval(() => {
+                if (!loginWindow || loginWindow.closed) {
+                    clearInterval(t);
+
+                    resolve(true);
+                }
+            });
+        });
+    });
+}
+login('spotify').then((result) => {
+    init().then(() => {
+        console.log("Loaded");
+    });
+})
 
 
 
