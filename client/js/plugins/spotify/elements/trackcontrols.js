@@ -51,8 +51,25 @@ export default class SPTrackControls extends HTMLElement {
         this.player.appendChild(this.playthumb); 
         this.appendChild(this.player);
         this.rightSection = document.createElement('sp-appfootersection');
-        this.rightSection.innerHTML = `<img src="/images/oldify.svg" height="80%" style="transform: rotate(-5deg); opacity: 1; filter: drop-shadow(0 1pt 0pt rgba(255, 255, 255, .3))">`;
-        this.rightSection.style.flex = '0 0 100pt';
+        
+        this.rightSection.innerHTML = `<img src="/images/oldify.svg" height="10pt" width="30pt" style="transform: rotate(-5deg); opacity: 1; filter: drop-shadow(0 1pt 0pt rgba(255, 255, 255, .3))">`;
+        this.devicesButton = document.createElement('button');
+        this.devicesButton.innerHTML = `<img src="/images/speakers.svg" height="30pt" width="30pt" style="opacity: 1; filter: drop-shadow(0 1pt 0pt rgba(255, 255, 255, .3))">`;
+        this.devicesButton.addEventListener('click', (event) => {
+            let contextMenu = document.createElement('sp-contextmenu');
+            if (window.spotifyStore) {
+                window.spotifyStore.getDevices().then((devices) => {
+                    contextMenu.show(this.devicesButton.getBoundingClientRect(), {}, devices.map(device => ({
+                        name: device.name,
+                        id: device.id,
+                        onCommand: ({ item, event, object, obj }) => {
+                            window.spotifyStore.setDevice(obj.id).then(() => { 
+                            });
+                        }
+                    })));
+                });
+            }
+        });   
         this.appendChild(this.rightSection);
         /*let btn = document.createElement('button');
         btn.classList.add('fa');
