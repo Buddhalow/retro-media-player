@@ -7,13 +7,18 @@ export default class SPSearchViewElement extends SPViewElement {
         super.connectedCallback();
         if (!this.created3) {
             this.classList.add('sp-view');
+            this.musicTab = document.createElement('sp-tabcontent');
+            this.musicTab.setAttribute('data-tab-id', 'overview');
+            this.showsTab = document.createElement('sp-tabcontent');
+            this.showsTab.setAttribute('data-tab-id', 'shows');
             this.header = document.createElement('div');
             this.header.innerHTML = "<div style='padding: 13pt'><h3>Search results for '<span id='q'>'</span>";
-            this.appendChild(this.header);
+            this.musicTab.appendChild(this.header);
             this.trackcontext = document.createElement('sp-trackcontext');
             this.trackcontext.setAttribute('expands', 'true');
-            this.appendChild(this.trackcontext);
-
+            this.musicTab.appendChild(this.trackcontext);
+            this.appendChild(this.musicTab);
+            this.appendChild(this.showsTab);
             this.trackcontext.setAttribute('showcolumnheaders', 'true');
             this.trackcontext.header = (this.header);
             this.trackcontext.view = getParentElementByClass(this, 'sp-view');
@@ -37,8 +42,12 @@ export default class SPSearchViewElement extends SPViewElement {
             name: query,
             type: 'search',
             objects: [{
-                name: _e('Search'),
+                name: _e('Music'),
                 id: 'overview'
+            },
+            {
+                name: _e('Shows'),
+                id: 'shows'
             }],
             object: {
                 name: query,

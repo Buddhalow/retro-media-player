@@ -5,11 +5,7 @@ export default class SPTrackTableDelegate {
     }
     onRowDoubleClick(tr, row) {
         let uri = row.uri.replace(/chapter/, 'track')
-
-        if (window.infectedResources.indexOf(uri) != -1) {
-            alert('The track is infected with bad energy and has been blocked from streaming');
-            return
-        }
+        tr.classList.add('sp-track-loading');
         store.playTrack({
             uri: uri,
             ...row

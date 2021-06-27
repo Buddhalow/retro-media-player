@@ -40,8 +40,7 @@ class PlayerStore extends EventEmitter {
                 this.isRequesting = false;
                 this.emit('change');
                 $('tr').removeClass('sp-current-track')
-                $('tr[data-uri="' + this.state.player.item.uri + '"]').addClass('sp-current-track')
-                $('#player_position').val(this.state.player.progress_ms);
+                $('tr[data-uri="' + this.state.player.item.uri + '"]').addClass('sp-current-track') 
                 if (this.state.player && this.state.player.item != null && this.state.player.is_playing) {
                     $('sp-nowplaying .nowplayingimage').attr('data-uri', this.state.player.item.album.uri)
                     $('sp-nowplaying .nowplayingimage').css({ 'background-image': 'url("' + this.state.player.item.album.images[0].url + '")' })
@@ -563,6 +562,12 @@ class PlayerStore extends EventEmitter {
                     },
                 }).then(() => {
                     this.hasStartedPlaying = true;
+                    $('.sp-track-loading').removeClass('sp-track-loading');
+                    debugger
+                }).catch(e => {
+                    $('.sp-track-loading').removeClass('sp-track-loading');
+                    $('.sp-track-loading').addClass('sp-track-error');
+
                 });
             });
         });
@@ -580,6 +585,12 @@ class PlayerStore extends EventEmitter {
                     },
                 }).then(() => {
                     this.hasStartedPlaying = true;
+                    $('.sp-track-loading').removeClass('sp-track-selected'); 
+                    $('.sp-track-loading').removeClass('sp-track-loading'); 
+                }).catch(e => {
+                    $('.sp-track-loading').removeClass('sp-track-loading');
+                    $('.sp-track-loading').addClass('sp-track-error');
+
                 });
             });
         });

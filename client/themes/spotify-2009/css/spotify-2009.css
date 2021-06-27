@@ -8,6 +8,9 @@
 button[disabled] {
     opacity: 0.5;
 }
+.sp-track-loading td {
+    background-image: url(/images/zebra.png);
+}
 button, .btn {
     box-shadow: 0pt 0pt 1pt rgba(0, 0, 0, .5);
     border-radius: 6pt;
