@@ -2,6 +2,7 @@ export default class MediaSideBarItem extends HTMLElement {
     connectedCallback() {
         super.connectedCallback();
         this.render();
+        debugger
         this.addEventListener('click', (e) => {
             GlobalViewStack.navigate(e.target.getAttribute('uri'));
         })

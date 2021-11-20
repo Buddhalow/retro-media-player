@@ -125,8 +125,8 @@ export default class SPChromeElement extends HTMLElement {
      //   this.main.activeSplitter = this.main.splitter;
         this.main.appendChild(this.mediaSidebar);
         this.mediaSidebar.innerHTML = `
-            <sp-mediasidebaritem uri="bungalow:player">Now Playing</sp-mediasidebaritem>
-            <sp-mediasidebaritem uri="bungalow:library">Library</sp-mediasidebaritem>
+            <sp-mediasidebaritem uri="bungalow:player" onclick="GlobalViewStack.navigate('bungalow:internal:nowplaying')">Now Playing</sp-mediasidebaritem>
+            <sp-mediasidebaritem uri="bungalow:library" onclick="GlobalViewStack.navigate('spotify:library')">Library</sp-mediasidebaritem>
         `
 
         this.main.appendChild(this.sidebar);

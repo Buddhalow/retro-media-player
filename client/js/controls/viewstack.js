@@ -130,12 +130,12 @@ export default class SPViewStackElement extends HTMLElement {
             }
         }
         var viewInfo = {};
-        if (newUri in this.views) {
+        viewInfo = externalViews[0]
+        if (newUri in this.views) { 
 
             view = this.views[newUri];
 
         } else if (externalViews.length > 0) {
-            viewInfo = externalViews[0]
             view = document.createElement(externalViews[0].tag);
             this.addView(newUri, view);
 
@@ -143,6 +143,8 @@ export default class SPViewStackElement extends HTMLElement {
             alert("The link could not be found");
 
         }
+        $('sp-mediasidebaritem').removeClass('active');
+        $('sp-mediasidebaritem[uri^="' + newUri + '"]').addClass('active');
         if (!view) {
             return;
         }

@@ -24,8 +24,8 @@
             this.mediaSidebar = document.createElement('sp-mediasidebar');
             this.appendChild(this.mediaSidebar);
             this.mediaSidebar.innerHTML = `
-                <sp-mediasidebaritem uri="bungalow:player">Now Playing</sp-mediasidebaritem>
-                <sp-mediasidebaritem uri="bungalow:library">Library</sp-mediasidebaritem>
+                <sp-mediasidebaritem uri="bungalow:player" onclick="window.GlobalViewStack.navigate('bungalow:internal:nowplaying')">Now Playing</sp-mediasidebaritem>
+                <sp-mediasidebaritem uri="bungalow:library" onclick="window.GlobalViewStack.navigate('spotify:library')">Library</sp-mediasidebaritem>
             `
             this.appendChild(this.spacer);
             /*

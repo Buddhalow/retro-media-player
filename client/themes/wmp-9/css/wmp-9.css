@@ -65,3 +65,6 @@ sp-mediasidebaritem {
 sp-mediasidebaritem:hover {
   background: url('../images/header.png');
 }
+sp-sidebar sp-searchform {
+    display: flex;
+}
