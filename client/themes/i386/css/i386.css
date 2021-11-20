@@ -1,0 +1,12 @@
+@import url('./bootstrap.css');
+body, main {
+	display: flex;
+}
+.sp-track-selected {
+	background-color:#bbbbbb;
+	color: rgba(0, 0, 132, 1);
+}
+.open {
+	color: white;
+	border: 1px solid rgba(0, 0, 132, 1);
+}

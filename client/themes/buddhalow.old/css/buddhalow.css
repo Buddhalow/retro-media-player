@@ -1,0 +1,168 @@
+:root {
+    --primary-color: rgba(28, 28, 107, 1);
+    --secondary-color: rgba(255, 255, 100, 1);
+    --foreground-color: black;
+    --background-color: #fff;
+    --image-size: 128pt;
+}
+button {
+    border-radius: 12pt;
+    padding-left: 16pt;
+    padding-right: 16pt;
+    border: 1pt solid var(--foreground-color);
+    background: transparent;
+    color: var(--foreground-color);
+
+    opacity: 0.9;
+}
+button:active {
+    opacity: .7    ;
+}
+button:hover {
+    opacity: 1;
+}
+sp-appheader {
+    display: none;
+}
+sp-header {
+    height: 500pt;
+    background-image: linear-gradient(-180deg, rgba(255, 255, 255, .3) 0%, rgba(255, 255, 255, .0) 50%);
+}
+sp-sidebar {
+}
+.playlist_cover_image {
+    display: none;
+}
+sp-header {
+    height: 192pt !important;
+    padding: 18pt;
+}
+.topspace {
+    display: block;
+    height: 300pt;
+    position: fixed;
+    top: 0pt;   
+}
+
+sp-searchform.floating {
+    left: 300pt;
+    display: block !important;
+    top: 6pt;
+    position: fixed;
+    z-index: 100;
+}
+.sp-2009 {
+    display: none;
+}
+
+sp-header .bg-image {
+    opacity: 0.9;
+}
+sp-header sp-image {
+    height: 100%;
+ -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent 100%);
+ -webkit-filter: saturate(90%);
+ background-size: contain;
+ width: 100%;
+ 
+}
+.bg-mask {
+    width: 100%;
+    height: 100%;
+    left: 0pt;
+    top: 0pt;
+    position: absolute;
+    -webkit-mask-image: url('/themes/buddhalow/patterns/background.svg');
+    -webkit-mask-size: 100% 100%;
+    background-color: var(--primary-color);
+}
+sp-header sp-image {
+    -webkit-filter: saturate(80%);
+  
+}
+sp-header .bg-image {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 0pt;
+    
+    position: absolute;
+    -webkit-mask-image: url('/themes/buddhalow/patterns/header.svg');
+
+    -webkit-mask-size: 100% ;
+    background-color: var(--primary-color);
+    
+}
+sp-header .container > div {
+    bottom: 0pt;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+}
+.sp-tab-active {
+    font-weight: bold;
+    border-bottom: 1pt solid var(--secondary-color);
+}
+
+sp-table td {
+    border-bottom: 1pt solid var(--foreground-color);
+}
+.tagg {
+    fill: var(--foreground-color);
+    stroke: none;
+}
+svg {
+    pointer-events: none;
+}
+sp-appfooter button {
+    border: none;
+}
+.header-image {
+}
+svg {
+    opacity: 0.9;
+}
+svg path {
+    transition: fill 0.5s;
+    
+    
+}
+.bg-mask {
+    pointer-events: none;
+}
+body {
+    transition: background 0.5s;
+}
+
+sp-image {
+    box-shadow: 0pt 0pt 5pt rgba(0, 0, 0, .5), inset 0pt 2pt 2pt rgba(255, 255, 255, .5), inset 0pt -2pt 2pt rgba(0, 0, 0, .2);
+}
+sp-sidebar, sp-appfoter, sp-rightsidebar {
+    background-color: black !important;
+    color: white;
+}
+sp-appfooter sp-link, sp-appfooter sp-link, sp-rightsidebar sp-link {
+    color: white !important;
+}
+td {
+    border-bottom: 1pt solid rgba(255, 255,255, .1);
+    padding: 28pt;
+}
+sp-main > sp-tabbar {
+    display: none;
+}
+
+
+sp-header > .container {
+  position: absolute;
+  bottom: 0pt;
+}
+
+
+sp-header {
+  height: 150pt;
+}

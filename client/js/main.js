@@ -1,6 +1,8 @@
 import Store from '/js/core/store.js';
 import BrowserStorage from '/js/core/storages/browser.js';
 import SPFlowElement from '/js/controls/flow.js';
+import SPMediaSidebarElement from '/js/controls/mediasidebar.js';
+import SPMediaSidebarItemElement from '/js/controls/mediasidebaritem.js';
 import SPStatusIconElement from '/js/controls/statusicon.js';
 import SPItemElement from '/js/controls/item.js';
 import SPButtonElement from '/js/controls/button.js';
@@ -276,6 +278,8 @@ customElements.define('sp-expander', SPExpanderElement);
 customElements.define('sp-datetime', SPDateTimeElement);
 customElements.define('sp-toolbutton', SPToolButtonElement);
 customElements.define('sp-apptoolbar', SPAppToolbarElement);
+customElements.define('sp-mediasidebar', SPMediaSidebarElement);
+customElements.define('sp-mediasidebaritem', SPMediaSidebarItemElement);
 customElements.define('sp-taginput', SPTagInputElement);
 customElements.define('sp-contextmenu', SPContextMenuElement);
 customElements.define('sp-contextmenuitem', SPContextMenuItemElement);
@@ -366,6 +370,7 @@ const init = async () => {
                         document.addEventListener('viewstackloaded', () => {
                             window.GlobalViewStack.registeredViews.push({
                                 tag: tagName,
+                                hidesSideBar: view.hidesSidebar,
                                 regex: new RegExp(view.regexp)
                             });
                         })

@@ -1,0 +1,21 @@
+:root {
+    --background-color: black;
+    --foreground-color: white;  
+}
+sp-sidebar {
+    background: #333;
+    color: white;
+}
+sp-sidebar a {
+    color: white;
+    
+}
+.container {
+    width: 100% !important;
+}
+input {
+    background-color: white;
+    color: black;
+    padding: 6pt;
+    border-radius: 12pt;
+}

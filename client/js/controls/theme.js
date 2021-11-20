@@ -21,9 +21,15 @@
                 flavor: flavor
             };
         }
-        set theme(value) {
+        setColorTheme(value) {
             this.saturationChooser.setAttribute('value', value.saturation);
             this.colorChooser.setAttribute('value', value.hue);
+            this.primaryColorInput.value = value.colors[0];
+            this.secondaryColorInput.value = value.colors[1];
+            this.tertiaryColorInput.value = value.colors[2];
+        }
+        set theme(value) {
+            this.setColorTheme(value);
             fetch('/api/theme', {
                 credentials: "same-origin"
             }).then((response) => response.json()).then((result) => {
@@ -37,9 +43,8 @@
                     this.styleselect.appendChild(option);
                 });
             });
-            this.primaryColorInput.value = value.colors[0];
-            this.secondaryColorInput.value = value.colors[1];
-            this.tertiaryColorInput.value = value.colors[2];
+            $(this.flavorselect).val(value.flavor)
+            
         }
         
         
@@ -48,8 +53,26 @@
             if (this.created2) {
                 return
             }
+            this.style.display = 'flex';
+            this.style.flexDirection = 'column';
             this.colorChooser = document.createElement('input');
             this.colorChooser.setAttribute('type', 'range');
+            this.colorChooser.addEventListener('mousedown', (e) => {
+                this.colorChooser.isDragging = true;
+            })
+            this.colorChooser.addEventListener('mouseup', (e) => {
+                this.colorChooser.isDragging = true;
+            })
+            this.colorChooser.addEventListener('mousemove', (e) => {
+                if (this.colorChooser.isDragging) {
+                    let evt = new CustomEvent('drag');
+                    this.dispatchEvent(evt);
+                }
+            })
+            this.colorChooser.addEventListener('change', (e) => {
+                let evt = new CustomEvent('change');
+                this.dispatchEvent(evt);
+            })
             this.innerHTML += '<label>' + _('Accent color') + '</label>';
             this.appendChild(this.colorChooser);
             this.colorChooser.setAttribute('max', 360);
@@ -60,6 +83,7 @@
             this.appendChild(this.saturationChooser);
             this.appendChild(this.label);
             this.saturationChooser.setAttribute('max', 360);
+            
             this.styleselect = document.createElement('select');
             this.appendChild(this.styleselect);
             this.styleselect.innerHTML = '<option value="">Select a theme</option>';

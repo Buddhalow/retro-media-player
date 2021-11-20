@@ -1,0 +1,13 @@
+:root {
+    --background-color: #333;
+    --foreground-color: #eee;
+}
+
+sp-tab {
+    border-bottom: 1pt solid rgba(255 ,255, 255, 0.2) !important;
+    padding: 20pt;
+}
+.sp-tab-active {
+
+    border-bottom: 2pt solid var(--brand-primary) !important;
+}

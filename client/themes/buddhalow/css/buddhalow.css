@@ -1,0 +1,72 @@
+:root {
+    --image-size: 128pt;
+    --background-color: #fefefe;
+    --foreground-color: #333;
+    --font-family: "Tahoma";
+    --font-size: 18pt;
+    --background: #222;
+    --brand-primary: rgb(255, 249, 224);
+}
+
+body {
+    font-size: var(--font-size) !important;
+    font-family:  var(--font-family) !important;
+    background-color: var(--background-color);
+    background-size: contain;
+    background-attachment: fixed;
+    background: var(--background);
+    color: var(--foreground-color);
+    display: flex;
+    margin: 120pt !important;
+
+}
+tr td {
+    padding: 15pt;
+    border-bottom: 1pt solid rgba(255, 255, 255, .1);
+}
+th {
+
+    backdrop-filter: blur(15px);
+}
+.container {
+    padding-left: 15% !important;
+    padding-right: 15% !important;
+}
+.body {
+    flex: 1;
+    height: 100%;
+    display: block;
+    background: transparent;
+}
+button, input {
+    font-size: var(--font-size) !important;
+    border: 1pt solid var(--foreground-color);
+    background: transparent;
+    color: var(--foreground-color);
+    border-bottom: 2pt solid var(--foreground-color);
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f3f3f3+50,ededed+51,ffffff+100;White+Gloss+%232 */
+    background: transparent;
+        border-radius: 5pt;
+}
+button:active {
+    margin-top: 2pt;
+    box-shadow:none;
+    border-bottom: 1pt solid var(--foreground-color);
+
+}
+.btn-primary {
+    font-size: var(--font-size) !important;
+    border: 1pt solid var(--brand-primary-color);
+    background: transparent;
+    color:  var(--brand-primary-color);
+    border-bottom: 2pt solid  var(--brand-primary-color);
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f3f3f3+50,ededed+51,ffffff+100;White+Gloss+%232 */
+    background: transparent;
+        border-radius: 5pt;
+}
+.btn-primary:active {
+    margin-top: 2pt;
+    box-shadow:none;
+    border-bottom: 1pt solid var(--brand-primary-color);
+
+}

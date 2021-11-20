@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Roboto');
+:root {
+    --brand-primary: #4DD0E1;
+    --brand-secondary: #C6FF00;
+}
+body {
+    font-family: "Tahoma";
+    font-size: 11px;
+}
+
+sp-appheader, sp-appfooter {
+    background-color: #555;
+}

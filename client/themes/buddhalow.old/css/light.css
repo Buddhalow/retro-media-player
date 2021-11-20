@@ -1,0 +1,4 @@
+:root {
+    --background-color: var(--secondary-color) !important;
+    --foreground-color: black;
+}

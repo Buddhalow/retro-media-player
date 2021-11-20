@@ -583,3 +583,14 @@ sp-contextmenuitem:hover {
     background: #000088;
     color: white;
 }
+
+sp-mediasidebar {
+    display: none;
+    flex-direction: column;
+    flex: 0 0 128pt;
+}
+sp-appheader sp-mediasidebar {
+  display: flex;
+  flex-direction: column;
+  display: none;
+}

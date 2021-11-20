@@ -129,11 +129,13 @@ export default class SPViewStackElement extends HTMLElement {
                 })
             }
         }
+        var viewInfo = {};
         if (newUri in this.views) {
 
             view = this.views[newUri];
 
         } else if (externalViews.length > 0) {
+            viewInfo = externalViews[0]
             view = document.createElement(externalViews[0].tag);
             this.addView(newUri, view);
 
@@ -162,7 +164,12 @@ export default class SPViewStackElement extends HTMLElement {
         }
         $('#uribar').val(newUri);
         $('sp-menuitem').removeClass('active');
-        $('sp-menuitem[uri^="' + newUri + '"]').addClass('active');
+        $('sp-menuitem[uri^="' + newUri + '"]').addClass('active');  
+        if (viewInfo.hidesSideBar) {
+            $('sp-sidebar').hide();
+        } else {
+            $('sp-sidebar').show();
+        }
         setTimeout(() => {
 
             this.setView(view);

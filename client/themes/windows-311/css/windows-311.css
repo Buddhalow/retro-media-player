@@ -1,0 +1,153 @@
+
+:root {
+    --image-size: 96pt;
+    --brand-primary: #0000ff;
+}
+:focus {
+    outline: 0;
+}
+body {
+    background-color: #ddd;
+}
+
+
+
+
+::-webkit-scrollbar, ::-webkit-scrollbar-corner {
+    background: none;
+}
+
+::-webkit-scrollbar:vertical,::-webkit-scrollbar:horizontal {
+    background-color: #aaa;
+    
+}
+:focus {
+    border: 1px solid dotted;
+}
+sp-infobar {
+    padding: 3pt;
+}
+sp-appheader {
+    padding: 5pt;
+    
+}
+sp-menuitem.active, .sp-track-selected, sp-infobar, sp-appheader {
+    background-color: var(--brand-primary);
+    color: white;
+}
+sp-table, sp-sidebarmenu {
+    background-color: white !important;
+    display: block;
+    border: 1px solid black;
+}
+.container {
+    padding: 0pt !important;
+    margin: 0pt !important;
+}
+sp-table, table {
+    width: 100%;
+}
+
+sp-modal {
+    position: fixed;
+    left: 0pt;
+    top: 0pt;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .0);
+    opacity: 0;
+}
+
+sp-dialog {
+    position: fixed;
+    left: 50%;
+    top: -150%;
+    opacity: 0;
+    background-color: #ddd;
+    -webkit-transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    box-shadow: 0pt 0pt 15pt rgba(0, 0, 0, 1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4pt;
+    color: #888;
+}
+
+button,
+.btn,
+.button,
+th,
+sp-toolbutton,
+select,::-webkit-scrollbar-thumb,
+input[type="submit"],
+input[type="button"],
+*[role="button"] {
+    font-size: 11pt;
+    background: #ddd;
+    color: black;
+    background-color: #ccc;
+    border: 1pt solid black;
+
+    border-radius: 1px;
+
+    box-shadow: 0pt 0pt 1pt rgba(0, 0, 0, 1), inset -2px -2px 0px #9a9a9a, inset 2px 2px 0px white;
+
+    box-sizing: padding-box;
+    overflow: hidden;
+}
+th:active,
+sp-toolbutton:active,
+button:active,
+.btn:active,
+.button:active,
+select:active,
+input:active,
+input[type="button"]:active,
+*[role="button"]:active {
+    box-shadow: inset 2px 2px 0px #6c6c6c, inset -1px -1px 0px white;
+}
+button:focus,
+.btn:focus,
+.button:focus,
+select:focus,
+input:focus,
+input[type="button"]:active,
+*[role="button"]:focus {
+    border: 2pt solid black;
+}
+input {
+    border: 1px solid black;
+}
+sp-tabbar {
+    border-bottom: 1pt solid black;
+}
+sp-toolbutton {
+    display: inline-block;
+    width: 24pt;
+    height: 24pt;
+    position: relative;
+    overflow: hidden;
+}
+sp-toolbutton i, sp-toolbutton img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+}
+sp-apptoolbar {
+    display: block;
+}
+sp-sidebar {
+    display: none;
+}
+.container {
+    width: 100% !important;
+}
+sp-tab.sp-tab-active {
+    background-color: var(--brand-primary);
+    color: white;
+}
+.sp-view {
+    background-color: white;
+}

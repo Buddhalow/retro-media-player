@@ -1,0 +1,57 @@
+:root {
+    --brand-primary: #44ff44;
+}
+
+sp-appheader, sp-appfooter {
+    height: 0pt;
+    display: none;
+}
+.sp-track-unavailable, .error {
+    color: #ff7777;
+    opacity: 0.5;
+}
+.sp-track-selected {
+    background-color: var(--brand-primary);
+    color: white;
+}
+sp-sidebar {
+    width: 300pt !important;
+    background-color: rgba(10, 10, 10, 1);
+    color: white;
+    overflow: visible;
+}
+sp-sidebar label {
+    color: rgba(255, 255, 255, .2);
+    text-transform: uppercase;
+}
+sp-menuitem:hover {
+    color: rgba(255, 255, 255, .75);
+}
+td {
+    padding: 12pt;
+}
+th {
+    color: rgba(0, 0, 0, .5);
+    text-transform: uppercase;
+}
+sp-menuitem.active {
+    color: white;
+}
+sp-sidebar sp-menuitem {
+    color: rgba(255, 255, 255, .5);
+}
+sp-nowplaying {
+    display: none;
+}
+body {
+    font-size: 12pt;
+    font-family: "Montserrat";
+}
+.container, .sp-container {
+    padding: 0pt;
+    width: 100%;
+    margin: 0pt;
+}
+.sp-tab-active {
+    border-bottom: 3pt solid var(--brand-primary);
+}

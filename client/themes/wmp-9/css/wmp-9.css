@@ -1,0 +1,67 @@
+sp-appfooter button, input[type=range]::-webkit-slider-runnable-track {
+  box-shadow: 0pt 0pt 3pt rgba(0, 0, 0, .5);
+  border-radius: 28pt;
+  background-image: url('/themes/chromify/img/btn_gloss.png') !important;
+  background-size: cover;
+  margin-right: 6pt;
+}
+button.fa-play {
+    -webkit-transform: scale(1.08);
+}
+sp-appfooter button:active {
+    opacity: 0.5;
+}
+input[type=range]{
+    -webkit-appearance: none;
+    background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+    background: transparent;
+}
+
+
+span, h1, h2, h3, h4, p, sp-link, sp-menuitem {
+  filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
+}    
+
+h3 > sp-link, td sp-image {
+  filter: hue-rotate(calc(1-var(--primary-hue))) saturate(calc(1-var(--primary-saturation)));
+  
+}    
+
+
+th {
+  color: black;
+}
+sp-sidebar {
+    border-right: 1px solid black;
+}
+sp-divider {
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+sp-mediasidebar {
+  display: flex;
+  flex: 0 0 128pt;
+  background: url('../images/sidebar.png');
+  background-size: 100% 100%;
+  filter: hue-rotate(var(--primary-hue));
+}
+
+sp-appheader sp-searchform {
+  display: none;
+}
+
+sp-mediasidebaritem {
+  display: flex;
+  flex-direction: column;
+  gap: 5pt;
+  font-size: 18pt;
+  margin: 8pt;
+  padding: 5pt;
+  color: black !important
+
+}
+sp-mediasidebaritem:hover {
+  background: url('../images/header.png');
+}

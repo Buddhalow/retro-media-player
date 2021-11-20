@@ -8,7 +8,23 @@ export default class SPChromeElement extends HTMLElement {
         this.applyTheme(value);
 
     }
+    get hue() {
+        return this._theme.hue
+    }
+    set hue(hue) {
+        this._theme.hue = hue
+        this.applyTheme(this._theme, 'color')
+        this.saveTheme(this._theme)
+    }
 
+    get saturation() {
+        return this._theme.hue
+    }
+    set saturation(saturation) {
+        this._theme.saturation = saturation
+        this.applyTheme(this._theme, 'color')
+        this.saveTheme(this._theme)
+    }
     saveTheme(value) {
         localStorage.setItem('theme', JSON.stringify(value));
     }
@@ -25,15 +41,16 @@ export default class SPChromeElement extends HTMLElement {
             colors: ['#0077ff', '#ff8800', '#00ff00']
         }
     }
-    applyTheme(value) {
+    applyTheme(value, mode = 'all') {
 
         document.documentElement.style.setProperty('--primary-saturation', value.saturation + '%');
         document.documentElement.style.setProperty('--primary-hue', value.hue + 'deg');
         document.documentElement.style.setProperty('--primary-color', value.colors[0]);
         document.documentElement.style.setProperty('--secondary-color', value.colors[1]);
         document.documentElement.style.setProperty('--tertiary-color', value.colors[2]);
-
-        this.applyStylesheet(value.stylesheet, value.flavor);
+        if (mode == 'all') {
+            this.applyStylesheet(value.stylesheet, value.flavor);
+        }
     }
     applyStylesheet(theme, flavor='light') {
         let link = document.querySelector('link[id="theme"]');
@@ -100,16 +117,25 @@ export default class SPChromeElement extends HTMLElement {
               
         });
         this.appendChild(this.main);
+        this.mediaSidebar = document.createElement('sp-mediasidebar');
+
         this.sidebar = document.createElement('sp-sidebar');
+        
         this.main.splitter = document.createElement('sp-splitter');
      //   this.main.activeSplitter = this.main.splitter;
+        this.main.appendChild(this.mediaSidebar);
+        this.mediaSidebar.innerHTML = `
+            <sp-mediasidebaritem uri="bungalow:player">Now Playing</sp-mediasidebaritem>
+            <sp-mediasidebaritem uri="bungalow:library">Library</sp-mediasidebaritem>
+        `
+
         this.main.appendChild(this.sidebar);
         this.main.appendChild(this.main.splitter);
         this.mainView = document.createElement('sp-main');
         this.main.appendChild(this.mainView);
         this.rightsidebar = document.createElement('sp-rightsidebar');
         this.main.appendChild(this.rightsidebar);
-        this.rightsidebar.style.display = 'none';
+        this.rightsidebar.style.display = 'flex';
         this.appFooter = document.createElement('sp-appfooter');
         this.appendChild(this.appFooter);
         setInterval(this.checkConnectivity.bind(this), 1000);

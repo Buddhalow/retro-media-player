@@ -1,0 +1,38 @@
+:root {
+	--background-color: #fff;
+	--foreground-color: #333;
+}
+
+sp-table tr[data-status="100"] td {
+	font-weight: bold;
+	background-color: transparent;
+
+}
+body {
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
+table {
+	width: 100%;
+}
+sp-table table {
+	border-collapse: collapse;
+}
+th, td {
+	padding: 13pt;
+}
+.open td {
+	border-bottom: none;
+}	
+sp-table table tr td {
+	background-color: rgba(0, 0, 0, .05);
+}
+* {
+	box-shadow: none !important;
+}
+sp-appheader {
+	background-color: #eee;
+}
+.error {
+	background-color: #fee;
+}

@@ -21,6 +21,19 @@ import SPViewElement from '/js/controls/view.js';
                     return false;
                 })
                 this.querySelector('sp-theme').theme = GlobalChromeElement.theme;   
+                this.querySelector('sp-theme').addEventListener('change', (e) => {
+                    if (this.getAttribute('instant') == 'true') { 
+                        GlobalChromeElement.saveTheme(GlobalChromeElement.theme);
+                        return false;
+                    }
+                })
+                this.querySelector('sp-theme').addEventListener('drag', (e) => {
+                    if (this.getAttribute('instant') == 'true') { 
+                        GlobalChromeElement.hue = this.querySelector('sp-theme').theme.hue;
+                        GlobalChromeElement.saturation = this.querySelector('sp-theme').theme.saturation;
+                        return false;
+                    }
+                })
                 
         }
         activate() {

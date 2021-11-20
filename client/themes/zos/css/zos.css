@@ -1,0 +1,26 @@
+:root {
+	--brand-primary: #efe;
+	--foreground-color: white;
+	--background-color: var(--brand-primary);
+}
+@font-face {
+  font-family: 'DOS';
+  src: url('../fonts/Fixedsys500c.eot');
+  src: local('☺'), url('../fonts/Fixedsys500c.woff') format('woff'), url('../fonts/Fixedsys500c.ttf') format('truetype'), url('../fonts/Fixedsys500c.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+
+	font-family: "DOS" !important;
+	color: var(--foreground-color);
+}
+select {
+	color: black;
+}
+body {
+	background-color: var(--background-color);
+}
+table {
+	width: 100%;
+}

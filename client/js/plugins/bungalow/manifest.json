@@ -23,6 +23,10 @@
         },
         "hashtag": {
             "regexp": "^bungalow:hashtag:(.*)"
+        },
+        "nowplaying": {
+            "hidesSidebar": true,
+            "regexp": "^bungalow:internal:nowplaying"
         }
     }
 }
