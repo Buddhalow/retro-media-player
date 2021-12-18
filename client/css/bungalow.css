@@ -594,3 +594,16 @@ sp-appheader sp-mediasidebar {
   flex-direction: column;
   display: none;
 }
+sp-sidebar sp-searchform {
+    display: none;
+}
+sp-toolbar {
+  display: none;
+}
+sp-tabbar {
+  display: none;
+}
+
+sp-nowplaying {
+  display: none;
+}

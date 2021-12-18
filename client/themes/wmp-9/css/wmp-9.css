@@ -20,13 +20,16 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 
+sp-header {
+    display: none !important;
+}
 span, h1, h2, h3, h4, p, sp-link, sp-menuitem {
-  filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
+ /* filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));*/
 }    
 
 h3 > sp-link, td sp-image {
-  filter: hue-rotate(calc(1-var(--primary-hue))) saturate(calc(1-var(--primary-saturation)));
-  
+ /* filter: hue-rotate(calc(1deg - var(--primary-hue))) saturate(calc(100% - var(--primary-saturation)));*/
+
 }    
 
 
@@ -45,7 +48,7 @@ sp-mediasidebar {
   flex: 0 0 128pt;
   background: url('../images/sidebar.png');
   background-size: 100% 100%;
-  filter: hue-rotate(var(--primary-hue));
+ filter: hue-rotate(var(--primary-hue));
 }
 
 sp-appheader sp-searchform {
@@ -67,4 +70,8 @@ sp-mediasidebaritem:hover {
 }
 sp-sidebar sp-searchform {
     display: flex;
+}
+
+sp-toolbar {
+  display: flex;
 }

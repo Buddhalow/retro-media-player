@@ -2,7 +2,7 @@
 --primary-color: #223388;
 --secondary-color: #94b9cf;
 --app-bg-color: #ecf2f9;
---foreground-color: #0e4279;
+--foreground-color: hsl(calc(var(--primary-hue) + 210deg), calc(var(--primary-saturation)), 50%);
 --app-fg-color: rgba(0, 0, 0, .5);
 --primary-saturation: 100%;
 --primary-hue: -0deg;
@@ -11,8 +11,7 @@
 --font-size: 11px;
 } 
 body {
-  background: #ecf2f9;
-   -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation)) !important;
+  background: hsl(var(--primary-hue), var(--primary-saturation), 90%) !important;
 
 }
 
@@ -44,9 +43,6 @@ sp-image {
   box-shadow: 0pt 0pt 12pt rgba(0, 0, 0, .5), inset 0pt -20pt 50pt rgba(255, 255, 255, .2), inset 0pt 50pt 0pt rgba(255, 255, 255, .28), inset 0pt 0pt 6pt rgba(255, 255, 255, .5);
 }
 
-sp-aspect {
-  display: none;
-}
 iframe {
     border: 0px;
 }
@@ -79,6 +75,7 @@ sp-appheader {
   box-sizing: border-box;
   padding:12pt;
   z-index: 1000;
+
 }
 
 .menu-body {
@@ -134,10 +131,10 @@ sp-button:active {
   -webkit-filter: brightness(95%);
 }
 sp-table tbody tr:nth-child(odd) td, table tbody tr:nth-child(odd) td, sp-trackcontext tbody tr:nth-child(odd) td {
-  background-color: #e0e9f3;
+  background-color: hsl(calc(var(--primary-hue) + 220deg), calc(var(--primary-saturation) - 10%), 95%);
 }
 sp-table tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td, sp-trackcontext tbody tr:nth-child(even) td {
-  background-color: #ecf2f9;
+  background-color: hsl(calc(var(--primary-hue) + 220deg), calc(var(--primary-saturation) - 10%), 93%);
 }
 a {
     color: var(--foreground-color);
@@ -166,9 +163,9 @@ table {
 }
 .splatter {
     background-size: 100% ;
-  
+
     background-image: var(--splatter-bg);
-  background: #ecf2f9;
+  background-color: hsl(calc(var(--primary-hue) + 220deg), calc(var(--primary-saturation) - 10%), 95%);
 }
 sp-sidebar {
 }
@@ -191,11 +188,12 @@ background: linear-gradient(to bottom,  rgba(249,250,248,1) 0%,rgba(243,242,235,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9faf8', endColorstr='#fbaa04',GradientType=0 ); /* IE6-9 */
 
 }
-sp-appheader, sp-appfooter {
+sp-appheader, sp-appfooter, sp-appsidebar {
     padding: 5pt;
     background-size: 100% 100%;
   background-image:  url('/themes/wmp-10/images/header.png');
-    
+  color: #334455;
+  text-shadow: 0 1pt 0 rgba(255, 255, 255, .5);
 }
 sp-tabbar {
   padding: 0pt;
@@ -278,4 +276,3 @@ sp-nowplaying {
   border-top: 1pt solid var(--foreground-color);
   
 }
-

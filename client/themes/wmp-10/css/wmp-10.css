@@ -20,6 +20,9 @@ input[type=range]::-webkit-slider-thumb {
     background: transparent;
 }
 
+sp-appheader, sp-appfooter, sp-mediasidebar {
+    filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation)) !important;
+}
 sp-appheader sp-mediasidebar {
   display: flex;
   flex-direction: row;
@@ -42,10 +45,6 @@ sp-mediasidebar sp-mediasidebaritem.active {
 sp-appheader sp-searchform {
   display: none;
 }
-img, th {
-  -webkit-filter: hue-rotate( calc(1-var(--primary-hue))) saturate(var(--primary-saturation));
-  
-}
 
 
 
@@ -59,7 +58,7 @@ sp-tabbar {
 
 }
 sp-rightsidebar     {
-  background: linear-gradient(to bottom, #366ab3, #55aaff);
+  background: linear-gradient(to bottom, hsl(var(var(--primary-hue) + 210deg), 100%, 10%), hsl(var(var(--primary-hue) + 210deg), 100%, 10%));
     color: white;
 }
 .container {

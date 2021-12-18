@@ -96,7 +96,7 @@ sp-button {
   background-color: rgba(255, 255, 255, 1);
   color: black;
   border: 1px solid #ddd;
-  -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
+/*  -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));*/
   background-size: 100% 100%;
   padding:5pt;
   padding-left: 25pt;
@@ -142,8 +142,8 @@ table {
 .splatter {
     background-size: 100% ;
   
-    -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
-    background-color: #3B446E;
+/*    -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));*/
+    background-color: hsl(calc(var(--primary-hue) + 230deg), calc(var(--primary-saturation) - 90%), 50%);
 }
 sp-sidebar {
   background-color: rgba(255, 255, 255, .0);
@@ -168,6 +168,13 @@ background: linear-gradient(to bottom,  rgba(249,250,248,1) 0%,rgba(243,242,235,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9faf8', endColorstr='#fbaa04',GradientType=0 ); /* IE6-9 */
 
 }
+th:active {
+    background: rgb(191,187,170);
+    background: -moz-linear-gradient(0deg, rgba(191,187,170,1) 74%, rgba(139,134,106,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(191,187,170,1) 74%, rgba(139,134,106,1) 100%);
+    background: linear-gradient(0deg, rgba(191,187,170,1) 74%, rgba(139,134,106,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#bfbbaa",endColorstr="#8b866a",GradientType=1);
+}
 sp-appheader, sp-appfooter {
     padding: 5pt;
     background-size: 100% 100%;
@@ -176,12 +183,13 @@ sp-appheader, sp-appfooter {
     
 }
 sp-tabbar {
+    display: flex;
   padding-top: 6pt;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  
-  background-color: #6370BD;
-  filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
+
+    background-color: hsl(calc(var(--primary-hue) + 230deg), calc(var(--primary-saturation) - 40%), 70%);
+  /*filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));*/
 
 }
 .sp-app {

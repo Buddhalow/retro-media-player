@@ -37,9 +37,6 @@ sp-table {
   -webkit-font-smoothing : none;
 }
 
-sp-aspect {
-  display: none;
-}
 iframe {
     border: 0px;
 }
@@ -109,7 +106,6 @@ sp-button {
   background-color: rgba(255, 255, 255, 1);
   color: black;
   border: 1px solid #ddd;
-  -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
   background-size: 100% 100%;
   padding:5pt;
   padding-left: 25pt;
@@ -131,6 +127,8 @@ sp-button:active {
 }
 .sp-track:nth-child(2n) td {
   background-color: rgba(0, 0, 0, .03);
+}
+sp-rightsidebar {
 }
 a {
     color: var(--foreground-color);
@@ -155,9 +153,7 @@ table {
 }
 .splatter {
     background-size: 100% ;
-  
-    -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
-    background-image: var(--splatter-bg);
+  background-color: hsl(calc(var(--primary-hue) + 220deg), calc(var(--primary-saturation) - 50%), 40%);
 }
 sp-sidebar {
   background-color: rgba(255, 255, 255, .1);
@@ -262,4 +258,10 @@ sp-sidebar label {
 sp-nowplaying {
   border-top: 1pt solid var(--foreground-color);
   
+}
+sp-appheader, sp-appfooter {
+    padding: 5pt;
+    background-size: 100% 100%;
+    background-image:  url('/themes/wmp-10/images/header.png');
+
 }

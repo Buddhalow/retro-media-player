@@ -78,6 +78,22 @@
             this.colorChooser.setAttribute('max', 360);
             this.saturationChooser = document.createElement('input');
             this.saturationChooser.setAttribute('type', 'range');
+            this.saturationChooser.addEventListener('mousedown', (e) => {
+                this.saturationChooser.isDragging = true;
+            })
+            this.saturationChooser.addEventListener('mouseup', (e) => {
+                this.saturationChooser.isDragging = true;
+            })
+            this.saturationChooser.addEventListener('mousemove', (e) => {
+                if (this.saturationChooser.isDragging) {
+                    let evt = new CustomEvent('drag');
+                    this.dispatchEvent(evt);
+                }
+            })
+            this.saturationChooser.addEventListener('change', (e) => {
+                let evt = new CustomEvent('change');
+                this.dispatchEvent(evt);
+            })
             this.label = document.createElement('label');
             this.label.innerHTML = _('Saturation');
             this.appendChild(this.saturationChooser);

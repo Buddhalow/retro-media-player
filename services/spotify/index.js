@@ -2979,8 +2979,14 @@ class SpotifyService {
       music.req = req;
       music.res = res;
       var session = req.cookies['spotify'];
-      if (!!session)
-        music.session = JSON.parse(session);
+      if (!!session) {
+        console.log(session);
+        try {
+          music.session = JSON.parse(session);
+        } catch (e) {
+
+        }
+      }
       next();
     });
 
