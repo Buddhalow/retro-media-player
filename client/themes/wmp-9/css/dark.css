@@ -143,7 +143,7 @@ table {
     background-size: 100% ;
   
 /*    -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));*/
-    background-color: hsl(calc(var(--primary-hue) + 230deg), calc(var(--primary-saturation) - 90%), 50%);
+    background-color: hsl(calc(var(--primary-hue) + 230deg), calc(var(--primary-saturation) - 50%), 40%);
 }
 sp-sidebar {
   background-color: rgba(255, 255, 255, .0);
@@ -188,7 +188,7 @@ sp-tabbar {
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
 
-    background-color: hsl(calc(var(--primary-hue) + 230deg), calc(var(--primary-saturation) - 40%), 70%);
+    background-color: hsl(calc(var(--primary-hue) + 230deg), calc(var(--primary-saturation) - 40%), 50%);
   /*filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));*/
 
 }

@@ -48,7 +48,7 @@ sp-mediasidebar {
   flex: 0 0 128pt;
   background: url('../images/sidebar.png');
   background-size: 100% 100%;
- filter: hue-rotate(var(--primary-hue));
+ filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
 }
 
 sp-appheader sp-searchform {
