@@ -138,6 +138,8 @@ export default class SPChromeElement extends HTMLElement {
         this.rightsidebar.style.display = 'flex';
         this.appFooter = document.createElement('sp-appfooter');
         this.appendChild(this.appFooter);
+        this.bottomTabBar = document.createElement('sp-bottomtabbar');
+        this.appendChild(this.bottomTabBar);
         setInterval(this.checkConnectivity.bind(this), 1000);
         window.chrome = this;
     }

@@ -493,7 +493,7 @@ sp-menuitem {
     padding: 3pt;
 }
 
-sp-appfooter {
+sp-appfooter, sp-bottomtabbar {
     background-image: url('/themes/spotify-2009/images/appfooer.png');
      /* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#444444+0,3a3a3a+100 */
     background: #444444; /* Old browsers */

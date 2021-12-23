@@ -7,6 +7,7 @@ import SPStatusIconElement from '/js/controls/statusicon.js';
 import SPItemElement from '/js/controls/item.js';
 import SPButtonElement from '/js/controls/button.js';
 import SPDragElement from '/js/controls/dragelement.js';
+import SPBottomTabBarElement from "/js/controls/bottomtabbar.js";
 import SPThrobberElement from '/js/controls/throbber.js';
 import SPAttachmentElement from '/js/controls/attachment.js';
 import SPEmbeddedResourceElement from '/js/controls/embeddedresource.js';
@@ -264,6 +265,7 @@ window.resolve = function (method, uri, query, headers, data) {
 
 window.store = new Store(new BrowserStorage())
 localStorage.setItem("showHeaders", true);
+customElements.define('sp-bottomtabbar', SPBottomTabBarElement);
 customElements.define('sp-button', SPButtonElement);
 customElements.define('sp-splitter', SPSplitterElement);
 customElements.define('sp-uriform', SPUriFormElement);

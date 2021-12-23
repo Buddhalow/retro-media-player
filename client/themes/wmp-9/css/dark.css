@@ -175,7 +175,7 @@ th:active {
     background: linear-gradient(0deg, rgba(191,187,170,1) 74%, rgba(139,134,106,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#bfbbaa",endColorstr="#8b866a",GradientType=1);
 }
-sp-appheader, sp-appfooter {
+sp-appheader, sp-appfooter, sp-bottomtabbar {
     padding: 5pt;
     background-size: 100% 100%;
   filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));

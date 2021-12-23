@@ -15,7 +15,7 @@
             "regexp": "^spotify:year:([0-9]+)$"
         },
         "playlists": {
-            "regexp": "^spotify:me"
+            "regexp": "^spotify:library:playlists$"
         },
         "playlist": {
             "regexp": "^spotify:(history|(user:(.*):)?(playlist:(.*))|(library)|(artist:([a-zA-Z0-9]+):top:([0-9]+)))$"

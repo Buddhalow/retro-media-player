@@ -69,6 +69,10 @@ document.addEventListener('mainmenuload', (e) => {
         {
             name: _e('Library'),
             uri: 'spotify:library'
+        },
+        {
+            name: _e('Playlists'),
+            uri: 'spotify:library:playlists'
         }
     ];
     sidebarmenu.menu.dataSource = new SPMenuDataSource(

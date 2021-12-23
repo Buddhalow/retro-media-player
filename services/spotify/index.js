@@ -3030,6 +3030,14 @@ class SpotifyService {
         res.status(err).send({error: err});
       });
     })
+    app.get('/library/playlists', (req, res) => {
+      this.getMyPlaylists(req.query.offset || 0, req.query.limit || 50).then(result => {
+
+        res.json(result);
+      }, err => {
+        res.status(err).send({error: err});
+      });
+    })
     app.get('/user/:username/playlist', (req, res) => {
       var body = {};
       if (req.body) {

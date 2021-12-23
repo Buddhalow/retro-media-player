@@ -9,6 +9,12 @@ sp-appfooter button, input[type=range]::-webkit-slider-runnable-track {
 button.fa-play {
     -webkit-transform: scale(1.08);
 }
+.sp-current-track td {
+    background: black !important;
+}
+.sp-track-selected td {
+    background: rgba(200,200,218) !important;
+}
 sp-appfooter button:active {
     opacity: 0.5;
 }

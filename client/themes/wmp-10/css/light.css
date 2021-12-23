@@ -188,7 +188,7 @@ background: linear-gradient(to bottom,  rgba(249,250,248,1) 0%,rgba(243,242,235,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9faf8', endColorstr='#fbaa04',GradientType=0 ); /* IE6-9 */
 
 }
-sp-appheader, sp-appfooter, sp-appsidebar {
+sp-appheader, sp-appfooter, sp-bottomtabbar, sp-appsidebar {
     padding: 5pt;
     background-size: 100% 100%;
   background-image:  url('/themes/wmp-10/images/header.png');

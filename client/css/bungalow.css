@@ -154,7 +154,7 @@ sp-toolbar {
     flex-direction: row;
     padding-left: 3pt;
 }
-sp-appfooter {
+sp-appfooter, sp-bottomtabbar {
     display: flex;
     align-items: center; 
     flex-direction: column;
@@ -606,4 +606,41 @@ sp-tabbar {
 
 sp-nowplaying {
   display: none;
+}
+
+sp-bottomtabbar {
+    display: none;
+}
+
+@media screen and (max-width: 720pt) {
+    sp-bottomtabbar .fa {
+        font-size: 2rem !important;
+    }
+    sp-bottomtabbar {
+        padding: 10pt !important;
+        justify-content: space-around !important;
+    }
+    .fa-step-backward, .fa-step-forward, img {
+        display: none;
+    }
+    #volumethumb {
+        display: none;
+    }
+    sp-bottomtabbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5pt;
+        padding: 5pt;
+    }
+    sp-sidebar {
+        display: none !important;
+    }
+    #btnBack, #btnForward {
+        display: none;
+    }
+    sp-rightsidebar {
+        display: none !important;
+    }
 }

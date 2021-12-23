@@ -54,6 +54,9 @@ sp-mediasidebar {
 sp-appheader sp-searchform {
   display: none;
 }
+.sp-current-track td {
+    background: black !important;
+}
 
 sp-mediasidebaritem {
   display: flex;
