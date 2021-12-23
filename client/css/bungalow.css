@@ -616,6 +616,9 @@ sp-bottomtabbar {
     sp-bottomtabbar .fa {
         font-size: 2rem !important;
     }
+    sp-mediasidebar {
+        display: none !important;
+    }
     sp-bottomtabbar {
         padding: 10pt !important;
         justify-content: space-around !important;

@@ -10,7 +10,7 @@ export default class SPBottomTabBarElement extends HTMLElement {
                     <span>Start</span>
                 </div>
             </sp-link>
-            <sp-link uri="spotify:search">
+            <sp-link uri="spotify:search:search">
                 <div style="display: flex; flex-direction: column; gap: 3pt; align-items: center">
                     <i class="fa fa-search"></i>
                     <span>Search</span>
@@ -22,9 +22,9 @@ export default class SPBottomTabBarElement extends HTMLElement {
                     <span>Start</span>
                 </div>
             </sp-link>
-            <sp-link uri="spotify:account">
+            <sp-link uri="bungalow:config">
                 <div style="display: flex; flex-direction: column; gap: 3pt; align-items: center">
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-cog"></i>
                     <span>Account</span>
                 </div>
             </sp-link>
