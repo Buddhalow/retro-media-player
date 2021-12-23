@@ -65,7 +65,6 @@ class PlayerStore extends EventEmitter {
             console.log(e);
         }
     });
-
     // Ready
     player.addListener('ready', ({ device_id }) => {
         this.state.device_id = device_id;
