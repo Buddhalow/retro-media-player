@@ -4043,7 +4043,8 @@ class SpotifyService {
       music.getAboutPageForArtist(req.params.identifier).then(result => {
         res.json(result).send();
       }, error => {
-        res.status(500).json(error).send();
+        res.json({}).send()
+        //    res.status(500).json(error).send();
       })
 
     });
@@ -4196,6 +4197,8 @@ class SpotifyService {
       if (req.body) {
         body = (req.body);
       }
+      res.json({}).send()
+      /*
 
       music.getArtistByName(req.params.identifier).then(result => {
         var data = {
@@ -4208,6 +4211,8 @@ class SpotifyService {
           rank: 1000000,
           biography: null
         };
+        res.json(data);
+        /*
         wiki.describe(result.name).then(description => {
           if (description == null) {
             wiki.describe(result.name + ' (Music artist)').then(description => {
@@ -4246,10 +4251,10 @@ class SpotifyService {
           res.json(data);
         }, err => {
           res.status(500).send({error: reject});
-        });
+        });*//*
       }, reject => {
         res.status(500).send({error: reject});
-      });
+      });*/
     });
 
     app.get('/artist/:identifier/top/:count', (req, res) => {
