@@ -616,6 +616,9 @@ sp-bottomtabbar {
 }
 
 @media screen and (max-width: 720pt) {
+    .app-title {
+        display: none !important;
+    }
     sp-bottomtabbar .fa {
         font-size: 2rem !important;
     }
