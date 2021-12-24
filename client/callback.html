@@ -12,8 +12,8 @@
 
     
         var token = window.location.href.split('&')[0].split('=')[1];
-        service = sessionStorage.getItem('logging_into')
-        
+        service = localStorage.getItem('logging_into')
+        debugger
         if (!service) {
           var pathname = window.location.pathname
           var parts = pathname.split('/')
@@ -27,9 +27,19 @@
         xmlHttp.onreadystatechange = function () {
           if (xmlHttp.readyState == 4) {
             if (xmlHttp.status == 200) {
+              console.log(xmlHttp.responseText);
               localStorage.setItem(service + '.session', xmlHttp.responseText);
+              console.log(xmlHttp.responseText);
               localStorage.removeItem('logging_into')
-              window.close();
+              window.addEventListener('message', (e) => {
+                debugger
+                window.close();
+              })
+              let session = JSON.stringify(xmlHttp.responseText);
+              window.parent.postMessage({
+                session,
+                action: service + '.session'
+              }, '*')
             } else {
               alert(xmlHttp.status + ' ' + xmlHttp.responseText);
             }

@@ -18,9 +18,12 @@
 
                 this.created = true
                 this.innerHTML = '<div class="nowplayingheader"><div class="nowplayingtitle"><sp-link class="title"></sp-link><p class="artists"></p></div><div class="nowplayingbutton"><button class="fas fa-arrow-down"></button></div></div><div class="nowplayingimage"></div>'
-                this.querySelector('#nowplayingimage').addEventListener('click', (e) => {
-                    GlobalViewStack.navigate(e.target.getAttribute('uri'));
-                });
+                let nowPlayingImageElm = this.querySelector('#nowplayingimage');
+                if (nowPlayingImageElm != null) {
+                    nowPlayingImageElm.addEventListener('click', (e) => {
+                        GlobalViewStack.navigate(e.target.getAttribute('uri'));
+                    });
+                }
             }
         }
         load(url) {

@@ -393,11 +393,17 @@ const init = async () => {
 };
 
 function login(service) {
-    sessionStorage.setItem('logging_into', service);
-
+    localStorage.setItem('logging_into', service);
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             var loginWindow = window.open('/api/' + service + '/login');
+            window.addEventListener('message', (e) => {
+                if (e.data.action == service + '.session') {
+                    localStorage.setItem(service + '.session', JSON.stringify(e.data));
+                    loginWindow.postMessage('finished', '*');
+                }
+            });
+
             var t = setInterval(() => {
                 if (!loginWindow || loginWindow.closed) {
                     clearInterval(t);

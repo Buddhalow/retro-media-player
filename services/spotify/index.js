@@ -177,7 +177,7 @@ class SpotifyService {
   }
 
   getLoginUrl() {
-    return 'https://accounts.spotify.com/authorize?client_id=' + this.apikeys.client_id + '&scope=user-follow-read streaming user-top-read user-read-email user-read-recently-played user-read-private playlist-modify-public playlist-modify-private user-read-currently-playing user-read-playback-state user-library-read user-library-modify user-modify-playback-state&response_type=code&redirect_uri=' + encodeURI(this.apikeys.redirect_uri);
+    return 'https://accounts.spotify.com/authorize?client_id=' + this.apikeys.client_id + '&scope=user-follow-read streaming user-top-read user-read-email user-read-recently-played user-read-birthdate user-read-private playlist-modify-public playlist-modify-private user-read-currently-playing user-read-playback-state user-library-read user-library-modify user-modify-playback-state&response_type=code&redirect_uri=' + encodeURI(this.apikeys.redirect_uri);
   }
 
   authenticate(req, resolve) {
@@ -2687,7 +2687,7 @@ class SpotifyService {
     var self = this;
     var promise = new Promise(function (resolve, fail) {
       alert("AFFF");
-      var win = gui.Window.get(window.open('https://accounts.spotify.com/authorize/?client_id=' + this.apikeys.client_id + '&response_type=code&redirect_uri=' + encodeURI(this.apiKeys.redirect_uri) + '&scope=user-folow-read%20streaming%20user-read-private%20user-read-email%20app-remote-control%20streaming&state=34fFs29kd09', {
+      var win = gui.Window.get(window.open('https://accounts.spotify.com/authorize/?client_id=' + this.apikeys.client_id + '&response_type=code&redirect_uri=' + encodeURI(this.apiKeys.redirect_uri) + '&scope=user-follow-read%20streaming%20user-read-birthdate%20user-read-private%20user-read-email%20app-remote-control&state=34fFs29kd09', {
         "position": "center",
         "focus": true,
         "toolbar": false,

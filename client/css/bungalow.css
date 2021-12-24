@@ -14,7 +14,10 @@
         --is-light: false;
     }
 }
-
+sp-dragelement {
+    position: fixed;
+    z-index: 0;
+}
 sp-dragelement {
     background: #aaa;
     border: 1pt solid black;
@@ -622,6 +625,31 @@ sp-bottomtabbar {
     sp-bottomtabbar {
         padding: 10pt !important;
         justify-content: space-around !important;
+    }
+    sp-trackcontext tr {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    sp-trackcontext td[data-field="name"] span {
+        font-size: 15pt !important;
+    }
+    sp-trackcontext td[data-field="duration"] {
+        display: none;
+    }
+
+    sp-trackcontext table, sp-trackcontext tbody, sp-trackcontext thead, sp-trackcontext tfoot {
+        display: flex;
+    }
+    sp-trackcontext table, sp-trackcontext tbody {
+        flex-direction: column;
+    }
+    sp-trackcontext thead {
+        display: none;
+    }
+    sp-trackcontext td, sp-trackcontext th {
+        flex-direction: column
     }
     .fa-step-backward, .fa-step-forward, img {
         display: none;

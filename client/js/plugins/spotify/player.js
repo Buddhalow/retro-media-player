@@ -22,10 +22,10 @@ class PlayerStore extends EventEmitter {
     initPlayer() {
         // Error handling
         let player = this.player;
-        player.addListener('initialization_error', ({ message }) => { console.error(message); });
-        player.addListener('authentication_error', ({ message }) => { console.error(message); });
-        player.addListener('account_error', ({ message }) => { console.error(message); });
-        player.addListener('playback_error', ({ message }) => { console.error(message); });
+        player.addListener('initialization_error', ({ message }) => { console.error(message); debugger; });
+        player.addListener('authentication_error', ({ message }) => { console.error(message);debugger; });
+        player.addListener('account_error', ({ message }) => { console.error(message); debugger; });
+        player.addListener('playback_error', ({ message }) => { console.error(message); debugger; });
 
         // Playback status updates
         player.addListener('player_state_changed', ({ position, duration, paused, shuffle, track_window: { current_track } }) => {
@@ -59,7 +59,7 @@ class PlayerStore extends EventEmitter {
                     $('#playButton').removeClass('fa-play');
                 } else {
                     $('#playButton').addClass('fa-play');
-                    $('#playButto n').removeClass('fa-pause');
+                    $('#playButton').removeClass('fa-pause');
                 } 
         } catch (e) {
             console.log(e);
