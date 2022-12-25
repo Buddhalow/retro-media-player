@@ -240,7 +240,7 @@ sp-sidebar {
     width: var(--sidebar-width);
 }
 sp-rightsidebar {
-    display: block;
+    display: none;
     width: var(--sidebar-width);
 }
 .app-title {
@@ -603,10 +603,11 @@ sp-sidebar sp-searchform {
 sp-toolbar {
   display: none;
 }
+/*
 sp-tabbar {
   display: none;
 }
-
+*/
 sp-nowplaying {
   display: none;
 }
