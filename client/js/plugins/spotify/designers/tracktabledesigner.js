@@ -90,15 +90,15 @@ export default class SPTrackTableDesigner extends SPTableDesigner {
         let val = '';
         let field = this.table.columnheaders[columnIndex];
         val = track[field];
+        td.setAttribute('data-field', field);
         if (field === 'p' || field == '_') {
-            td.setAttribute('width', '19pt')
+           // td.setAttribute('width', '19pt')
             td.innerHTML = ''
         }
         if (field === 'icon') {
             td.innerHTML = '<i class="fa fa-list></i>';
         }
         if (field === 'p' || field === 'position') {
-            td.width = '51pt';
             if (parseInt(val) < 10) {
                 val = '0' + val;
             }
@@ -108,14 +108,12 @@ export default class SPTrackTableDesigner extends SPTableDesigner {
             td.style.textAlign = 'right'
             td.innerHTML = '<span style="color: rgba(255, 255, 255, .5)">' + stringToHHMMSS((track.duration_ms / 1000)+ '') + '</span>';
             td.querySelector('span').style.pointerEvents = 'none';
-            td.width = '58pt';
+
         } else if (field === 'popularity') {
-            td.width = "88pt";
             td.innerHTML = '<sp-popularity value="' + (track.popularity || 0) + '"></sp-popularitybar>';
             td.querySelector('sp-popularity').style.pointerEvents = 'none';
         } else if (field === 'discovered') {
             let discoverLevel = 0;
-            td.width = "10pt";
             td.classList.add('discovered');
             let discovered = store.hasDiscoveredTrack(track, this.playlist);
               
@@ -142,7 +140,7 @@ export default class SPTrackTableDesigner extends SPTableDesigner {
             
         } else if (typeof(val) === 'string') {
             if (field === 'name') {
-                td.width = '100pt';
+            //    td.width = '100pt';
             }
           td.innerHTML = '<span>' + val + '</span>';
             td.querySelector('span').style.pointerEvents = 'none';
@@ -175,7 +173,7 @@ export default class SPTrackTableDesigner extends SPTableDesigner {
 
         }
         if (field === 'name') {
-          td.width = '500pt';
+//          td.width = '500pt';
       }
   
       return td;

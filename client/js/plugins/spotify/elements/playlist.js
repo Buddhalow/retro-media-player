@@ -29,9 +29,10 @@ export default class SPPlaylistElement extends SPResourceElement {
         this.table.columnheaders = value;
     }
     async render() {
-        if (!this.state || !this.state.object) {
+        if (!this.state.object) {
+
             return;
-        } 
+        }
         let obj = this.state.object;
         let strReleaseDate = '';
         if (obj.release_date instanceof String) {
@@ -61,7 +62,7 @@ export default class SPPlaylistElement extends SPResourceElement {
             obj: obj,
             dataContextUri: dataContextUri
         });
-        this.innerHTML = html
+        wthis.innerHTML = html
         console.log(html)
         this.trackcontext = this.querySelector('sp-trackcontext') 
         if (obj.type == 'audiobook') {

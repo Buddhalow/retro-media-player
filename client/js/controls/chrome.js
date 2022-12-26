@@ -135,7 +135,7 @@ export default class SPChromeElement extends HTMLElement {
         this.main.appendChild(this.mainView);
         this.rightsidebar = document.createElement('sp-rightsidebar');
         this.main.appendChild(this.rightsidebar);
-        this.rightsidebar.style.display = 'flex';
+        // this.rightsidebar.style.display = 'flex';
         this.appFooter = document.createElement('sp-appfooter');
         this.appendChild(this.appFooter);
         this.bottomTabBar = document.createElement('sp-bottomtabbar');

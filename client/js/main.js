@@ -1,4 +1,5 @@
 import Store from '/js/core/store.js';
+import { Storify } from '/js/storify.js';
 import BrowserStorage from '/js/core/storages/browser.js';
 import SPFlowElement from '/js/controls/flow.js';
 import SPMediaSidebarElement from '/js/controls/mediasidebar.js';
@@ -65,6 +66,8 @@ import SPSpiderElement from '/js/controls/spider.js';
 import SPRightSidebarElement from '/js/controls/rightsidebar.js';
 
 window.resources = {};
+
+
 
 function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -331,6 +334,8 @@ customElements.define('sp-dragelement', SPDragElement);
 const init = async () => {
 
     await new Promise(async (resolve, fail) => {
+        window.storify = new Storify();
+        await window.storify.loadDatabase()
         let result = await fetch('/api/plugin', {
             credentials: 'include',
             mode: 'cors',
@@ -393,11 +398,17 @@ const init = async () => {
 };
 
 function login(service) {
-    sessionStorage.setItem('logging_into', service);
-
+    localStorage.setItem('logging_into', service);
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             var loginWindow = window.open('/api/' + service + '/login');
+            window.addEventListener('message', (e) => {
+                if (e.data.action == service + '.session') {
+                    localStorage.setItem(service + '.session', JSON.stringify(e.data));
+                    loginWindow.postMessage('finished', '*');
+                }
+            });
+
             var t = setInterval(() => {
                 if (!loginWindow || loginWindow.closed) {
                     clearInterval(t);

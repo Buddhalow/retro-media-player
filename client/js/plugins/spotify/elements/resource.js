@@ -1,16 +1,16 @@
 import SPResourceElement from '/js/controls/resource.js';
 import store from '/js/plugins/spotify/store.js';
 export default class SPSpotifyResourceElement extends SPResourceElement {
-    attributeChangedCallback(attrName, oldVal, newVal) {
+    async attributeChangedCallback(attrName, oldVal, newVal) {
         if (!newVal) return;
         if (attrName === 'uri') {
             let state = null;
-            if (newVal in store.state) { 
-                state = store.state[newVal];
+            if (newVal in window.storify.nodes) {
+                state = window.storify.nodes[newVal];
                 this.setState(state);
-                return;
+                debugger
             }
-            state = store.request('GET', newVal);
+            state = await store.request('GET', newVal);
             this.setState(state);
         }
     }

@@ -4,6 +4,11 @@ export default class SPResourceElement extends HTMLElement {
     async attributeChangedCallback(attrName, oldVal, newVal) {
         if (!newVal) return;
         if (attrName === 'uri') {
+            if (newVal in window.storify.nodes) {
+                const node = window.storify.nodes[newVal];
+                this.setState({object: node});
+
+            }
             let result = await this.dataSource.request('GET', newVal, {
                 limit: this.limit || 50
             });

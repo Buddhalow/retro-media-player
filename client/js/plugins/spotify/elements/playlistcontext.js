@@ -7,6 +7,9 @@ import store from '/js/plugins/spotify/store.js';
                 this.limit = 3;
                 this.offset = 0;
                 let uri = newVal;
+                if (window.storify.nodes[uri]) {
+                    this.setState(window.storify.nodes[uri])
+                }
                 let result = await store.request('GET', newVal, {limit: this.limit, offset: this.offset});
                 this.setState(result);
                 if (result != null && result.objects.length > 0 && this.parentNode != null) {
@@ -40,11 +43,7 @@ import store from '/js/plugins/spotify/store.js';
             }
             if (obj && obj.objects instanceof Array) {
                 let albums = obj.objects.map((item) => {
-                    new Promise((resolve, fail) => {
-                        setTimeout(() => {
-                            resolve();
-                        }, 500)
-                    })
+
                     var a = document.createElement('sp-playlist');
                     if (this.hasAttribute('data-max-rows')) {
                         a.setAttribute('data-max-rows', this.getAttribute('data-max-rows'));
@@ -101,7 +100,7 @@ import store from '/js/plugins/spotify/store.js';
             new Promise((resolve, fail) => {
                 setTimeout(() => {
                     resolve();
-                }, 1000)
+                }, 10)
             });
         }
         get view() {

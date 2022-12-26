@@ -89,19 +89,50 @@ export default class SPArtistViewElement extends SPViewElement {
             this.setState({object:this.state});
 
     }
+    async setArtist(artist) {
+        if (!artist) return
+        this.overviewTab.toplist.setAttribute('data-context-artist-uri', artist.uri);
+        this.overviewTab.toplist.columnheaders=['p','name','popularity','duration','artists'];
+        this.header.state = {
+            object: artist
+        };
+        GlobalTabBar.setState({
+            object: this.state,
+            objects: [
+                {
+                    id: 'overview',
+                    name: _('overview')
+                },
+                {
+                    id: 'related_artist',
+                    name: _('Related artists')
+                },
+                {
+                    id: 'about',
+                    name: _('about')
+                }
+            ]
+        })
+        this.overviewTab.toplist.setAttribute('uri', artist.uri + ':top:5');
+        this.state = artist;
+
+        this.createReleaseSection(_('Releases'), artist.uri, 'release');
+
+
+        this.aboutTab.aboutElement.setState({object: artist})
+
+        super.afterLoad();
+        this.setState(this.state);
+        this.activate();
+    }
     async attributeChangedCallback(attrName, oldVal, newVal) {
         if (!newVal) return;
         if (attrName === 'uri') {
+            await this.setArtist(window.storify.nodes[newVal])
+
             newVal = 'spotify:' + newVal.split(':').splice(1).join(':');
-            this.overviewTab.toplist.setAttribute('data-context-artist-uri', newVal);
-            this.overviewTab.toplist.columnheaders=['p','name','popularity','duration','artists'];
 
-            if (false && newVal in store.state) {
-                this.setState(store.state[newVal]);
-                return;
-            }
-
-            var result = await store.request('GET', newVal);
+            var artist = await store.request('GET', newVal);
             var about = null
             try {
                 about = await store.request('GET', newVal + ':about')
@@ -110,45 +141,14 @@ export default class SPArtistViewElement extends SPViewElement {
 
             }
             if (about && about.insights)
-                result = about
-            this.state = result
+                artist = about
+            this.state = artist
             try {
-                result.description = result.insights.autobiography.body
+                artist.description = artist.insights.autobiography.body
             } catch (e) {
 
             }
-            this.header.state = {
-                object: result
-            };
-            GlobalTabBar.setState({
-                object: this.state,
-                objects: [
-                    {
-                        id: 'overview',
-                        name: _('overview')
-                    },
-                    {
-                        id: 'related_artist',
-                        name: _('Related artists')
-                    },
-                    {
-                        id: 'about',
-                        name: _('about')
-                    }
-                ]
-            })
-            this.overviewTab.toplist.setAttribute('uri', newVal + ':top:5');
-            this.state = result;
-
-            this.createReleaseSection(_('Releases'), newVal, 'release');
-
-
-            this.aboutTab.aboutElement.setState({object: result})
-
-                super.afterLoad();
-            this.setState(this.state);
-            this.activate();
-
+            await this.setArtist(artist)
         }
     }
     setState(state) {

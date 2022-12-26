@@ -41,7 +41,7 @@ export default class SPAlbumViewElement extends SPViewElement {
         }
     }
     acceptsUri(uri) {
-        return /^bungalow:album:(.*)$/.test(uri);
+        return /^spotify:album:(.*)$/.test(uri);
     }
     navigate() {
 

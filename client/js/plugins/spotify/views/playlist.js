@@ -80,13 +80,23 @@ export default class SPPlaylistViewElement extends SPViewElement {
     navigate(uri) {
     }
     async setUri(newVal) {
-        let result = await store.request('GET', newVal)
+        if (newVal === 'spotify:library') {
+            newVal = 'spotify:internal:library'
+        }
+        let playlist = window.storify.nodes[newVal]
+        debugger
+        this.state = {
+            object: playlist
+        }
+        this.header.setState({object: playlist});
+        this.activate()
+        playlist = await store.request('GET', newVal)
         this.trackcontext.setAttribute('uri', newVal + ':track');
 
-        this.header.setState({object: result});
+        this.header.setState({object: playlist});
         this.header.scroll()
         this.state = {
-            object: result
+            object: playlist
         }
         this.activate()
     }

@@ -1,7 +1,7 @@
 
 export default class SPViewElement extends HTMLElement {
     static get observedAttributes() {
-        return ['uri    ']
+        return ['uri']
     }
     constructor() {
         super();

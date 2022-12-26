@@ -22,7 +22,7 @@ class PlayerStore extends EventEmitter {
     initPlayer() {
         // Error handling
         let player = this.player;
-        player.addListener('initialization_error', ({ message }) => { console.error(message); });
+        player.addListener('initialization_error', ({ message }) => { console.error(message);  });
         player.addListener('authentication_error', ({ message }) => { console.error(message); });
         player.addListener('account_error', ({ message }) => { console.error(message); });
         player.addListener('playback_error', ({ message }) => { console.error(message); });
@@ -59,7 +59,7 @@ class PlayerStore extends EventEmitter {
                     $('#playButton').removeClass('fa-play');
                 } else {
                     $('#playButton').addClass('fa-play');
-                    $('#playButto n').removeClass('fa-pause');
+                    $('#playButton').removeClass('fa-pause');
                 } 
         } catch (e) {
             console.log(e);
@@ -152,7 +152,7 @@ class PlayerStore extends EventEmitter {
         try {
             return await this._request(method, uri, params, payload, cache = true, direct = false)
         } catch (e) {
-            debugger;
+
             await fetch('/api/spotify/token', {
                 method: 'POST'
             });
@@ -448,30 +448,34 @@ class PlayerStore extends EventEmitter {
 
                 if (method === 'GET') {
 
-                    let session = JSON.parse(localStorage.getItem('spotify.session'))
-                    result = await fetch(url, {
-                        mode: 'cors',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + session.access_token
-                        },
-                        method: 'GET',
-                    }).then((e) => {
-                        if (e.status < 200 || e.status > 299) {
-                            alert(e.status);
-                        }
-                        let result = e.json();
-                        //window.objects[uri] = $.extend(window.objects[uri], result);
-                        return result;
-                        if (result && 'objects' in result)
-                            result.objects = result.objects.map(formatObject);
+                    let session = JSON.parse(localStorage.getItem('spotify.session'));
+                    try {
+                        result = await fetch(url, {
+                            mode: 'cors',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + session.access_token
+                            },
+                            method: 'GET',
+                        }).then((e) => {
+                            if (e.status < 200 || e.status > 299) {
+                                alert(e.status);
+                            }
+                            let result = e.json();
+                            //window.objects[uri] = $.extend(window.objects[uri], result);
+                            return result;
+                            if (result && 'objects' in result)
+                                result.objects = result.objects.map(formatObject);
 
-                        if (result && 'items' in result)
-                            result.objects = result.items.map(formatObject);
-                        return result;
-                    }).catch((error) => {
-                        console.log(error);
-                    });
+                            if (result && 'items' in result)
+                                result.objects = result.items.map(formatObject);
+                            return result;
+                        }).catch((error) => {
+                            console.log(error);
+                        });
+                    } catch (e) {
+                        console.log(e);
+                    }
                 } else {
                     result = await fetch(url + '?' + query, {
                         mode: 'cors',

@@ -475,6 +475,11 @@ import {getParentElementByClass, getParentElementByTagName} from '/js/util/dom.j
                     tr.setAttribute('data-index', i);
                 }
                 tr.setAttribute('draggable', true);
+                tr.addEventListener('dragend', (e) => {
+                    if (window.dragElement) {
+                        document.body.removeChild(window.dragElement)
+                    }
+                })
                 tr.addEventListener('dragstart', (e) => {
 
                     this.selectedTrs = this.selectedRows;
@@ -489,9 +494,13 @@ import {getParentElementByClass, getParentElementByTagName} from '/js/util/dom.j
                     try {
                         let dragElement = document.createElement('sp-dragelement');
                         dragElement.innerHTML = row.name;
-                        document.body.appendChild(dragElement);
+                        document.body.appendChild(dragElement)
+                        window.dragElement = dragElement
                         event.dataTransfer.setDragImage(dragElement, 0, 0);
                     } catch (e) {
+                        if (window.dragElement) {
+                            document.body.removeChild(window.dragElement)
+                        }
                         console.log(e);
                     }
                     if (this.canReorderRows) {

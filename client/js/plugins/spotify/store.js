@@ -209,7 +209,6 @@ class Store extends EventEmitter {
     try {
       return await this._request(method, uri, params, payload, cache=true, direct=false)
     } catch(e) {
-      debugger;
       await fetch('/api/spotify/token', {
         method: 'POST'
       });
@@ -222,9 +221,6 @@ class Store extends EventEmitter {
     if (params) {
 
       strongUri += '?' + (params instanceof Object ? serializeObject(params) : '');
-    }
-    if (uri in window.resources) {
-      return window.resources[uri];
     }
     if (strongUri in this.state && method === "GET" && cache) {
 
@@ -579,13 +575,27 @@ class Store extends EventEmitter {
           result = formatObject(result);
         }
         this.setState(uri, result);
-
         window.setObject(uri, result);
-        return result;
 
+        try {
+          let storeNode = result
+          if (storeNode.uri?.indexOf('spotify:') !== 0) {
+            storeNode = {
+            ...result,
+                uri: `spotify:${result.uri}`
+            }
+          }
+          await window.storify.upsertNode(storeNode)
+        } catch (e) {
+          throw e
+        }
+        return result;
       }
-      if (uri in this.state)
-        return this.state[uri];
+      try {
+        await window.storify.upsertNode(obj)
+      } catch (e) {
+        throw e
+      }
 
       let result = fetch(url, {credentials: 'include', mode: 'cors'}).then((e) => e.json());
       this.setState(uri, result);

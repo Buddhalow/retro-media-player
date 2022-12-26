@@ -62,8 +62,13 @@ export default class SPResourceTableDataSource extends SPDataSource {
     }
     url = address + '?' + qs;
     let strongUri = uri + '?' + qs;
-    if (method === 'GET' && (strongUri in window.resources)) {
-      return window.resources[strongUri];
+
+    if (method === 'GET' && (strongUri in window.storify.nodes)) {
+      const cachedResult = window.storify.nodes[strongUri];
+      console.log(strongUri, cachedResult)
+      return cachedResult
+    } else {
+      debugger
     }
 
     var result = {
@@ -92,7 +97,12 @@ export default class SPResourceTableDataSource extends SPDataSource {
           'Content-Type': 'application/json'
         }
       }).then(r => r.json())
-      window.resources[strongUri] = $.extend(window.resources[strongUri] || {}, obj);
+      await window.storify.upsertNode({
+        ...result,
+        uri: strongUri
+      })
+
+      //window.storify.nodes[strongUri] = $.extend(window.storify.nodes[strongUri] || {}, obj);
     } catch (e) {
 
     }
@@ -101,6 +111,10 @@ export default class SPResourceTableDataSource extends SPDataSource {
     } else if (!!overlay) {
       result = overlay;
     }
+    await window.storify.upsertNode({
+      ...result,
+      strongUri
+    })
     return result
 
   }
