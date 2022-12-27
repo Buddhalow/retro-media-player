@@ -56,29 +56,34 @@ document.addEventListener('viewload', async (e) => {
 
     }
 })
-document.addEventListener('mainmenuload', (e) => {
+document.addEventListener('mainmenuload', async (e) => {
     let menu = document.createElement('sp-menu');
     let sidebarmenu = document.querySelector('sp-sidebarmenu');
     menu.setAttribute('id', 'spotify-menu');
     sidebarmenu.menu = document.createElement('sp-menu');
     sidebarmenu.label = document.createElement('label');
     sidebarmenu.label.innerHTML = '<i class="fa fa-spotify"></i> ' + _e('Spotify');
-  //  sidebarmenu.appendChild(sidebarmenu.label);
+    sidebarmenu.appendChild(sidebarmenu.label);
 
     var data =  [
         {
             name: _e('Library'),
             uri: 'spotify:library'
-        },
-        {
-            name: _e('Playlists'),
-            uri: 'spotify:library:playlists'
         }
     ];
+
     sidebarmenu.menu.dataSource = new SPMenuDataSource(
         data
     );
     sidebarmenu.appendChild(sidebarmenu.menu);
+    let playlistsMenu = document.createElement('sp-menu')
+
+    const playlists = await store.request('GET', 'spotify:library:playlists')
+    playlistsMenu.dataSource = new SPMenuDataSource(
+        playlists.objects
+    )
+    sidebarmenu.appendChild(playlistsMenu);
+
 });
 document.addEventListener('hook_startview', (e) => {
     let hook = document.querySelector('sp-hook[data-hook-id="startview"]');

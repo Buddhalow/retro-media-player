@@ -4,7 +4,7 @@ import SPContextMenuElement from "/js/controls/contextmenu.js";
 export default class SPLinkElement extends HTMLElement {
     onClick(e) {
         e.preventDefault();
-        if (this.getAttribute('uri').indexOf('http') == 0) {
+        if (this.getAttribute('uri').indexOf('http') === 0) {
             window.open(this.getAttribute('uri'));
         }
         GlobalViewStack.navigate(this.getAttribute('uri'));
@@ -13,6 +13,9 @@ export default class SPLinkElement extends HTMLElement {
         this.addEventListener('click', this.onClick);
         this.attributeChangedCallback('uri', null, this.getAttribute('uri'));
         this.setAttribute('draggable', true);
+        this.addEventListener('mouseenter', (e) => {
+           //    GlobalViewStack.navigate(e.target.getAttribute('uri'), true, true)
+        })
         this.addEventListener('dragstart', (e) => {
             let text = e.target.getAttribute('uri');
             try {

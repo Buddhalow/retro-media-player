@@ -67,8 +67,6 @@ export default class SPResourceTableDataSource extends SPDataSource {
       const cachedResult = window.storify.nodes[strongUri];
       console.log(strongUri, cachedResult)
       return cachedResult
-    } else {
-      debugger
     }
 
     var result = {

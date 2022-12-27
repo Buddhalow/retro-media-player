@@ -28,9 +28,11 @@ export default class SPArtistViewElement extends SPViewElement {
             this.overviewTab.appendChild(this.overviewTab.topTracksDivider);
             this.overviewTab.toplist = document.createElement('sp-playlist');
             this.overviewTab.appendChild(this.overviewTab.toplist);
+            this.overviewTab.toplist.connectedCallback()
             this.aboutTab = document.createElement('sp-tabcontent');
             this.aboutTab.aboutElement = document.createElement('sp-spotifyaboutartist');
             this.aboutTab.appendChild(this.aboutTab.aboutElement);
+            this.aboutTab.aboutElement.connectedCallback()
             this.aboutTab.setAttribute('data-tab-id', 'about');
             this.container.appendChild(this.aboutTab);
             this.aboutPage = document.createElement('sp-about')

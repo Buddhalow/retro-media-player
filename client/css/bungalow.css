@@ -367,7 +367,8 @@ sp-appfootersection {
     justify-content: space-evenly;
 }
 sp-sidebarmenu {
-     flex: 2;
+     flex: 1;
+    overflow-y: scroll;
 }
 sp-sidebar {
     display: flex;

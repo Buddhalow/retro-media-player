@@ -50,14 +50,14 @@ export default class SPPlaylistsViewElement extends SPViewElement {
         this.trackcontext.activate();
         if (this.state == null)
             return;
-
-        this.header.tabBar.setState({
+        /*
+        GlobalTabBar.setState({
             object: this.state.object,
             objects: [{
                 name: this.state.object.name,
                 id: 'overview'
             }]
-        });
+        });*/
     }
     activateSilent() {
         super.activate();
@@ -76,8 +76,8 @@ export default class SPPlaylistsViewElement extends SPViewElement {
         let result = await store.request('GET', newVal)
         this.trackcontext.setAttribute('uri', newVal + ':playlist');
 
-        this.header.setState({object: result});
-        this.header.scroll()
+//        this.header.setState({object: result});
+  //      this.header.scroll()
         this.state = {
             object: result
         }

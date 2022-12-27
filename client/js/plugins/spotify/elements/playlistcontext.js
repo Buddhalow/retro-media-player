@@ -43,7 +43,11 @@ import store from '/js/plugins/spotify/store.js';
             }
             if (obj && obj.objects instanceof Array) {
                 let albums = obj.objects.map((item) => {
-
+                    new Promise((resolve, fail) => {
+                        setTimeout(() => {
+                            resolve();
+                        }, 500)
+                    })
                     var a = document.createElement('sp-playlist');
                     if (this.hasAttribute('data-max-rows')) {
                         a.setAttribute('data-max-rows', this.getAttribute('data-max-rows'));

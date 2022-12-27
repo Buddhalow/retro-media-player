@@ -82,7 +82,7 @@ export default class SPResourceElement extends HTMLElement {
     connectedCallback() {
         if (!this.created1) {
             this.dataSource = new SPRestDataSource();
-            this.created1    = true;
+            this.created1 = true;
         }
     }
     setState(state) {

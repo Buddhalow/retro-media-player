@@ -65,10 +65,12 @@ export default class SPViewStackElement extends HTMLElement {
 
     /**
      * Navigates the view stack
-     * @param {String} uri The URI to navigate to
+     * @param {String} url The URI to navigate to
+     * @param {Boolean} dontPush Don't push to history
+     * @param {Boolean} background Preload the view in background
      * @returns void
      **/
-    navigate(url, dontPush=false) {
+    navigate(url, dontPush=false, background=false) {
         if (this.uri === url) return;
         if (url === 'bungalow:?service=bungalow') {
             url = 'bungalow:internal:start'
@@ -85,7 +87,7 @@ export default class SPViewStackElement extends HTMLElement {
             item.classList.remove('active');
 
             //if (uri.indexOf(item.getAttribute('uri')) == 0) {
-            if (uri == item.getAttribute('uri')) {
+            if (uri === item.getAttribute('uri')) {
                 item.classList.add('active');
             }
 
@@ -137,14 +139,16 @@ export default class SPViewStackElement extends HTMLElement {
 
         } else if (externalViews.length > 0) {
             view = document.createElement(externalViews[0].tag);
-            this.addView(newUri, view);
+            this.addView(newUri, view, background);
 
         } else {
             alert("The link could not be found");
 
         }
-        $('sp-mediasidebaritem').removeClass('active');
-        $('sp-mediasidebaritem[uri^="' + newUri + '"]').addClass('active');
+        if (!background) {
+            $('sp-mediasidebaritem').removeClass('active');
+            $('sp-mediasidebaritem[uri^="' + newUri + '"]').addClass('active');
+        }
         if (!view) {
             return;
         }
@@ -153,7 +157,7 @@ export default class SPViewStackElement extends HTMLElement {
 
         this.uri = uri;
 
-        if (!dontPush) {
+        if (!dontPush && !background) {
             history.pushState({
                 uri: newUri,
                 query: uri.query,
@@ -164,19 +168,20 @@ export default class SPViewStackElement extends HTMLElement {
         } else {
 
         }
-        $('#uribar').val(newUri);
-        $('sp-menuitem').removeClass('active');
-        $('sp-menuitem[uri^="' + newUri + '"]').addClass('active');  
-        if (viewInfo.hidesSideBar) {
-            $('sp-sidebar').hide();
-        } else {
-            $('sp-sidebar').show();
+        if (!background) {
+            $('#uribar').val(newUri);
+            $('sp-menuitem').removeClass('active');
+            $('sp-menuitem[uri^="' + newUri + '"]').addClass('active');
+            if (viewInfo.hidesSideBar) {
+                $('sp-sidebar').hide();
+            } else {
+                $('sp-sidebar').show();
+            }
+            setTimeout(() => {
+
+                this.setView(view, background);
+            }, 100)
         }
-        setTimeout(() => {
-
-            this.setView(view);
-        }, 100)
-
     }
 
     postToUri(uri, data) {
@@ -206,21 +211,27 @@ export default class SPViewStackElement extends HTMLElement {
         view.refresh();
     }
 
-    addView(uri, view) {
+    addView(uri, view, background=false) {
 
         this.views[uri] = view;
-        this.setView(view);
-
+        if (!background) {
+            this.setView(view, background)
+        } else {
+            view.connectedCallback()
+        }
         view.setUri(uri)
     }
-    setView(view) {
-        if (this.firstChild != null && this.firstChild !== view) {
-            this.removeChild(this.firstChild);
+    setView(view, background=false) {
+        if (!background) {
+            if (this.firstChild != null && this.firstChild !== view) {
+                this.removeChild(this.firstChild);
+            }
+            this.appendChild(view);
+            if (this === window.GlobalViewStack)
+                window.GlobalViewStack.currentView = view;
+        } else {
+            view.connectedCallback()
         }
-        this.appendChild(view);
-        if (this === window.GlobalViewStack)
-        window.GlobalViewStack.currentView = view;
-
         if (view.activate instanceof Function) {
             view.activate();
             var event = new CustomEvent('hashchange')

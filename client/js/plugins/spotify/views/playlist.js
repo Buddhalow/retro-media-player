@@ -84,7 +84,6 @@ export default class SPPlaylistViewElement extends SPViewElement {
             newVal = 'spotify:internal:library'
         }
         let playlist = window.storify.nodes[newVal]
-        debugger
         this.state = {
             object: playlist
         }
