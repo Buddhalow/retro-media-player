@@ -1,0 +1,69 @@
+{
+    "id": "music",
+    "name": "music",
+    "vendor": "qi.music",
+    "version": "0.0.1",
+    "type": "concept",
+    "views": {
+        "artist": {
+            "regexp": "^music:artist:([a-zA-Z0-9]+)$"
+        },
+        "album": {
+            "regexp": "^music:album:(.*)$"
+        },
+        "year": {
+            "regexp": "^music:year:([0-9]+)$"
+        },
+        "playlists": {
+            "regexp": "^music:library:playlists$"
+        },
+        "playlist": {
+            "regexp": "^music:(history|(user:(.*):)?(playlist:(.*))|(library)|(artist:([a-zA-Z0-9]+):top:([0-9]+)))$"
+        },
+        "show": {
+            "regexp": "^music:show:(.*)$"
+        },
+        "series": {
+            "regexp": "^music:series:(.*)$"
+        },
+        "toplist": {
+            "regexp": "^music:internal:toplist$"
+        },
+        "publisher": {
+            "regexp": "^music:publisher:(.*)$"
+        },
+        "episode": {
+            "regexp": "^music:episode:(.*)$"
+        },
+        "chart": {
+            "regexp": "^music:chart:(.*)$"
+        },
+        "playqueue": {
+            "regexp": "^music:internal:playqueue$"
+        },
+        "category": {
+            "regexp": "^music:category:(.*)$"
+        },
+        "country": {
+            "regexp": "^music:country:(.*)$"
+        },
+        "audiobook": {
+            "regexp": "^music:audiobook:(.*)$"
+        },
+        "author": {
+            "regexp": "^music:author:([a-zA-Z0-9]+)$"
+        },
+        "search_new": {
+            "regexp": "^music:label:([a-zA-Z0-9\\ ]+)$"
+        },
+        "meditation": {
+            "regexp": "^music:meditation:(.*)$"
+        },
+        "search": {
+            "regexp": "^^music:search:(.*)$"
+        },
+        "user": {
+            "regexp": "^music:user:(.*)$"
+        }
+    }
+}

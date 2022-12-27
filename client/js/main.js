@@ -346,7 +346,7 @@ const init = async () => {
 
         let plugins = result.objects.filter(
             t => {
-                return localStorage.getItem('service.' + t.id + '.enabled') == 'true' || t.id == 'bungalow';
+                return localStorage.getItem('plugin.' + t.id + '.enabled') == 'true' || t.id == 'bungalow';
             }
         )
         await Promise.all(
@@ -371,6 +371,63 @@ const init = async () => {
                         let z = await import('/js/plugins/' + plugin.id + '/views/' + viewId + '.js')
                         let XViewElement = z.default
                         let tagName = plugin.id + '-' + viewId + 'view'
+                        console.log(tagName);
+                        customElements.define(tagName, XViewElement)
+                        console.log(tagName, XViewElement)
+                        document.addEventListener('viewstackloaded', () => {
+                            window.GlobalViewStack.registeredViews.push({
+                                tag: tagName,
+                                hidesSideBar: view.hidesSidebar,
+                                regex: new RegExp(view.regexp)
+                            });
+                        })
+
+                    }))
+                }
+
+            })
+        )
+        resolve()
+
+
+    });
+    await new Promise(async (resolve, fail) => {
+        await window.storify.loadDatabase()
+        let result = await fetch('/api/concepts', {
+            credentials: 'include',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then((r) => r.json());
+
+        let concepts = result.objects.filter(
+            t => {
+                return localStorage.getItem('concept.' + t.id + '.enabled') == 'true' || t.id == 'bungalow';
+            }
+        )
+        await Promise.all(
+            concepts.map(async (concept) => {
+
+                let module = await import('/js/concepts/' + concept.id + '/' + concept.id + '.js')
+
+                if (concept.elements) {
+
+                    await Promise.all(Object.keys(concept.elements).map(async elementId => {
+                        let view = concept.elements[elementId]
+                        let z = await import('/js/concepts/' + concept.id + '/elements/' + elementId + '.js')
+                        let XElement = z.default
+                        let tagName = concept.id + '-' + elementId
+                        customElements.define(tagName, XElement)
+                    }))
+                }
+                if (concept.views) {
+                    let viewIds =  Object.keys(concept.views)
+                    await Promise.all(viewIds.map(async (viewId) => {
+                        let view = concept.views[viewId]
+                        let z = await import('/js/concepts/' + concept.id + '/views/' + viewId + '.js')
+                        let XViewElement = z.default
+                        let tagName = concept.id + '-' + viewId + 'view'
                         console.log(tagName);
                         customElements.define(tagName, XViewElement)
                         console.log(tagName, XViewElement)

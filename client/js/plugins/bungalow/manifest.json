@@ -15,6 +15,9 @@
         "plugin": {
             "regexp": "^bungalow:plugin"
         },
+        "concept": {
+            "regexp": "^bungalow:concept"
+        },
         "start": {
             "regexp": "^bungalow:internal:start"
         },

@@ -1,0 +1,16 @@
+<table width="100%">
+    <tr>
+        <td valign="top">
+        <%= _e('Artists') %> (<%=artists.objects.length%>) <% artists.objects.map((o) => {
+        %> &#x25CF; <sp-link uri="<%=o.uri%>"><%=o.name%></sp-link> <% } ); %>
+        </td> 
+        <td valign="top">
+        <div><%= _e('Albums') %> (<%=albums.objects.length%>) <% albums.objects.map((o) => {
+        %> &#x25CF; <sp-link uri="<%=o.uri%>"><%=o.name%></sp-link> <% } ); %>
+        </div>
+        <div>
+            <b>Tracks: ()</b>
+        </div>
+        </td> 
+    </tr>
+</table>

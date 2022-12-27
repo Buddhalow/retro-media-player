@@ -46,7 +46,7 @@ module.exports = function (server) {
         type: data.ogType,
         url: data.ogUrl,
         uri: data.ogUrl,
-      
+
         image_url: data.ogImage.url,
         images: [{
           url: data.ogImage
@@ -55,7 +55,7 @@ module.exports = function (server) {
       };
       res.json(object).end();
     })
-    
+
   });
 
   app.get('/app', function (req, res) {
@@ -79,7 +79,6 @@ module.exports = function (server) {
     });
   })
 
-
   app.get('/plugin', function (req, res) {
     var dirs = fs.readdirSync(__dirname + path.sep + 'client' + path.sep + 'js' + path.sep + 'plugins');
     var apps = []
@@ -92,6 +91,19 @@ module.exports = function (server) {
       objects: apps
     });
   })
+
+    app.get('/concept', function (req, res) {
+        var dirs = fs.readdirSync(__dirname + path.sep + 'client' + path.sep + 'js' + path.sep + 'concepts');
+        var apps = []
+        dirs.forEach(function (appId) {
+            if (appId.indexOf('.') == 0) return
+            var manifest = JSON.parse(fs.readFileSync(__dirname + path.sep + 'client' + path.sep + 'js' + path.sep + 'concepts' + path.sep + appId + path.sep + 'manifest.json'));
+            apps.push(manifest);
+        });
+        res.json({
+            objects: apps
+        });
+    })
 
   function getServices() {
       var dirs = fs.readdirSync(__dirname + path.sep + 'services');
@@ -167,7 +179,7 @@ module.exports = function (server) {
           app.use('/' + serviceInfo.id, router);
         }
       }
-    
+
   })
 
 
@@ -178,7 +190,7 @@ module.exports = function (server) {
       keys: ['key1', 'key2'],
       cookie: {secure: false}
   }));
-  
+
   return {
       app: app
   }

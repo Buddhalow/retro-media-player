@@ -1,0 +1,16 @@
+<div class="sp-coverart" style="flex: 0 0 <%=width%>" class="sp-image">
+    <sp-image width="<%=width%>" height="<%=height%>" src="<%=obj.images ? obj.images[0].url : ''%>"></sp-image>
+</div>
+<div style="flex: 2">
+    <h3><%=title%>  <%= strReleaseDate != '' ? ' <span><%=('+  strReleaseDate + ')' : '' %></h3>
+
+    <%=(obj.description ? '<p>' + obj.description + '</p>' : '') %>
+    <div class="contents">
+        <sp-trackcontext limit="<%=limit%>" uri="<%=obj.uri%><% if (obj.type == 'playlist') {%>:snapshot:$<% }%>:track"></sp-trackcontext>
+    </div>
+
+    <% obj && obj.copyrights instanceof Array ? obj.copyrights.map((c) => { %>
+        <span style="opacity: 0.5; font-size: 6pt">(<%= c.type %>)  <%=c.text%></span><br>
+    <% }) : null; %>
+
+</div>
