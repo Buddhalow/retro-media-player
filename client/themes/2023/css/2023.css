@@ -1,0 +1,86 @@
+:root {
+    color-scheme: light dark;
+    --font-family: "Tahoma";
+    --tint-h: var(--primary-hue) ;
+    --tint-s: 80%;
+    --tint-l: 30%;
+    --tint: hsl(var(--tint-h), var(--tint-s), var(--tint-l));
+    accent-color: var(--tint);
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(127, 127, 127, .5);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--tint);
+}
+@font-face {
+    font-family: Jakarta;
+    src: url('/fonts/PlusJakartaSans-VariableFont-wght.ttf');
+}
+th {
+    background: linear-gradient(-180deg,rgba(255, 255, 255, .5), rgba(235, 235, 235, .5));
+    border-right: 1pt solid rgba(200, 200, 200, .5);
+    border-bottom: 1pt solid rgba(200, 200, 200, .5);
+    border-right: 1pt solid rgba(127, 127, 127, .5);
+    border-bottom: 1pt solid rgba(127, 127, 127, .5);
+    padding: 3pt;
+    /*box-shadow: 0 5pt 5pt rgba(0, 0, 0, .2);*/
+}
+th, td {
+    padding: 3pt;
+}
+body {
+    font-family: "Jakarta", sans-serif;
+}
+sp-link, a {
+    text-decoration: none;
+    color: var(--tint);
+}
+sp-appfooter {
+    background: rgba(245, 245, 245, .5);
+    backdrop-filter: blur(10pt);
+}
+sp-link:hover, a:hover {
+    text-decoration: underline;
+}
+tr:nth-child(2n) td {
+    background: rgba(0, 0, 0, .02);
+}
+main {
+    gap: 5pt;
+}
+.form-control, button, .btn, sp-sidebarmenu, sp-viewstack {
+    background: Canvas;
+    border-radius: 3pt;
+    border: none;
+    box-shadow: 0 2pt 5pt rgba(0, 0, 0, .05);
+    border-left: 1pt solid rgba(227, 227, 227, 0.5);
+    border-top: 1pt solid rgba(227, 227, 227, 0.5);
+    border-right: 1pt solid rgba(127, 127, 127, 0.5);
+    border-bottom: 1pt solid rgba(127, 127, 127, 0.5);
+    padding: 5pt;
+}
+sp-viewstack, sp-sidebarmenu {
+    background: rgba(255, 255, 255, .2);
+}
+input:focus {
+    outline: none;
+}
+@media screen and (prefers-color-scheme: light) {
+    body {
+        background: radial-gradient(circle, hsl(var(--tint-h), calc(var(--tint-s) - 40%), calc(var(--tint-l) + 65%)) 0%, rgba(245,245,245,1) 100%) !important;
+    }
+}
