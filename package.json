@@ -20,6 +20,7 @@
     "cookie-session": "^2.0.0-beta.2",
     "crawler": "^1.1.2",
     "deployd": "^1.1.1",
+    "electron": "^28.2.4",
     "es6-promise": "^4.1.0",
     "express": "~3.2.4",
     "express-router": "0.0.1",
@@ -89,5 +90,8 @@
     "win": {
       "target": "NSIS"
     }
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
   }
 }

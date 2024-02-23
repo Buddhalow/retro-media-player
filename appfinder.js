@@ -8,7 +8,7 @@ const express = require('express')
 let homedir = os.homedir()
 let bungalowdir = homedir + '/.bungalow'
 if (!fs.existsSync(bungalowdir)) {
-  fs.mkdir(bungalowdir)
+  fs.mkdirSync(bungalowdir)
 }
 let installedappsdir = homedir + '/.bungalow/apps'
 
