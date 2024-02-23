@@ -13,9 +13,6 @@ window.objects = {};
  * Data store for application
  **/
 class Store extends EventEmitter {
-  onSpotifyWebPlaybackSDKReady = (player) => {
-    
-  };
   constructor() {
     super();
     this.spotify = new SpotifyService();
@@ -26,7 +23,7 @@ class Store extends EventEmitter {
       this.playPause();
 
     })
-
+    
     this.isRequesting = false;
     this.heart = setInterval(async () => {
       try {
