@@ -123,7 +123,7 @@ sp-mediasidebar {
   width: calc(100% - 6rem);
   border: none !important;
   box-shadow: none !important;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(50, 80, 170, 1));
+  background: linear-gradient(0deg, rgba(50, 80, 170, 0), rgba(50, 180, 270, 1));
 }
 
 button {
