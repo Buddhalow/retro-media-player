@@ -89,7 +89,7 @@ sp-trackcontrols sp-appfootersection:first-child {
   transform: translate(8rem, 1rem);
 }
 body {
-  background: #8af; 
+  background: transparent !important; 
 }
 sp-chrome {
   background: transparent !important;
