@@ -179,7 +179,7 @@ sp-appheader, sp-appfooter, sp-bottomtabbar {
     padding: 5pt;
     background-size: 100% 100%;
   filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
-  background-image:  url('/themes/wmp-9/images/header.png');
+  background: transparent;
     
 }
 sp-tabbar {
