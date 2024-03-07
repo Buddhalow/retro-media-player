@@ -86,7 +86,7 @@ sp-toolbar {
   visibility: hidden;
 }
 sp-trackcontrols sp-appfootersection:first-child {
-  transform: translate(6rem, 0pt);
+  transform: translate(8rem, 1rem);
 }
 body {
   background: #8af; 
@@ -133,4 +133,7 @@ button {
   border: 1pt solid #aaf;
   background: radial-gradient(ellipse at top left, rgba(255, 255, 255, 1), rgba(200, 230, 255, 1));
   
+}
+#oldifyLogo {
+  visibility: hidden;
 }
