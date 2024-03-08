@@ -103,6 +103,7 @@ sp-chrome {
   border-image-width: 102px;
   filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
 }
+
 .shell-bg {
   position: absolute;
   left: 0;
@@ -114,6 +115,7 @@ sp-chrome {
   grid-template-rows: 5rem auto 14.5rem;
   filter: drop-shadow(0 0 25pt rgba(0, 0, 0, 1))  hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
 }
+
 .shell-bg > div {
   background: url('../images/shell.svg');
   background-size: 1203pt 885pt;
