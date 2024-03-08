@@ -2,7 +2,7 @@
 window.alert = function (message) {
 
 
-    document.querySelector('sp-chrome').alert({
+    /*document.querySelector('sp-chrome').alert({
         type: 'info',
         name: message,
         uri: 'bungalow:error:0x00'
@@ -19,7 +19,7 @@ window.alert = function (message) {
         });
         clearInterval(i);
 
-        }, 100);
+        }, 100);*/
 }
 
 /*window.addEventListener('error', function (msg, url) {
