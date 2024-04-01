@@ -13,18 +13,16 @@ var ogs = require('open-graph-scraper');
 var xml2js = require('xml2js');
 
 var AppFinder = require('./appfinder');
-var appFinder = new AppFinder();
-var os = require('os')
-var spotify_api_key_file = os.homedir() + '/.bungalow/spotify.key.json';
-var spotify_cache_file = os.homedir() + '/.bungalow/spotify.cache.json';
-var spotify_sessions_file = os.homedir() + '/.bungalow/spotify.sessions.json';
-var google_api_key_file = os.homedir() + '/.bungalow/google.key.json';
+var appFinder = new AppFinder(); 
 
-var googleApiKeyFile = os.homedir() + '/.bungalow/google.key.json';
-
-let credentialsFile = os.homedir() + '/.bungalow/credentials.json'
-
-let credentials = JSON.parse(fs.readFileSync(credentialsFile))
+let credentials = {
+  spotify: {
+    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
+    SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
+    SPOTIFY_REDIRECT_URI: process.env.SPOTIFY_REDIRECT_URI
+  },
+  lastfm: {}
+}
 
 var temp_dir = os.homedir() + '/.bungalow';
 
