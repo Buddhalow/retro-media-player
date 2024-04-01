@@ -1,4 +1,7 @@
-FROM node:18
+FROM node:18 as base
+
+ENV PORT=3000
+ENV HOST=0.0.0.0
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -14,6 +17,16 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+FROM base as development
 
-CMD [ "node", "server.js" ]
+EXPOSE 3000
+
+ENTRYPOINT [ "node" ]
+CMD ["index.js"]
+
+FROM base as production
+
+EXPOSE 3000
+
+ENTRYPOINT ["node"]
+CMD ["index.js"]
