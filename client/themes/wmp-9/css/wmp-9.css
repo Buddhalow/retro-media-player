@@ -1,7 +1,7 @@
 sp-appfooter button, input[type=range]::-webkit-slider-runnable-track {
   box-shadow: 0pt 0pt 3pt rgba(0, 0, 0, .5);
   border-radius: 28pt;
-  background-image: url('/themes/chromify/img/btn_gloss.png') !important;
+  background-image: transparent;
   background-size: cover;
   margin-right: 6pt;
 }
@@ -50,7 +50,6 @@ sp-mediasidebar {
   flex: 0 0 128pt;
   background: url('../images/sidebar.png');
   background-size: 100% 100%;
- filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
 }
 @media screen and (min-width: 720pt) {
 
@@ -82,4 +81,131 @@ sp-sidebar sp-searchform {
 
 sp-toolbar {
   display: flex;
+}
+.splatter {
+  visibility: hidden;
+}
+sp-trackcontrols sp-appfootersection:first-child {
+  transform: translate(15rem, 1rem);
+}
+body {
+  background: transparent !important; 
+}
+sp-chrome {
+  background: transparent !important;
+  /*
+  border-image-source: url("../images/shell.svg");
+  background: url("../images/shell.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;*/
+  border-image-slice: 121 121 121 138; 
+  border-image-width: 102px;
+  filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
+}
+
+.shell-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 14.0rem 30rem auto auto 10rem;
+  grid-template-rows: 5rem auto 14.5rem;
+  filter: drop-shadow(0 0 25pt rgba(0, 0, 0, 1))  hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
+}
+
+.shell-bg > div {
+  background: url('../images/shell.svg');
+  background-size: 1203pt 885pt;
+}
+.shell-bg > div:nth-of-type(1) {
+  background-position: 0 0;
+}
+.shell-bg > div:nth-of-type(2) {
+  background-position: 80rem 0;
+}
+.shell-bg > div:nth-of-type(3) {
+  background-position: 103rem 0;
+}
+.shell-bg > div:nth-of-type(4) {
+  background-position: -180rem 0;
+}
+.shell-bg > div:nth-of-type(5) {
+  background-position: -208rem 0;
+}
+.shell-bg > div:nth-of-type(6) {
+  background-position: 0 -5rem;
+}
+.shell-bg > div:nth-of-type(7) {
+  background-position: 7.0rem 4.5rem;
+}
+.shell-bg > div:nth-of-type(8) {
+  background-position: 7.0rem 4.5rem;
+}
+.shell-bg > div:nth-of-type(9) {
+  background-position: -10.0rem 4.5rem;
+}
+.shell-bg > div:nth-of-type(10) {
+  background-position: 0 9rem;
+}
+.shell-bg > div:nth-of-type(11) {
+  background-position: -0.1rem -64.36rem;
+}
+.shell-bg > div:nth-of-type(12) {
+  background-position: -14.0rem -64.36rem;
+}
+.shell-bg > div:nth-of-type(13) {
+  background-position: 500rem -64.36rem;
+}
+.shell-bg > div:nth-of-type(14) {
+  background-position: 582rem  -64.36rem;
+}
+.shell-bg > div:nth-of-type(15) {
+  background-position: 582rem  -64.36rem;
+}
+main { 
+} 
+sp-sidebar, sp-main {
+  background: url('../images/bg_dark.png');
+  background-size: 100% 100%; 
+
+}
+sp-appheader {
+  flex: 0 0 5rem;
+  border: none !important;
+}
+sp-appfooter {
+  flex: 0 0 5.  5rem;
+  border: none !important;
+}
+sp-mediasidebar {
+  background: transparent;
+  flex: 0 0 14.0rem;
+}
+sp-mediasidebar  {
+  padding-left: 2rem;
+  padding-top: 2rem;
+}
+#playthumb {
+  position: fixed;
+  bottom: 3.5rem;
+  left: 15rem;
+  width: calc(100% - 6rem);
+  border: none !important;
+  box-shadow: none !important;
+  background: linear-gradient(0deg, rgba(50, 80, 170, 0), rgba(50, 180, 270, 1));
+}
+
+button {
+  appearance: none;
+  border: none;
+  background: none;
+  border: 1pt solid #aaf;
+  background: radial-gradient(ellipse at top left, rgba(255, 255, 255, 1), rgba(200, 230, 255, 1));
+  
+}
+#oldifyLogo {
+  visibility: hidden;
 }
