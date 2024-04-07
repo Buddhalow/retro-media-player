@@ -31,7 +31,7 @@ export default class SPSearchViewElement extends SPViewElement {
         });
     }
     acceptsUri(uri) {
-        return /^bungalow:search:(.*)$/.test(uri);
+        return /^search:(.*)$/.test(uri);
     }
     attributeChangedCallback(attrName, oldVal, newVal) {
         if (attrName === 'uri') {

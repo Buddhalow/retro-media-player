@@ -7,7 +7,6 @@ export default class SPTrackViewElement extends SPViewElement {
         this.classList.add('sp-view');
     }
     acceptsUri(uri) {
-        return /^bungalow:album:(.*)$/.test(uri);
     }
     navigate() {
 

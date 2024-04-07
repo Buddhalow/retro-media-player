@@ -216,14 +216,12 @@ import SPContextMenuElement from "/js/controls/contextmenu.js";
                         label: _('Go to'),
                         onClick(e) {
                             GlobalViewStack.navigate(row.uri)
-                            debugger;
                         }
                     },
                     {
                         label: _('-'),
                         onClick(e) {
                             console.log(e);
-                            debugger;
                         }
                     },
                     {

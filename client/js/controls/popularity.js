@@ -33,7 +33,6 @@
             }
         }
         setState(value) {
-            debugger;
             value = value / 100
             this.style.backgroundColor = 'transparent';
             var ctx = this.node.getContext('2d');

@@ -44,7 +44,7 @@ export default class SPResourceElement extends HTMLElement {
                 this.parentNode.style.backgroundSize =  size;
                 let tablestart = th.getBoundingClientRect().top + th.getBoundingClientRect().height;
                 this.parentNode.style.backgroundPosition = '0pt ' +  (tablestart) +  'pt';
-                debugger;
+
             }*/
 
         }
