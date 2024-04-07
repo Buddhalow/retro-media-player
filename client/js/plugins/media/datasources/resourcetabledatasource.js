@@ -35,7 +35,6 @@ export default class SPResourceTableDataSource extends SPDataSource {
     return this.fields.length;
   }
   async request(method, uri, options, data) {
-    debugger
     return store.request(method, uri, options, data);
   }
   async oldRequest(method, uri, options, data) {
