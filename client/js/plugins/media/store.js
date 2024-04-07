@@ -106,7 +106,6 @@ class Store extends EventEmitter {
       return await this.service.searchFor(decodeURIComponent(uri.split(":")[2]), 'release');
     }
   }
- 
 }
 
 export default new Store();

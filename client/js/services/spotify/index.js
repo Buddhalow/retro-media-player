@@ -198,11 +198,11 @@ export class SpotifyService {
         ._request("GET", "/search", {
           q: q,
           type: type,
-          offset: offset,
-          limit: limit,
+          offset: offset ?? 0,
+          limit: limit ?? 28, 
         })
         .then(
-          function (result) {
+          function (result) { 
             resolve(result);
           },
           function (err) {
@@ -242,7 +242,10 @@ export class SpotifyService {
         } else {
           headers["Content-type"] = "application/x-www-form-urlencoded";
         }
-        var url = "https://api.spotify.com/v1" + path;
+        var url = `https://api.spotify.com/v1${path}`;
+        if (method === 'GET') {
+          url += `?${new URLSearchParams(payload)}`
+        }
         fetch(url, { 
           method: method, 
           headers: headers,
@@ -359,7 +362,7 @@ export class SpotifyService {
               if ("track" in obj) {
                 obj = Object.assign(obj, obj.track);
               }
-              if ("artists" in obj) {
+              if ("artists" in obj && obj.artists instanceof Array) {
                 obj.artists = obj.artists.map(formatObject);
               }
               if ("album" in obj) {
