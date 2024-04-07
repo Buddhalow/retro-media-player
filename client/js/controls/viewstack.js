@@ -28,7 +28,6 @@ export default class SPViewStackElement extends HTMLElement {
 
     let uri = "bungalow:" + path.split("/").join(":") + "?" + qs.toString();
 
-    debugger
     this.navigate(uri, true);
   }
   connectedCallback() {

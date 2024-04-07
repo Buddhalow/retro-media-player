@@ -74,8 +74,7 @@ class Store extends EventEmitter {
   setState(newState) {
     this.state = Object.assign(this.state, newState);
   }
-  async request(method, uri, params, data) {
-    const identity = getPageIdentity()
+  async request(method, uri, params, data) { 
     if (!this.service) {
       this.service = getServiceFromPage()
     }
@@ -87,7 +86,7 @@ class Store extends EventEmitter {
       return await this.service.getUser(uri.split(":")[2]);
     }
     if (testBungalowUri(/playlist:(.*)$/, uri)) {
-      return await this.service.getPlaylist(uri.split(":")[2]);
+      return await this.service.getPlaylist(uri.split(":")[3]);
     }
     if (testBungalowUri(/artist:(.*)/, uri)) {
       return await this.service.getArtist(uri.split(":")[2]);

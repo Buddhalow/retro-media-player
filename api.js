@@ -101,14 +101,15 @@ module.exports = function (server) {
   }
 
   function getFrontendServices() {
-    var dirs = fs.readdirSync(__dirname + path.sep + 'client' + path.sep + 'js' + path.sep + 'services');
+    const servicesDirPath = __dirname + path.sep + 'client' + path.sep + 'js' + path.sep + 'services'
+    console.log(servicesDirPath)
+    var dirs = fs.readdirSync(servicesDirPath);
     var apps = []
     dirs.forEach(function (appId) {
       console.log(appId);
-      var manifest = JSON.parse(fs.readFileSync(__dirname + path.sep + 'services' + path.sep + appId + path.sep + 'package.json'));
       try {
-      if ('bungalow' in manifest)
-        apps.push(manifest.bungalow);
+        var manifest = JSON.parse(fs.readFileSync(servicesDirPath + path.sep + appId + path.sep + 'manifest.json'));
+        apps.push(manifest);
       } catch (e) {
         console.log(e.stack);
       }

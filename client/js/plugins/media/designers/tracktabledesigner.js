@@ -55,21 +55,18 @@ export default class SPTrackTableDesigner extends SPTableDesigner {
                   label: _('Play now'),
                   onClick(e) {
                       console.log(e);
-                      debugger;
                   }
               },
               {
                   label: _('-'),
                   onClick(e) {
                       console.log(e);
-                      debugger;
                   }
               },
               {
                   label: _('Share to'),
                   onClick(e) {
                       console.log(e);
-                      debugger;
                   },
                   menuItems: [
                       {

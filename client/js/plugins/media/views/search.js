@@ -1,6 +1,6 @@
 import SPViewElement from '/js/plugins/media/views/view.js';
 import {getParentElementByClass} from "/js/util/dom.js";
-import { testBungalowUri } from './js/util.js';
+import { testBungalowUri } from '/js/util.js';
 import store from '/js/plugins/media/store.js';
 
 export default class SPSearchViewElement extends SPViewElement {

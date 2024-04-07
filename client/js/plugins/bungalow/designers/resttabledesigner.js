@@ -58,7 +58,8 @@ import SPContextMenuElement from "/js/controls/contextmenu.js";
                 btn.innerHTML = _e('Log in');
                 btn.setAttribute('data-service', row.id);
                 btn.addEventListener('click', (e) => {
-                    window.services[row.id].login();
+                  const service = window.getServiceByDomain(row.id)
+                  service.login();
                 })
                 td.appendChild(btn);
             } else if (columnId === 'new') {

@@ -36,7 +36,7 @@ export class SpotifyService {
   constructor() {
     this.cache = {};
     this.isPlaying = false;
-
+    this.id = 'spotify'
     this.resources = {};
     this.callbacks = {};
 

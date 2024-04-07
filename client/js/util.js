@@ -70,12 +70,16 @@ function parseIdentity(identity) {
 
 export function getServiceFromPage() {
   let identity = parseIdentity(window.location.pathname.substr(1).split(/\//)[0]);
-  let service = window.services[identity.hostname];
+  let service = window.getServiceByDomain(identity.hostname);
+  if (!service) {
+    throw new Error("Service not found: " + identity.hostname)
+  }
   return service;
 
 }
 
 export function testBungalowUri(regexp, uri) {
-  debugger
-  return new RegExp("^bungalow:@([a-zA-Z0-9]+)@([a-zA-Z0-9\.\-]+):" + regexp.toString()).test(uri);
+  const newRegex = "^bungalow:@([a-zA-Z0-9]+)@([a-zA-Z0-9\.\-]+):" + regexp.toString().substr(1, regexp.toString().length - 2);
+
+  return new RegExp(newRegex).test(uri);
 }

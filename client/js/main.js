@@ -252,7 +252,9 @@ window.registerService = function (service) {
 };
 
 window.getServiceByDomain = function(domain) {
-  return window.services.find((s) => s.acceptsDomain(domain));
+  return window.services.find((s) => {
+    return s.acceptsDomain(domain) || (s.id === domain)
+  });
 }
 
 window.resolve = function (method, uri, query, headers, data) {};
@@ -333,21 +335,24 @@ async function loadExtensions(extensionType) {
     },
   }).then((r) => r.json());
 
-  let extensions = result.objects.filter((t) => {
-    return (
-      localStorage.getItem(`${extensionType}.${t.id}.enabled`) == "true" ||
-      t.id == "bungalow"
-    );
-  });
+  let extensions = result.objects
   return await Promise.all(
     extensions.map(async (extension) => {
-      let module = await import(
-        `/js/${extensionType}s/${extension.id}/index.js`
-      );
-      return {
-        module,
-        ...extension,
-      };
+      if ((localStorage.getItem(`${extensionType}.${extension.id}.enabled`) == "true") || true) {
+        let module = await import(
+          `/js/${extensionType}s/${extension.id}/index.js`
+        );
+        return {
+          module,
+          loaded: true,
+          ...extension,
+        };
+      } else {
+        return {
+          loaded: false,
+          ...extension
+        }
+      } 
     })
   );
 }
@@ -392,7 +397,9 @@ const init = async () => {
   }
   const services = await loadExtensions("service");
   for (let service of services) {
-    window.registerService(service);
+    if (service.loaded) {
+      window.registerService(service);
+    }
   }
   window.services.media = window.services.spotify;
  
@@ -406,4 +413,6 @@ const init = async () => {
 init().then(() => {
   let e = new CustomEvent("mainmenuload");
   document.dispatchEvent(e);
+}).catch(e => {
+  throw e;
 });

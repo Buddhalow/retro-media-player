@@ -1,5 +1,5 @@
 import SPViewElement from '/js/controls/view.js';
-import { testBungalowUri } from './js/util.js';
+import { testBungalowUri } from '/js/util.js';
 import store from '/js/plugins/media/store.js';
 
 export default class SPPlayqueueViewElement extends SPViewElement {

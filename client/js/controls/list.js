@@ -37,7 +37,7 @@ import SPViewElement from '/js/controls/view.js';
                 let hr = document.createElement('hr');
                 this.appendChild(hr);
             } catch (e) {
-                debugger;
+                console.error(e)
             }
        }
        fetchNext() {
@@ -61,7 +61,6 @@ import SPViewElement from '/js/controls/view.js';
                     this.parentNode.style.backgroundSize =  size;
                     let tablestart = th.getBoundingClientRect().top + th.getBoundingClientRect().height;
                     this.parentNode.style.backgroundPosition = '0pt ' +  (tablestart) +  'pt';
-                    debugger;
                 }*/
         
             }
