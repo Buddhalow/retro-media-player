@@ -107,7 +107,7 @@ class Store extends EventEmitter {
     if (testBungalowUri(/track:(.*)/, uri)) {
       return await this.service.getTrackById(uri.split(":")[2]);
     }
-    if ((testBungalowUri(/isrc:(.*)/, uri)) {
+    if (testBungalowUri(/isrc:(.*)/, uri)) {
       return await this.service.getRecordingByISRC(uri.split(":")[2]);
     }
     if (testBungalowUri(/upc:(.*)/, uri)) {
