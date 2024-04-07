@@ -1,4 +1,3 @@
-var assign = require('object-assign');
 var fs = require('fs');
 var os = require('os');
 var request = require('request');
@@ -22,7 +21,7 @@ class LastFMService {
             request({
                 method,
                 url: 'http://ws.audioscrobbler.com/2.0/',
-                query: assign({
+                query: Object.assign({
                     api_key: this.apikeys.api_key,
                     format: 'json',
                     method: method2

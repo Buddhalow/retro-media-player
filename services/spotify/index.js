@@ -4,11 +4,9 @@ var os = require('os');
 var md5 = require('md5');
 var request = require('request');
 var express = require('express');
-var assign = require('object-assign');
 var searchEngine = require('../google');
 var Promise = require("es6-promise").Promise;
 var cookieParser = require('cookie-parser');
-var queryString = require('query-string');
 const Cache = require('../cache');
 var searchEngine = searchEngine.service;
 let cache_file = os.homedir() + '/.buddhalow/cache'
@@ -479,7 +477,7 @@ class SpotifyService {
                 obj.name = obj.id;
               }
               if ('track' in obj) {
-                obj = assign(obj, obj.track);
+                obj = Object.assign(obj, obj.track);
               }
               if ('artists' in obj) {
                 try {

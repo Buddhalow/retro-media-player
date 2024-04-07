@@ -1,7 +1,6 @@
 var os = require('os');
 var fs = require('fs');
 var md5 = require('md5');
-var tmp = require('tmp');
 var path = require('path');
 
 function getFileName(uri) {

@@ -22,6 +22,7 @@ app.commandLine.appendSwitch('ignore-certificate-errors', 'true');
     win = new BrowserWindow({
         width: 1920,
         height: 1080,
+        transparent: true,
         webPreferences: {
             nodeIntegration: false
         },
@@ -29,6 +30,7 @@ app.commandLine.appendSwitch('ignore-certificate-errors', 'true');
     })
 
     // and load the index.html of the app.
+    win.loadURL('http://localhost:2858')
     win.loadURL('http://localhost:2858')
       console.log("A");
 
@@ -63,9 +65,8 @@ app.commandLine.appendSwitch('ignore-certificate-errors', 'true');
         let server = http.createServer(srv).listen(2858);
         server.timeout = 5000
     }
-    */
+  */
   }
-
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.

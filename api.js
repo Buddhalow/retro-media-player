@@ -1,32 +1,23 @@
 var path = require('path');
 var fs = require('fs');
-var async = require('async');
-var less = require('less');
 var request = require('request');
-var url = require('url');
 var cookieSession = require('cookie-session');
 var cookieParser = require('cookie-parser');
-var utils = require('./utils');
 var express =require('express');
 var app = express();
 var ogs = require('open-graph-scraper');
-var xml2js = require('xml2js');
 
 var AppFinder = require('./appfinder');
-var appFinder = new AppFinder();
-var os = require('os')
-var spotify_api_key_file = os.homedir() + '/.bungalow/spotify.key.json';
-var spotify_cache_file = os.homedir() + '/.bungalow/spotify.cache.json';
-var spotify_sessions_file = os.homedir() + '/.bungalow/spotify.sessions.json';
-var google_api_key_file = os.homedir() + '/.bungalow/google.key.json';
+var appFinder = new AppFinder(); 
 
-var googleApiKeyFile = os.homedir() + '/.bungalow/google.key.json';
-
-let credentialsFile = os.homedir() + '/.bungalow/credentials.json'
-
-let credentials = JSON.parse(fs.readFileSync(credentialsFile))
-
-var temp_dir = os.homedir() + '/.bungalow';
+let credentials = {
+  spotify: {
+    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
+    SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
+    SPOTIFY_REDIRECT_URI: process.env.SPOTIFY_REDIRECT_URI
+  },
+  lastfm: {}
+}
 
 var app = express();
 
@@ -108,42 +99,6 @@ module.exports = function (server) {
     });
     return (apps);
   }
-
-  app.get('/xspf', function (req, res) {
-      var url = req.query.url;
-      request(url, function (err, response, body) {
-          if (err) {
-              res.status(500).json(err).send();
-              return;
-          }
-          xml2js.parseString(body, function (error, result) {
-              if (error) {
-                  res.status(500).json(error).send();
-                  return;
-              }
-              res.json({
-                  id: '',
-                  name: '',
-                  objects: result.playlist.trackList[0].track.map(function (track) {
-                      return {
-                          id: 'music:artist:' + encodeURIComponent(track.creator) + ':release:' + encodeURIComponent(track.release) + ':track:' + encodeURIComponent(track.title),
-                          name: track.title,
-                          artists: [{
-                              name: track.creator,
-                              uri: 'music:artist:' + track.creator
-                          }],
-                          release: {
-                              id: '',
-                              name: track.album,
-                              uri: 'music:artist:' + track.creator + ':release:' + track.release
-                          },
-                          uri: 'music:artist:' + encodeURIComponent(track.creator) + ':release:' + encodeURIComponent(track.release) + ':track:' + encodeURIComponent(track.title)
-                      }
-                  })
-              });
-          })
-      })
-  })
 
   app.get('/service', function (req, res) {
     res.json({
