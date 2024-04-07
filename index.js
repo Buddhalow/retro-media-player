@@ -1,12 +1,9 @@
 var express = require('express');
-var execPath = process.env.PWD;
 var fs = require('fs');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
-var os = require('os');
 var apiFactory = require('./api');
 var app = express();
-var appFinder = require('./appfinder')
 var bodyParser = require('body-parser');
 
 app.use(bodyParser());
@@ -46,7 +43,9 @@ app.get('/callback/:service', function (req, res) {
   res.write(index);
   res.end();
 });
+
 app.use(favicon(path.join(__dirname, 'client', 'favicon.ico')))
+
 app.get('/*', function (req, res) {
   var index = fs.readFileSync(__dirname + '/client/index.html', 'utf8');
   res.write(index);
@@ -55,14 +54,7 @@ app.get('/*', function (req, res) {
 
 app.get('/', function (req, res) {
   try {
-    var protocol = req.connection.encrypted ? 'https' : 'http';
-    if (req.host.indexOf('romnia-drsounds.c9users.io') !== -1) {
-        protocol = 'https';
-    }
     var index = fs.readFileSync(__dirname + '/client/index.html', 'utf8');
-
-    index = index.replace('https://roamnia-drsounds.c9users.io',  protocol + '://' + req.host + ':' + (process.env.PORT || 9261) + '');
-    console.log(index);
     res.write(index);
     res.end();
   } catch (e) {
@@ -70,7 +62,6 @@ app.get('/', function (req, res) {
   }
 });
 module.exports = app;
-console.log("RUNNING")
 
 const server = http.createServer(app)
 

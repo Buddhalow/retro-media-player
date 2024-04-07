@@ -1,16 +1,11 @@
 var path = require('path');
 var fs = require('fs');
-var async = require('async');
-var less = require('less');
 var request = require('request');
-var url = require('url');
 var cookieSession = require('cookie-session');
 var cookieParser = require('cookie-parser');
-var utils = require('./utils');
 var express =require('express');
 var app = express();
 var ogs = require('open-graph-scraper');
-var xml2js = require('xml2js');
 
 var AppFinder = require('./appfinder');
 var appFinder = new AppFinder(); 
@@ -23,8 +18,6 @@ let credentials = {
   },
   lastfm: {}
 }
-
-var temp_dir = os.homedir() + '/.bungalow';
 
 var app = express();
 
@@ -106,42 +99,6 @@ module.exports = function (server) {
     });
     return (apps);
   }
-
-  app.get('/xspf', function (req, res) {
-      var url = req.query.url;
-      request(url, function (err, response, body) {
-          if (err) {
-              res.status(500).json(err).send();
-              return;
-          }
-          xml2js.parseString(body, function (error, result) {
-              if (error) {
-                  res.status(500).json(error).send();
-                  return;
-              }
-              res.json({
-                  id: '',
-                  name: '',
-                  objects: result.playlist.trackList[0].track.map(function (track) {
-                      return {
-                          id: 'music:artist:' + encodeURIComponent(track.creator) + ':release:' + encodeURIComponent(track.release) + ':track:' + encodeURIComponent(track.title),
-                          name: track.title,
-                          artists: [{
-                              name: track.creator,
-                              uri: 'music:artist:' + track.creator
-                          }],
-                          release: {
-                              id: '',
-                              name: track.album,
-                              uri: 'music:artist:' + track.creator + ':release:' + track.release
-                          },
-                          uri: 'music:artist:' + encodeURIComponent(track.creator) + ':release:' + encodeURIComponent(track.release) + ':track:' + encodeURIComponent(track.title)
-                      }
-                  })
-              });
-          })
-      })
-  })
 
   app.get('/service', function (req, res) {
     res.json({
