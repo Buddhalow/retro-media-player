@@ -40,7 +40,7 @@ import SPContextMenuElement from "/js/controls/contextmenu.js";
                 btn.innerHTML = _e('Log in');
                 btn.setAttribute('data-service', row.id);
                 btn.addEventListener('click', (e) => {
-                    document.querySelector('sp-chrome').login(row.id);
+                    window.services[row.id].login();
                 })
                 td.appendChild(btn);
             } else if (columnId === 'new') {
@@ -211,7 +211,6 @@ import SPContextMenuElement from "/js/controls/contextmenu.js";
                         label: _('Share to'),
                         onClick(e) {
                             console.log(e);
-                            debugger;
                         },
                         menuItems: [
                             {

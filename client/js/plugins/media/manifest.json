@@ -1,0 +1,69 @@
+{
+    "id": "media",
+    "name": "Media",
+    "vendor": "se.buddhaflow.player.media.retro.plugins.music",
+    "version": "0.0.1",
+    "type": "plugin",
+    "views": {
+        "artist": {
+            "regexp": "^media:artist:([a-zA-Z0-9]+)$"
+        },
+        "album": {
+            "regexp": "^media:album:(.*)$"
+        },
+        "year": {
+            "regexp": "^media:year:([0-9]+)$"
+        },
+        "playlists": {
+            "regexp": "^media:library:playlists$"
+        },
+        "playlist": {
+            "regexp": "^media:(history|(user:(.*):)?(playlist:(.*))|(library)|(artist:([a-zA-Z0-9]+):top:([0-9]+)))$"
+        },
+        "show": {
+            "regexp": "^media:show:(.*)$"
+        },
+        "series": {
+            "regexp": "^media:series:(.*)$"
+        },
+        "toplist": {
+            "regexp": "^media:internal:toplist$"
+        },
+        "publisher": {
+            "regexp": "^media:publisher:(.*)$"
+        },
+        "episode": {
+            "regexp": "^media:episode:(.*)$"
+        },
+        "chart": {
+            "regexp": "^media:chart:(.*)$"
+        },
+        "playqueue": {
+            "regexp": "^media:internal:playqueue$"
+        },
+        "category": {
+            "regexp": "^media:category:(.*)$"
+        },
+        "country": {
+            "regexp": "^media:country:(.*)$"
+        },
+        "audiobook": {
+            "regexp": "^media:audiobook:(.*)$"
+        },
+        "author": {
+            "regexp": "^media:author:([a-zA-Z0-9]+)$"
+        },
+        "search_new": {
+            "regexp": "^media:label:([a-zA-Z0-9\\ ]+)$"
+        },
+        "meditation": {
+            "regexp": "^media:meditation:(.*)$"
+        },
+        "search": {
+            "regexp": "^^media:search:(.*)$"
+        },
+        "user": {
+            "regexp": "^media:user:(.*)$"
+        }
+    }
+}

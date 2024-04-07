@@ -31,7 +31,7 @@
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script>
       window.onSpotifyWebPlaybackSDKReady = () => {
-        let session = JSON.parse(localStorage.getItem('spotify.session'));
+        let session = JSON.parse(localStorage.getItem('spotify:session'));
         if (session instanceof Object) {
           const token = session.access_token;
         

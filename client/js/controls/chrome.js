@@ -30,7 +30,7 @@ export default class SPChromeElement extends HTMLElement {
     }
     loadTheme() {
         let theme = JSON.parse(localStorage.getItem('theme')    );
-        if (theme != null) {
+        if (theme instanceof Object) {
             return theme;
         }
         return {

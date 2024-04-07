@@ -84,8 +84,24 @@ module.exports = function (server) {
     });
   })
 
-  function getServices() {
+  function getBackendServices() {
       var dirs = fs.readdirSync(__dirname + path.sep + 'services');
+    var apps = []
+    dirs.forEach(function (appId) {
+      console.log(appId);
+      var manifest = JSON.parse(fs.readFileSync(__dirname + path.sep + 'services' + path.sep + appId + path.sep + 'package.json'));
+      try {
+      if ('bungalow' in manifest)
+        apps.push(manifest.bungalow);
+      } catch (e) {
+        console.log(e.stack);
+      }
+    });
+    return (apps);
+  }
+
+  function getFrontendServices() {
+    var dirs = fs.readdirSync(__dirname + path.sep + 'client' + path.sep + 'js' + path.sep + 'services');
     var apps = []
     dirs.forEach(function (appId) {
       console.log(appId);
@@ -102,11 +118,11 @@ module.exports = function (server) {
 
   app.get('/service', function (req, res) {
     res.json({
-        objects: getServices()
+        objects: getFrontendServices()
     })
   });
 
-  var services = getServices();
+  var services = getBackendServices();
 
   // Load Services
   services.map(function (serviceInfo) {

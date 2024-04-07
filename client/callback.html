@@ -1,56 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  
-</head>
-<body>
-  <script type='text/javascript'>//<![CDATA[ 
-    var target = window.self === window.top ? window.opener : window.parent;
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //<![CDATA[
+      var target = window.self === window.top ? window.opener : window.parent;
 
-    
-        var token = window.location.href.split('&')[0].split('=')[1];
-        service = localStorage.getItem('logging_into')
-        debugger
-        if (!service) {
-          var pathname = window.location.pathname
-          var parts = pathname.split('/')
-          var service = pathname[pathname.length - 1]
-          service = pathname[pathname.length - 1]
-          
-          
+      const getToken = async (code) => {
+        // stored in the previous step
+        let clientId = localStorage.getItem("spotify:clientId");
+        let redirectUri = localStorage.getItem("spotify:redirectUri");
+        let codeVerifier = localStorage.getItem("spotify:codeVerifier");
+        const url = "https://accounts.spotify.com/api/token";
+
+        const payload = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            client_id: clientId,
+            grant_type: "authorization_code",
+            code,
+            redirect_uri: redirectUri,
+            code_verifier: codeVerifier,
+          }),
+        };
+
+        const body = await fetch(url, payload);
+        const response = await body.json();
+        if (response.error) {
+          throw new Error(response.error) 
         }
-        // target.postMessage(token, 'http://example.com/'); // v0.7.0 and below
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function () {
-          if (xmlHttp.readyState == 4) {
-            if (xmlHttp.status == 200) {
-              console.log(xmlHttp.responseText);
-              localStorage.setItem(service + '.session', xmlHttp.responseText);
-              console.log(xmlHttp.responseText);
-              localStorage.removeItem('logging_into')
-              window.addEventListener('message', (e) => {
-                debugger
-                window.close();
-              })
-              let session = JSON.stringify(xmlHttp.responseText);
-              window.parent.postMessage({
-                session,
-                action: service + '.session'
-              }, '*')
-            } else {
-              alert(xmlHttp.status + ' ' + xmlHttp.responseText);
-            }
-          }
-        } 
-        xmlHttp.open('GET', window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/api/' + localStorage.getItem('logging_into') + '/authenticate?code=' + token, true);
-        xmlHttp.send(null);
+        localStorage.setItem("spotify:session", JSON.stringify(response));
+        
+        debugger
+      };
 
-    
-
-
-  </script>
-</body> 
+      window.addEventListener('load', () => {
+        const code = new URLSearchParams(window.location.search).get('code')
+        getToken(code).then(() => {
+          window.close();
+        })
+      })
+  
+    </script>
+  </body>
 </html>
