@@ -16,8 +16,8 @@ export default class SPPlayqueueViewElement extends SPViewElement {
         }
 
     }
-    acceptsUri(uri) {
-        return testBungalowUri(/internal:playqeueue$/, uri);
+    acceptsUri(uri) { 
+      return testBungalowUri(/internal:playqeueue$/, uri);
     }
     navigate() {
 

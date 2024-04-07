@@ -75,7 +75,7 @@ export function getServiceFromPage() {
 
 }
 
-
 export function testBungalowUri(regexp, uri) {
-  return new RegExp("^bungalow:@([a-zA-Z0-9]+)@([a-zA-Z0-9\.\-]+):" + regexp).test(uri);
+  debugger
+  return new RegExp("^bungalow:@([a-zA-Z0-9]+)@([a-zA-Z0-9\.\-]+):" + regexp.toString()).test(uri);
 }

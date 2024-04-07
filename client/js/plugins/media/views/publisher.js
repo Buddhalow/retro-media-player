@@ -47,10 +47,11 @@ export default class SPPublisherViewElement extends SPViewElement {
                     this.appendChild(this.albumList);
                 }
             }
-            this.created3 = true;
+            this.created = true;
         }
     }
     acceptsUri(uri) {
+      debugger
         return testBungalowUri(/publisher:(.*)$/, uri);
     }
     navigate(uri) {
