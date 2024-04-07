@@ -41,7 +41,7 @@ export default class SPAlbumViewElement extends SPViewElement {
         }
     }
     acceptsUri(uri) {
-        return /^bungalow:album:(.*)$/.test(uri);
+        return /^bungalow:([a-zA-Z@]+):album:(.*)$/.test(uri);
     }
     navigate() {
 
@@ -53,7 +53,6 @@ export default class SPAlbumViewElement extends SPViewElement {
     async attributeChangedCallback(attrName, oldVal, newVal) {
         if (!newVal) return;
         if (attrName === 'uri' && newVal !== oldVal) {
-            newVal = 'spotify:' + newVal.split(':').splice(1).join(':');
             this.state = {
                 object : await store.request('GET', newVal)
             };

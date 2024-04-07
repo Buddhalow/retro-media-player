@@ -90,7 +90,7 @@ export default class SPPlaylistViewElement extends SPViewElement {
     get realUri() {
         let username = this.uri.split(/:/)[2]
         let id = this.uri.split(/:/)[4]
-        return 'spotify:user:' + username + ':playlist:' + id 
+        return 'spotify:playlist:' + id 
     }
     async attributeChangedCallback(attrName, oldVal, newVal) {
         if (!newVal) return;

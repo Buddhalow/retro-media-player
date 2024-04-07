@@ -1,3 +1,5 @@
+import { getServiceFromPage } from '/js/util.js';
+
 import Store from "/js/core/store.js";
 import BrowserStorage from "/js/core/storages/browser.js";
 import SPFlowElement from "/js/controls/flow.js";
@@ -243,12 +245,15 @@ window.registerResolver = function (resolver) {
   window.resolvers.push(resolver);
 };
 
-window.services = {
-};
+window.services = [];
 
 window.registerService = function (service) {
-  window.services[service.id] = service.module.getDefaultInstance();
+  window.services.push(service.module.getDefaultInstance());
 };
+
+window.getServiceByDomain = function(domain) {
+  return window.services.find((s) => s.acceptsDomain(domain));
+}
 
 window.resolve = function (method, uri, query, headers, data) {};
 
@@ -336,63 +341,61 @@ async function loadExtensions(extensionType) {
   });
   return await Promise.all(
     extensions.map(async (extension) => {
-      let module = await import(`/js/${extensionType}s/${extension.id}/index.js`);
+      let module = await import(
+        `/js/${extensionType}s/${extension.id}/index.js`
+      );
       return {
         module,
-        ...extension
+        ...extension,
       };
     })
   );
 }
 
 const init = async () => {
-  await new Promise(async (resolve, fail) => {
-    const plugins = await loadExtensions("plugin");
-    for (let plugin of plugins) {
-      if (plugin.elements) {
-        await Promise.all(
-          Object.keys(plugin.elements).map(async (elementId) => {
-            let view = plugin.elements[elementId];
-            let z = await import(
-              `/js/plugins/${plugin.id}/elements/${elementId}.js`
-            );
-            let XElement = z.default;
-            let tagName = plugin.id + "-" + elementId;
-            customElements.define(tagName, XElement);
-          })
-        );
-      }
-      if (plugin.views) {
-        let viewIds = Object.keys(plugin.views);
-        await Promise.all(
-          viewIds.map(async (viewId) => {
-            let view = plugin.views[viewId];
-            let z = await import(
-              `/js/plugins/${plugin.id}/views/${viewId}.js`
-            );
-            let XViewElement = z.default;
-            let tagName = plugin.id + "-" + viewId + "view";
-            console.log(tagName);
-            customElements.define(tagName, XViewElement);
-            console.log(tagName, XViewElement);
-            document.addEventListener("viewstackloaded", () => {
-              window.GlobalViewStack.registeredViews.push({
-                tag: tagName,
-                hidesSideBar: view.hidesSidebar,
-                regex: new RegExp(view.regexp),
-              });
+  const plugins = await loadExtensions("plugin");
+  for (let plugin of plugins) {
+    if (plugin.elements) {
+      await Promise.all(
+        Object.keys(plugin.elements).map(async (elementId) => {
+          let view = plugin.elements[elementId];
+          let z = await import(
+            `/js/plugins/${plugin.id}/elements/${elementId}.js`
+          );
+          let XElement = z.default;
+          let tagName = plugin.id + "-" + elementId;
+          customElements.define(tagName, XElement);
+        })
+      );
+    }
+    if (plugin.views) {
+      let viewIds = Object.keys(plugin.views);
+      await Promise.all(
+        viewIds.map(async (viewId) => {
+          let view = plugin.views[viewId];
+          let z = await import(`/js/plugins/${plugin.id}/views/${viewId}.js`);
+          let XViewElement = z.default;
+          let tagName = plugin.id + "-" + viewId + "view";
+          console.log(tagName);
+          customElements.define(tagName, XViewElement);
+          console.log(tagName, XViewElement);
+          document.addEventListener("viewstackloaded", () => {
+            window.GlobalViewStack.registeredViews.push({
+              tag: tagName,
+              hidesSideBar: view.hidesSidebar,
+              regex: new RegExp(view.regexp),
             });
-          })
-        );
-      }
+          });
+        })
+      );
     }
-    const services = await loadExtensions("service");
-    for (let service of services) {
-      window.registerService(service);
-    }
-    window.services.media = window.services.spotify
-    resolve();
-  });
+  }
+  const services = await loadExtensions("service");
+  for (let service of services) {
+    window.registerService(service);
+  }
+  window.services.media = window.services.spotify;
+ 
   $("#loading").fadeOut(function () {
     document
       .querySelector(".body")
@@ -400,7 +403,7 @@ const init = async () => {
   });
 };
 
-init().then(() => { 
-  let e = new CustomEvent('mainmenuload');
+init().then(() => {
+  let e = new CustomEvent("mainmenuload");
   document.dispatchEvent(e);
-})
+});

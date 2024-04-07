@@ -6,64 +6,64 @@
     "type": "plugin",
     "views": {
         "artist": {
-            "regexp": "^media:artist:([a-zA-Z0-9]+)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):artist:([a-zA-Z0-9]+)$"
         },
         "album": {
-            "regexp": "^media:album:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):album:(.*)$"
         },
         "year": {
-            "regexp": "^media:year:([0-9]+)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):year:([0-9]+)$"
         },
         "playlists": {
-            "regexp": "^media:library:playlists$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):library:playlists$"
         },
         "playlist": {
-            "regexp": "^media:(history|(user:(.*):)?(playlist:(.*))|(library)|(artist:([a-zA-Z0-9]+):top:([0-9]+)))$"
+            "regexp": "^bungalow:@([a-zA-Z0-9@]+):history|(user:(.*):)?(playlist:(.*))|(library)|(artist:([a-zA-Z0-9]+):top:([0-9]+)))$"
         },
         "show": {
-            "regexp": "^media:show:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):show:(.*)$"
         },
         "series": {
-            "regexp": "^media:series:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):series:(.*)$"
         },
         "toplist": {
-            "regexp": "^media:internal:toplist$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):ainternal:toplist$"
         },
         "publisher": {
-            "regexp": "^media:publisher:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):apublisher:(.*)$"
         },
         "episode": {
-            "regexp": "^media:episode:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):episode:(.*)$"
         },
         "chart": {
-            "regexp": "^media:chart:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):chart:(.*)$"
         },
         "playqueue": {
-            "regexp": "^media:internal:playqueue$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):internal:playqueue$"
         },
         "category": {
-            "regexp": "^media:category:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):category:(.*)$"
         },
         "country": {
-            "regexp": "^media:country:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):country:(.*)$"
         },
         "audiobook": {
-            "regexp": "^media:audiobook:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):audiobook:(.*)$"
         },
         "author": {
-            "regexp": "^media:author:([a-zA-Z0-9]+)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):author:([a-zA-Z0-9]+)$"
         },
         "search_new": {
-            "regexp": "^media:label:([a-zA-Z0-9\\ ]+)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):label:([a-zA-Z0-9\\ ]+)$"
         },
         "meditation": {
-            "regexp": "^media:meditation:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):meditation:(.*)$"
         },
         "search": {
-            "regexp": "^^media:search:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):search:(.*)$"
         },
         "user": {
-            "regexp": "^media:user:(.*)$"
+            "regexp": "^bungalow:([a-zA-Z0-9@]+):user:(.*)$"
         }
     }
 }

@@ -1,3 +1,5 @@
+import { testBungalowUri } from '/js/util.js';
+
 import SPPlaylistListElement from '/js/plugins/media/components/playlistlist.js';
 import SPSearchHeaderElement from '/js/plugins/media/elements/searchheader.js';
 import SPPlaylistContextElement from '/js/plugins/media/elements/playlistcontext.js';
@@ -14,6 +16,7 @@ import SPAudioBookContextElement from '/js/plugins/media/elements/audiobookconte
 import SPTopListElement from '/js/plugins/media/elements/toplist.js';
 import SPMenuDataSource from '/js/controls/menudatasource.js';
 import store from '/js/plugins/media/store.js';
+
 
 customElements.define('sp-playlist', SPPlaylistElement);
 customElements.define('sp-show', SPShowElement);
@@ -34,7 +37,7 @@ document.addEventListener('hook_appfooter', (e) => {
     document.querySelector('sp-hook[data-hook-id="appfooter"]').appendChild(document.createElement('sp-trackcontrols'));
 })
 document.addEventListener('viewload', async (e) => {
-    if (/^bungalow:internal:start$/.test(e.detail.uri)) {
+    if (testBungalowUri(/internal:start$/, e.detail.uri)) {
         /* var categoriesTab = e.detail.addTab('categories', '<i class="fa fa-media"></i> Categores');
         var container = document.createElement('div');
         container.style.display = 'flex';

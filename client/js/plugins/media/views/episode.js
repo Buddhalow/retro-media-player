@@ -43,7 +43,7 @@ export default class SPEpisodeViewElement extends SPViewElement {
 
     }
     acceptsUri(uri) {
-        return /^spotify:episode:([a-zA-Z0-9]+)$/.test(uri);
+        return /^bungalow:([a-zA-Z@]+):episode:([a-zA-Z0-9]+)$/.test(uri);
     }
     activate() {
         super.activate();

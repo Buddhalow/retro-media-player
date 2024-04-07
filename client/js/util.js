@@ -7,6 +7,14 @@ export function serializeObject (obj) {
       }
     return str.join("&");
 }
+
+export function getPageIdentity() {
+  const identity = window.location.pathname.split(/\//)[0].split(/\@/)
+  return {
+    id: identity[0],
+    hostname: identity[1] || window.location.hostname
+  }
+}
   
 export function strToQuerystring (str) {
     var args = str.substring(0).split('&');
@@ -48,4 +56,26 @@ export function stringToHHMMSS (str) {
     if (minutes < 10) {strMinutes = "0"+minutes;}
     if (seconds < 10) {strSeconds = "0"+seconds;}
     return (hours > 0 ? strHours+':' : '') + strMinutes + ':' + strSeconds;
+}
+
+function parseIdentity(identity) {
+  let parts = identity.substr(1).split(/\@/); 
+  let hostname =
+    (parts?.length > 1 ? parts[1] : parts[0]) ?? window.location.hostname;
+  return {
+    id: parts[0],
+    hostname,
+  };
+}
+
+export function getServiceFromPage() {
+  let identity = parseIdentity(window.location.pathname.substr(1).split(/\//)[0]);
+  let service = window.services[identity.hostname];
+  return service;
+
+}
+
+
+function testBungalowUri(regexp) {
+  return new RegExp("^bungalow:@([a-zA-Z0-9]+)@([a-zA-Z0-9\.\-]+):" + regexp).test(uri);
 }

@@ -58,7 +58,7 @@ export default class SPAuthorViewElement extends SPViewElement {
     
     }
     acceptsUri(uri) {
-        return new RegExp(/^bungalow:artist:(.*)$/).test(uri);
+        return new RegExp(/^bungalow:([a-zA-Z@]+):author:(.*)$/).test(uri);
     }
     navigate(uri) {
             

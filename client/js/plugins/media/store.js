@@ -1,4 +1,8 @@
+import { getPageIdentity } from '/js/util.js';
 import EventEmitter from '/js/events.js';
+import { getServiceFromPage } from '/js/util.js';
+import { testBungalowUri } from '/js/util.js';
+
 
 /**
  * Data store for application
@@ -52,57 +56,73 @@ class Store extends EventEmitter {
       objects: []
     };
   }
+  
+  playTrack(track, context) {
+    this.service.playTrack({
+        context_uri: context.uri,
+        uris: [track.uri]
+    });
+  }
+  playTrackAtPosition(position, context) {
+    this.request('PUT', 'spotify:me:player:play', {}, {
+        context_uri: context.uri,
+        position: {
+            offset: position
+        }
+    });
+  }
   setState(newState) {
     this.state = Object.assign(this.state, newState);
   }
   async request(method, uri, params, data) {
+    const identity = getPageIdentity()
     if (!this.service) {
-      this.service = window.services.spotify
+      this.service = getServiceFromPage()
     }
 
-    if (/^media:library(:track)?$/.test(uri)) {
+    if (testBungalowUri(/library(:track)?$/, uri)) {
       return await this.service.getTracksInLibrary()
     }
-    if (/^media:user:(.*)$/.test(uri)) {
+    if (testBungalowUri(/user:(.*)$/, uri)) {
       return await this.service.getUser(uri.split(":")[2]);
     }
-    if (/^media:playlist:(.*)$/.test(uri)) {
+    if (testBungalowUri(/playlist:(.*)$/, uri)) {
       return await this.service.getPlaylist(uri.split(":")[2]);
     }
-    if (/^media:artist:(.*)/.test(uri)) {
+    if (testBungalowUri(/artist:(.*)/, uri)) {
       return await this.service.getArtist(uri.split(":")[2]);
     }
-    if (/^media:artist:(.*):(release|album)/.test(uri)) {
+    if (testBungalowUri(/artist:(.*):(release|album)/, uri)) {
       return await this.service.getReleasesByArtist(uri.split(":")[2]);
     }
-    if (/^media:(release|album):(.*)/.test(uri)) {
+    if (testBungalowUri(/(release|album):(.*)/, uri)) {
       return await this.service.getAlbum(uri.split(":")[2]);
     }
-    if (/^media:(release|album):(.*):track/.test(uri)) {
+    if (testBungalowUri(/(release|album):(.*):track/, uri)) {
       return await this.service.getTracksInAlbum(uri.split(":")[2]);
     }
-    if (/^media::playlist:(.*):track/.test(uri)) {
+    if (testBungalowUri(/playlist:(.*):track/, uri)) {
       return await this.service.getTracksInPlaylist(uri.split(":")[2]);
     }
-    if (/^media:track:(.*)/.test(uri)) {
+    if (testBungalowUri(/track:(.*)/, uri)) {
       return await this.service.getTrackById(uri.split(":")[2]);
     }
-    if (/^media:isrc:(.*)/.test(uri)) {
+    if ((testBungalowUri(/isrc:(.*)/, uri)) {
       return await this.service.getRecordingByISRC(uri.split(":")[2]);
     }
-    if (/^media:upc:(.*)/.test(uri)) {
+    if (testBungalowUri(/upc:(.*)/, uri)) {
       return await this.service.getReleaseByUPC(uri.split(":")[2]);
     }
-    if (/^media:isni:(.*)/.test(uri)) {
+    if (testBungalowUri(/isni:(.*)/, uri)) {
       return await this.service.getCreatorByISNI(uri.split(":"));
     }
-    if (/^media:search:(.*):track/.test(uri)) {
+    if (testBungalowUri(/search:(.*):track/, uri)) {
       return await this.service.searchFor(decodeURIComponent(uri.split(":")[2]), 'track');
     }
-    if (/^media:search:(.*):artist/.test(uri)) {
+    if (testBungalowUri(/search:(.*):artist/, uri)) {
       return await this.service.searchFor(decodeURIComponent(uri.split(":")[2]), 'artist');
     }
-    if (/^media:search:(.*):release/.test(uri)) {
+    if (testBungalowUri(/search:(.*):release/, uri)) {
       return await this.service.searchFor(decodeURIComponent(uri.split(":")[2]), 'release');
     }
   }

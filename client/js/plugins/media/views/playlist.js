@@ -1,4 +1,5 @@
 import SPViewElement from '/js/controls/view.js';
+import { testBungalowUri } from './js/util.js';
 import store from '/js/plugins/media/store.js';
 
 export default class SPPlaylistViewElement extends SPViewElement {
@@ -43,7 +44,7 @@ export default class SPPlaylistViewElement extends SPViewElement {
 
     }
     acceptsUri(uri) {
-        return /^spotify:playlist:([a-zA-Z0-9]+)$/.test(uri);
+        return testBungalowUri(/playlist:([a-zA-Z0-9]+)$/, uri);
     }
     activate() {
         super.activate();

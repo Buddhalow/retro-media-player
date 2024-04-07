@@ -1,6 +1,6 @@
 import SPViewElement from '/js/controls/view.js';
 
-export default class SPLabelViewElement extends SPViewElement {
+export class SPLabelViewElement extends SPViewElement {
     connectedCallback() {
         super.connectedCallback();
         this.classList.add('sp-view');

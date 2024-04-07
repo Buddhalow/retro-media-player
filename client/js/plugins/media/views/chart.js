@@ -46,7 +46,7 @@ export default class SPChartViewElement extends SPViewElement {
         
     }
     acceptsUri(uri) {
-        return /^spotify:chart:([a-zA-Z0-9]+)$/.test(uri);
+        return /^bungalow:([a-zA-Z@]+):chart:([a-zA-Z0-9]+)$/.test(uri);
     }
     activate() {
         super.activate();

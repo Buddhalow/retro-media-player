@@ -1,4 +1,6 @@
 import SPViewElement from '/js/controls/view.js';
+
+import { testBungalowUri } from './js/util.js';
 import store from '/js/plugins/media/store.js';
 
 export default class SPArtistViewElement extends SPViewElement {
@@ -36,7 +38,7 @@ export default class SPArtistViewElement extends SPViewElement {
 
     }
     acceptsUri(uri) {
-        return new RegExp(/^bungalow:artist:(.*)$/).test(uri);
+        return testBungalowUri(/artist:(.*)$/, uri);
     }
     navigate(uri) {
 

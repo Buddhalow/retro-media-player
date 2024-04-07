@@ -1,4 +1,5 @@
 import SPViewElement from '/js/controls/view.js';
+import { testBungalowUri } from '/js/util.js';
 import store from '/js/plugins/media/store.js';
 
 export default class SPSeriesViewElement extends SPViewElement {
@@ -41,7 +42,7 @@ export default class SPSeriesViewElement extends SPViewElement {
     }
   }
   acceptsUri(uri) {
-    return /^bungalow:album:(.*)$/.test(uri);
+    return testBungalowUri(uri, /series:(.*)/g);
   }
   navigate() {
 

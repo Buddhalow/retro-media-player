@@ -1,4 +1,5 @@
 import SPViewElement from '/js/controls/view.js';
+import { testBungalowUri } from './js/util.js';
 import store from '/js/plugins/media/store.js';
 
 export default class SPPlayqueueViewElement extends SPViewElement {
@@ -16,7 +17,7 @@ export default class SPPlayqueueViewElement extends SPViewElement {
 
     }
     acceptsUri(uri) {
-        return /^bungalow:internal:playqeueue$/.test(uri);
+        return testBungalowUri(/internal:playqeueue$/, uri);
     }
     navigate() {
 

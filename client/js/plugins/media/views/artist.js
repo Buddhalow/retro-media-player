@@ -61,7 +61,7 @@ export default class SPArtistViewElement extends SPViewElement {
         }
     }
     acceptsUri(uri) {
-        return new RegExp(/^bungalow:artist:(.*)$/).test(uri);
+        return new RegExp(/^bungalow:([a-zA-Z@]+):artist:(.*)$/).test(uri);
     }
     navigate(uri) {
 

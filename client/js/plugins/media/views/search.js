@@ -30,7 +30,7 @@ export default class SPSearchViewElement extends SPViewElement {
         } else {
             uri = "media:search"
         }
-        let query = uri .substr('media:search:'.length);
+        let query = uri.split(/:/g).slice(3);
         window.GlobalTabBar.setState({
             id: query,
             uri: uri,
@@ -47,7 +47,7 @@ export default class SPSearchViewElement extends SPViewElement {
         })
     }
     acceptsUri(uri) {
-        return /^spotify:search:(.*)$/.test(uri);
+        return testBungalowUri(/search:(.*)$/, uri);
     }
     navigate() {
 

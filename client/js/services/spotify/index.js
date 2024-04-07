@@ -50,6 +50,10 @@ export class SpotifyService {
     return /^spotify:(.*)$/.test(uri);
   }
 
+  acceptsDomain(domain) {
+    return domain === "spotify.com"
+  }
+
   initPlayer() {
     // Error handling
     let player = this.player;

@@ -39,7 +39,7 @@ export default class SPPlaylistsViewElement extends SPViewElement {
 
     }
     acceptsUri(uri) {
-        return /^spotify:user:@$/.test(uri);
+        return /^bungalow:([a-zA-Z@]+):user:@$/.test(uri);
     }
     activate() {
         super.activate();

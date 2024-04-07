@@ -43,7 +43,7 @@ export default class SPCategoryViewElement extends SPViewElement {
         }
     }
     acceptsUri(uri) {
-        return new RegExp(/^bungalow:category:(.*)$/g).test(uri);
+        return new RegExp(/^bungalow:([a-zA-Z@]+):category:(.*)$/g).test(uri);
     }
     navigate(uri) {
             

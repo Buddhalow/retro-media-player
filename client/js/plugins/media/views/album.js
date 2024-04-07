@@ -40,7 +40,7 @@ export default class SPAlbumViewElement extends SPViewElement {
         }
     }
     acceptsUri(uri) {
-        return /^bungalow:album:(.*)$/.test(uri);
+        return /^bungalow:([a-zA-Z@]+):album:(.*)$/.test(uri);
     }
     navigate() {
 

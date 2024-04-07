@@ -1,4 +1,6 @@
 import SPViewElement from '/js/controls/view.js';
+
+import { testBungalowUri } from './js/util.js';
 import store from '/js/plugins/media/store.js';
 
 export default class SPUserViewElement extends SPViewElement {
@@ -50,7 +52,7 @@ export default class SPUserViewElement extends SPViewElement {
         }
     }
     acceptsUri(uri) {
-        return new RegExp(/^spotify:user:(.*)$/).test(uri);
+        return testBungalowUri(/user:(.*)$/, uri);
     }
     navigate(uri) {
 
