@@ -52,39 +52,58 @@ class Store extends EventEmitter {
       objects: []
     };
   }
-  uriRequest(method, uri, params, data) {
-    if (/^music:user:(.*)$/.test(uri)) {
-      return this.service.getUser(uri.split(":")[2]);
+  setState(newState) {
+    this.state = Object.assign(this.state, newState);
+  }
+  async request(method, uri, params, data) {
+    if (!this.service) {
+      this.service = window.services.spotify
     }
-    if (/^music:playlist:(.*)$/.test(uri)) {
-      return this.service.getPlaylist(uri.split(":")[2]);
+
+    if (/^media:library(:track)?$/.test(uri)) {
+      return await this.service.getTracksInLibrary()
     }
-    if (/^music:artist:(.*)/.test(uri)) {
-      return this.service.getArtist(uri.split(":")[2]);
+    if (/^media:user:(.*)$/.test(uri)) {
+      return await this.service.getUser(uri.split(":")[2]);
     }
-    if (/^music:artist:(.*):(release|album)/.test(uri)) {
-      return this.service.getReleasesByArtist(uri.split(":")[2]);
+    if (/^media:playlist:(.*)$/.test(uri)) {
+      return await this.service.getPlaylist(uri.split(":")[2]);
     }
-    if (/^music:(release|album):(.*)/.test(uri)) {
-      return this.service.getAlbum(uri.split(":")[2]);
+    if (/^media:artist:(.*)/.test(uri)) {
+      return await this.service.getArtist(uri.split(":")[2]);
     }
-    if (/^music:(release|album):(.*):track/.test(uri)) {
-      return this.service.getTracksInAlbum(uri.split(":")[2]);
+    if (/^media:artist:(.*):(release|album)/.test(uri)) {
+      return await this.service.getReleasesByArtist(uri.split(":")[2]);
     }
-    if (/^music::playlist:(.*):track/.test(uri)) {
-      return this.service.getTracksInPlaylist(uri.split(":")[2],);
+    if (/^media:(release|album):(.*)/.test(uri)) {
+      return await this.service.getAlbum(uri.split(":")[2]);
     }
-    if (/^music:track:(.*)/.test(uri)) {
-      return this.service.getTrackById(uri.split(":"));
+    if (/^media:(release|album):(.*):track/.test(uri)) {
+      return await this.service.getTracksInAlbum(uri.split(":")[2]);
     }
-    if (/^music:isrc:(.*)/.test(uri)) {
-      return this.service.getRecordingByISRC(uri.split(":"));
+    if (/^media::playlist:(.*):track/.test(uri)) {
+      return await this.service.getTracksInPlaylist(uri.split(":")[2]);
     }
-    if (/^music:upc:(.*)/.test(uri)) {
-      return this.service.getReleaseByUPC(uri.split(":"));
+    if (/^media:track:(.*)/.test(uri)) {
+      return await this.service.getTrackById(uri.split(":")[2]);
     }
-    if (/^music:isni:(.*)/.test(uri)) {
-      return this.service.getCreatorByISNI(uri.split(":"));
+    if (/^media:isrc:(.*)/.test(uri)) {
+      return await this.service.getRecordingByISRC(uri.split(":")[2]);
+    }
+    if (/^media:upc:(.*)/.test(uri)) {
+      return await this.service.getReleaseByUPC(uri.split(":")[2]);
+    }
+    if (/^media:isni:(.*)/.test(uri)) {
+      return await this.service.getCreatorByISNI(uri.split(":"));
+    }
+    if (/^media:search:(.*):track/.test(uri)) {
+      return await this.service.searchFor(decodeURIComponent(uri.split(":")[2]), 'track');
+    }
+    if (/^media:search:(.*):artist/.test(uri)) {
+      return await this.service.searchFor(decodeURIComponent(uri.split(":")[2]), 'artist');
+    }
+    if (/^media:search:(.*):release/.test(uri)) {
+      return await this.service.searchFor(decodeURIComponent(uri.split(":")[2]), 'release');
     }
   }
  

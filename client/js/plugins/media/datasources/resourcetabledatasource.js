@@ -33,8 +33,11 @@ export default class SPResourceTableDataSource extends SPDataSource {
   get numberOfColumnHeaders() {
     return this.fields.length;
   }
-
   async request(method, uri, options, data) {
+    return window.services.media.request(method, uri, options, data);
+  }
+  async oldRequest(method, uri, options, data) {
+    
     var url = '/api/'
     if (!options) {
       options = {}

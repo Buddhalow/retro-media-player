@@ -1364,7 +1364,7 @@ class SpotifyService {
       }).then(result => {
         result.type = 'playlist'
         /*Promise.all(result.objects.map(function (playlist) {
-                    return self.getTracksInPlaylist(playlist.owner.id, playlist.id);
+                    return self.getTracksInPlaylist(playlist.id);
                 })).then(function (tracklists) {
                     try {
                         for (var i = 0; i < tracklists.length; i++) {
@@ -1410,7 +1410,7 @@ class SpotifyService {
         })
         delete result['genres']
         /*Promise.all(result.objects.map(function (playlist) {
-                    return self.getTracksInPlaylist(playlist.owner.id, playlist.id);
+                    return self.getTracksInPlaylist(playlist.id);
                 })).then(function (tracklists) {
                     try {
                         for (var i = 0; i < tracklists.length; i++) {
@@ -3500,7 +3500,7 @@ class SpotifyService {
         result.images = [{
           url: ''
         }]
-        result.uri = 'spotify:search:' + req.params.query
+        result.uri = 'media:search:' + req.params.query
         res.json(result);
       }, err => {
         res.status(err).send({error: err});

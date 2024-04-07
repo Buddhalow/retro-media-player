@@ -349,7 +349,6 @@ const init = async () => {
   await new Promise(async (resolve, fail) => {
     const plugins = await loadExtensions("plugin");
     for (let plugin of plugins) {
-      debugger
       if (plugin.elements) {
         await Promise.all(
           Object.keys(plugin.elements).map(async (elementId) => {
@@ -403,6 +402,5 @@ const init = async () => {
 
 init().then(() => { 
   let e = new CustomEvent('mainmenuload');
-  debugger
-  document.querySelector('sp-sidebarmenu').dispatchEvent(e);
+  document.dispatchEvent(e);
 })

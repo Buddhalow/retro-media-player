@@ -37,8 +37,6 @@
           throw new Error(response.error) 
         }
         localStorage.setItem("spotify:session", JSON.stringify(response));
-        
-        debugger
       };
 
       window.addEventListener('load', () => {

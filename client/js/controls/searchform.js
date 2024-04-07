@@ -10,7 +10,7 @@
                 event.preventDefault();
                 let query = this.form.searchTextBox.value;
                  if (query.indexOf(':') == -1) {
-                    query = 'spotify:search:' + encodeURIComponent(query);
+                    query = 'media:search:' + encodeURIComponent(query);
                 }
                 GlobalViewStack.navigate(query);
                 return false;

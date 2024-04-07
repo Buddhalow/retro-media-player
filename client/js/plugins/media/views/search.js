@@ -28,9 +28,9 @@ export default class SPSearchViewElement extends SPViewElement {
         if (this.hasAttribute('uri')) {
             uri = this.getAttribute('uri');
         } else {
-            uri = "spotify:search"
+            uri = "media:search"
         }
-        let query = uri .substr('spotify:search:'.length);
+        let query = uri .substr('media:search:'.length);
         window.GlobalTabBar.setState({
             id: query,
             uri: uri,
@@ -42,7 +42,7 @@ export default class SPSearchViewElement extends SPViewElement {
             }],
             object: {
                 name: query,
-                uri: 'spotify:search:' + query
+                uri: 'media:search:' + query
             }
         })
     }
@@ -57,9 +57,9 @@ export default class SPSearchViewElement extends SPViewElement {
         if (attrName === 'uri') {
             let query = newVal.split(/:/)[2];
             this.trackcontext.query = query;
-            this.trackcontext.setAttribute('uri', 'spotify:search?q=' + query + '&type=track');
-            let artists = await store.request('GET', 'spotify:search?q=' + query + '&type=artist');
-            let albums = await store.request('GET', 'spotify:search?q=' + query + '&type=album');
+            this.trackcontext.setAttribute('uri', 'media:search:' + encodeURIComponent(query) + ':track');
+            let artists = await store.request('GET', 'media:search:' + encodeURIComponent(query) + ':artist');
+            let albums = await store.request('GET', 'media:search:' + encodeURIComponent(query) + ':release');
             this.header.innerHTML = `
                 <div class="container">
                     <div class="row">

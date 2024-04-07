@@ -61,7 +61,7 @@ export default class SPPlaylistViewElement extends SPViewElement {
         this.header.tabBar.setState({
             object: this.state.object,
             objects: [{
-                name: this.state.object.name,
+                name: this.state.object?.name,
                 id: 'overview'
             }]
         });

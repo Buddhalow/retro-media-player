@@ -16,7 +16,7 @@ import SPContextMenuElement from "/js/controls/contextmenu.js";
             let columnId = this.table.columnheaders[columnIndex];
 
             let obj = row[columnId];
-            if (columnId === 'enabled') {
+            if (columnId === 'service-enabled') {
 
                 var button = document.createElement('sp-button');
                 button.dataset['service'] = row.id;
@@ -34,7 +34,25 @@ import SPContextMenuElement from "/js/controls/contextmenu.js";
                     location.reload();
                 })
                 td.appendChild(button);
-            } else if (columnId === 'login') {
+            } else if (columnId === 'plugin-enabled') {
+
+                var button = document.createElement('sp-button');
+                button.dataset['plugin'] = row.id;
+                button.innerHTML = 'Enable';
+                if (localStorage.getItem('plugin.' + row.id + '.enabled') == 'true') {
+                    button.innerHTML = 'Disable';
+                }
+                button.addEventListener('click', (e) => {
+                    if (localStorage.getItem('plugin.' + e.target.dataset.plugin + '.enabled') == 'true') {
+                        localStorage.setItem('plugin.' + e.target.dataset.plugin + '.enabled', 'false');
+                    } else {
+                        localStorage.setItem('plugin.' + e.target.dataset.plugin + '.enabled', 'true')
+                    }
+                    alert('Restarting');
+                    location.reload();
+                })
+                td.appendChild(button);
+            } else  if (columnId === 'login') {
                 let btn = document.createElement('sp-button');
                 btn.classList.add('btn');
                 btn.innerHTML = _e('Log in');

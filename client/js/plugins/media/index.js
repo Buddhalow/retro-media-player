@@ -13,7 +13,7 @@ import SPAudioBookElement from '/js/plugins/media/elements/audiobook.js';
 import SPAudioBookContextElement from '/js/plugins/media/elements/audiobookcontext.js';
 import SPTopListElement from '/js/plugins/media/elements/toplist.js';
 import SPMenuDataSource from '/js/controls/menudatasource.js';
-import store from '/js/plugins/media/player.js';
+import store from '/js/plugins/media/store.js';
 
 customElements.define('sp-playlist', SPPlaylistElement);
 customElements.define('sp-show', SPShowElement);
@@ -56,6 +56,7 @@ document.addEventListener('viewload', async (e) => {
 
     }
 })
+
 document.addEventListener('mainmenuload', (e) => {
     let menu = document.createElement('sp-menu');
     let sidebarmenu = document.querySelector('sp-sidebarmenu');

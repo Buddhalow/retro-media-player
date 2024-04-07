@@ -102,6 +102,20 @@ export class SpotifyService {
     this.player = player;
   }
 
+  async getTracksInLibrary() {
+    var self = this;
+    return new Promise(function (resolve, fail) {
+      self._request("GET", "/me/tracks").then(
+        function (result) {
+          resolve(result);
+        },
+        function (err) {
+          fail(err);
+        }
+      );
+    });
+  }
+
   request(method, uri, params, data) {
     if (/^spotify:user:(.*)$/.test(uri)) {
       return this.getUser(uri.split(":")[2]);
@@ -121,11 +135,11 @@ export class SpotifyService {
     if (/^spotify:(release|album):(.*):track/.test(uri)) {
       return this.getTracksInAlbum(uri.split(":")[2]);
     }
-    if (/^spotify:user:(.*):playlist:(.*):track/.test(uri)) {
-      return this.getTracksInPlaylist(uri.split(":")[2], uri.split(":")[4]);
+    if (/^spotify:playlist:(.*):track/.test(uri)) {
+      return this.getTracksInPlaylist(uri.split(":")[2]);
     }
-    if (/^spotify:user:(.*):playlist:(.*):track/.test(uri)) {
-      return this.getTracksInPlaylist(uri.split(":")[2], uri.split(":")[4]);
+    if (/^spotify:playlist:(.*):track/.test(uri)) {
+      return this.getTracksInPlaylist(uri.split(":")[2]);
     }
     if (/^spotify:track:(.*)/.test(uri)) {
       return this.getTrackById(uri.split(":"));
@@ -176,6 +190,9 @@ export class SpotifyService {
 
   searchFor(q, type, offset, limit) {
     var self = this;
+    if (type == 'release') {
+      type = 'album'
+    }
     return new Promise(function (resolve, fail) {
       self
         ._request("GET", "/search", {
@@ -226,10 +243,8 @@ export class SpotifyService {
           headers["Content-type"] = "application/x-www-form-urlencoded";
         }
         var url = "https://api.spotify.com/v1" + path;
-        fetch(url, {
-          credentials: "include",
-          method: method,
-
+        fetch(url, { 
+          method: method, 
           headers: headers,
           qs: payload,
           body: JSON.stringify(postData),
@@ -342,7 +357,7 @@ export class SpotifyService {
                 obj.name = obj.id;
               }
               if ("track" in obj) {
-                obj = assign(obj, obj.track);
+                obj = Object.assign(obj, obj.track);
               }
               if ("artists" in obj) {
                 obj.artists = obj.artists.map(formatObject);
@@ -525,17 +540,17 @@ export class SpotifyService {
   /**
    * Returns user by id
    **/
-  getPlaylist(username, identifier) {
+  getPlaylist(identifier) {
     var self = this;
     return new Promise(function (resolve, fail) {
       self
-        ._request("GET", "/users/" + username + "/playlists/" + identifier)
+        ._request("GET", "/playlists/" + identifier)
         .then(
           function (result) {
             self
               ._request(
                 "GET",
-                "/users/" + username + "/playlists/" + identifier + "/tracks"
+                "/playlists/" + identifier + "/tracks"
               )
               .then(function (result2) {
                 result.tracks = result2;
@@ -600,7 +615,7 @@ export class SpotifyService {
           id: "qi",
           service: service,
         };
-        var url = "/users/spotify/playlists/37i9dQZF1Cz2XVi756juiX"; // '/users/drsounds/playlists/2KVJSjXlaz1PFl6sbOC5AU';
+        var url = "/playlists/37i9dQZF1Cz2XVi756juiX"; // '/users/drsounds/playlists/2KVJSjXlaz1PFl6sbOC5AU';
         self._request("GET", url).then(
           function (result) {
             try {
@@ -612,7 +627,7 @@ export class SpotifyService {
                 .then((result3) => {
                   resolve({
                     objects: result3.items.map(function (track, i) {
-                      var track = assign(track, track.track);
+                      var track = Object.assign(track, track.track);
                       track.user = track.added_by;
                       track.time = track.added_at;
                       track.position = i;
@@ -748,7 +763,7 @@ export class SpotifyService {
           function (result) {
             Promise.all(
               result.objects.map(function (playlist) {
-                return self.getTracksInPlaylist(playlist.owner.id, playlist.id);
+                return self.getTracksInPlaylist(playlist.id);
               })
             ).then(
               function (tracklists) {
@@ -1035,13 +1050,13 @@ export class SpotifyService {
   /**
    * Adds songs to a playlist
    **/
-  addTracksToPlaylist(user, playlist_id, uris, position) {
+  addTracksToPlaylist(playlist_id, uris, position) {
     var self = this;
     var promise = new Promise(function (resolve, fail) {
       self
         .request(
           "POST",
-          "/users/" + user + "/playlists/" + playlist_id + "/tracks",
+          "/playlists/" + playlist_id + "/tracks",
           {
             uris: uris,
             position: position,
@@ -1203,10 +1218,10 @@ export class SpotifyService {
     return promise;
   }
 
-  getPlaylistTracks(user, playlist_id, page, callback) {
+  getPlaylistTracks(playlist_id, page, callback) {
     var self = this;
     var promise = new Promise(function (resolve, fail) {
-      self._request("GET", "/users/" + user + "/playlists/" + playlist_id).then(
+      self._request("GET", "/playlists/" + playlist_id).then(
         function (data) {
           resolve({
             objects: data.tracks.items,
@@ -1356,7 +1371,6 @@ export class SpotifyService {
   }
 
   async reorderTracksInPlaylist(
-    username,
     identifier,
     range_start,
     range_length,
@@ -1364,7 +1378,7 @@ export class SpotifyService {
   ) {
     return await this._request(
       "PUT",
-      "/users/" + username + "/playlists/" + identifier + "/tracks",
+      "/" + username + "/playlists/" + identifier + "/tracks",
       {},
       {
         range_start: range_start,

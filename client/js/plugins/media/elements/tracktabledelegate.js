@@ -1,4 +1,4 @@
-import store from '/js/plugins/media/player.js'
+import store from '/js/plugins/media/store.js'
 
 export default class SPTrackTableDelegate {
     onRowClick(tr, row) {

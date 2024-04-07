@@ -24,7 +24,7 @@ export default class SPPluginListViewElement extends SPViewElement {
             this.classList.add('container')
             this.table = document.createElement('sp-table');
             this.table.view = this;
-            this.table.columnheaders = ['name', 'enabled'];
+            this.table.columnheaders = ['name', 'plugin-enabled'];
             this.table.designer = new SPRestTableDesigner();
             this.table.dataSource = new SPRestDataSource();
             this.table.setAttribute('showcolumnheaders', true);
