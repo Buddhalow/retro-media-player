@@ -4,29 +4,29 @@
     "type": "plugin",
     "views": {
         "config": {
-            "regexp": "^bungalow:config"
+            "regexp": "config"
         },
         "service": {
-            "regexp": "^bungalow:service"
+            "regexp": "service"
         },
         "appviewstack": {
-            "regexp": "^bungalow:app:(.*)"
+            "regexp": "app:(.*)"
         },
         "plugin": {
-            "regexp": "^bungalow:plugin"
+            "regexp": "plugin"
         },
         "start": {
-            "regexp": "^bungalow:internal:start"
+            "regexp": "internal:start"
         },
         "search": {
-            "regexp": "^bungalow:search:(.*)"
+            "regexp": "search:(.*)"
         },
         "hashtag": {
-            "regexp": "^bungalow:hashtag:(.*)"
+            "regexp": "hashtag:(.*)"
         },
         "nowplaying": {
             "hidesSidebar": true,
-            "regexp": "^bungalow:internal:nowplaying"
+            "regexp": "internal:nowplaying"
         }
     }
 }

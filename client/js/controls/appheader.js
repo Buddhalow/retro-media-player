@@ -10,8 +10,9 @@
             this.buttons = document.createElement('div');
             this.buttons.innerHTML = '<span class="btn-group"><a id="btnBack" class="btn btn-navigation fa fa-caret-left" onclick="history.back()"></a><a class="btn btn-navigation fa fa-caret-right"  id="btnForward" onclick="history.forward()"></a></span>';
             this.appendChild(this.buttons);
-            this.spacer = document.createElement('div');
-            this.spacer.style.flex = 1;
+            this.spacerLeft = document.createElement('div');
+            this.spacerLeft.style.flex = 1;
+            this.appendChild(this.spacerLeft);
             if (!this.searchForm) {
                 this.searchForm = document.createElement('sp-searchform');
                 if (localStorage.getItem("stylesheet") === 'spotify-2017') {
@@ -21,6 +22,9 @@
                 }
                 this.searchForm.style.marginRight = '5pt';
             }
+            this.spacerRight = document.createElement('div');
+            this.spacerRight.style.flex = 1;
+            this.appendChild(this.spacerRight);
             this.mediaSidebar = document.createElement('sp-mediasidebar');
             this.appendChild(this.mediaSidebar);
             this.mediaSidebar.innerHTML = `
