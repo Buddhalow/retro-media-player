@@ -4,3 +4,5 @@ mongo.key
 node_modules
 
 buddhalow-internal-services.js
+.env*.local
+.env.development

@@ -1,8 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
-var apiFactory = require('./api');
+var cookieSession = require('cookie-session'); 
 var app = express();
 var bodyParser = require('body-parser');
 
@@ -27,8 +26,6 @@ app.use(cookieSession({
 
 
 var path = require('path');
-
-app.use('/api', api.app);
 
 app.use(express.static(__dirname + '/client/'));
 
@@ -65,6 +62,6 @@ module.exports = app;
 
 const server = http.createServer(app)
 
-console.log(process.env)
+console.log("Listening to 3001")
 
-server.listen(process.env.PORT)
+server.listen(process.env.PORT || 3001)

@@ -88,7 +88,7 @@ module.exports = function (server) {
       var dirs = fs.readdirSync(__dirname + path.sep + 'services');
     var apps = []
     dirs.forEach(function (appId) {
-      console.log(appId);
+      //console.log(appId);
       var manifest = JSON.parse(fs.readFileSync(__dirname + path.sep + 'services' + path.sep + appId + path.sep + 'package.json'));
       try {
       if ('bungalow' in manifest)
@@ -110,14 +110,14 @@ module.exports = function (server) {
 
   // Load Services
   services.map(function (serviceInfo) {
-      console.log(serviceInfo.id);
-      console.log(serviceInfo);
+      //console.log(serviceInfo.id);
+      //console.log(serviceInfo);
       var ServiceClass = require(__dirname + path.sep + 'services' + path.sep + serviceInfo.id + path.sep + 'index.js');
-      console.log(ServiceClass)
+      //console.log(ServiceClass)
      if (ServiceClass) {
         let service = new ServiceClass(credentials[serviceInfo.id])
         let router = service.createServer()
-        console.log(router)
+        //console.log(router)
         if (!!router) {
           app.use('/' + serviceInfo.id, router);
         }
