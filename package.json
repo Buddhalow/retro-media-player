@@ -1,0 +1,68 @@
+{
+  "name": "buddhalow",
+  "version": "0.2.8",
+  "description": "Modular application",
+  "main": "main.js",
+  "repository": "",
+  "author": "Alexander Forselius <alexander.forselius@buddhalow.com>",
+  "scripts": {
+    "start": "node index.js",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "dependencies": {
+    "async": "~0.2.8",
+    "body-parser": "^1.17.2",
+    "connect-timeout": "^1.9.0",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.2",
+    "crawler": "^1.1.2",
+    "es6-promise": "^4.1.0",
+    "express": "~3.2.6",
+    "express-router": "0.0.1",
+    "express-session": "^1.15.3",
+    "lastfmapi": "^0.1.1",
+    "md5": "^2.3.0",
+    "open-graph-scraper": "^6.5.1",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2",
+    "serve-favicon": "^2.5.0"
+  },
+  "build": {
+    "appId": "com.buddhalow.app",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "protocols": {
+      "name": "electron-deep-linking",
+      "schemes": [
+        "spotify",
+        "bungalow",
+        "buddhalow"
+      ]
+    },
+    "mac": {
+      "category": "public.app-category.Reference"
+    },
+    "win": {
+      "target": "NSIS"
+    }
+  }
+}
