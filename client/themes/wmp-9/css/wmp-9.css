@@ -89,7 +89,8 @@ sp-trackcontrols sp-appfootersection:first-child {
   transform: translate(15rem, 1rem);
 }
 body {
-  background: transparent !important; 
+  background: transparent !important;
+  filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
 }
 sp-chrome {
   background: transparent !important;
@@ -101,7 +102,6 @@ sp-chrome {
   background-position: center;*/
   border-image-slice: 121 121 121 138; 
   border-image-width: 102px;
-  filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
 }
 
 .shell-bg {
@@ -113,7 +113,7 @@ sp-chrome {
   display: grid;
   grid-template-columns: 14.0rem 30rem auto auto 10rem;
   grid-template-rows: 5rem auto 14.5rem;
-  filter: drop-shadow(0 0 25pt rgba(0, 0, 0, 1))  hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
+  filter: drop-shadow(0 0 25pt rgba(0, 0, 0, 1))  ;
 }
 
 .shell-bg > div {
@@ -167,8 +167,8 @@ sp-chrome {
 }
 main { 
 } 
-sp-sidebar, sp-main {
-  background: url('../images/bg_dark.png');
+sp-sidebar, sp-main, sp-rightsidebar, sp-sidebar {
+  background: #002255 !important;
   background-size: 100% 100%; 
 
 }

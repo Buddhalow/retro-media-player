@@ -2,7 +2,7 @@
 --primary-color: #223388;
 --secondary-color: #94b9cf;
 --app-bg-color: #ecf2f9;
---foreground-color: hsl(calc(var(--primary-hue) + 210deg), calc(var(--primary-saturation)), 50%);
+--foreground-color: #008  ;
 --app-fg-color: rgba(0, 0, 0, .5);
 --primary-saturation: 100%;
 --primary-hue: -0deg;
@@ -11,7 +11,7 @@
 --font-size: 11px;
 } 
 body {
-  background: hsl(var(--primary-hue), var(--primary-saturation), 90%) !important;
+  background: #eef !important;
 
 }
 
@@ -131,10 +131,13 @@ sp-button:active {
   -webkit-filter: brightness(95%);
 }
 sp-table tbody tr:nth-child(odd) td, table tbody tr:nth-child(odd) td, sp-trackcontext tbody tr:nth-child(odd) td {
-  background-color: hsl(calc(var(--primary-hue) + 220deg), calc(var(--primary-saturation) - 10%), 95%);
+  background-color: rgba(0, 0, 10, .05);
+}
+sp-rightsidebar {
+  background: linear-gradient(180deg, #28f, #8df);
 }
 sp-table tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td, sp-trackcontext tbody tr:nth-child(even) td {
-  background-color: hsl(calc(var(--primary-hue) + 220deg), calc(var(--primary-saturation) - 10%), 93%);
+
 }
 a {
     color: var(--foreground-color);
@@ -165,7 +168,7 @@ table {
     background-size: 100% ;
 
     background-image: var(--splatter-bg);
-  background-color: hsl(calc(var(--primary-hue) + 220deg), calc(var(--primary-saturation) - 10%), 95%);
+  background-color: #fafaff;
 }
 sp-sidebar {
 }
@@ -175,7 +178,7 @@ background: rgb(236,235,219); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(236,235,219,1) 74%, rgba(220,210,188,1) 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  rgba(236,235,219,1) 74%,rgba(220,210,188,1) 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(to bottom,  rgba(236,235,219,1) 74%,rgba(220,210,188,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecebdb', endColorstr='#dcd2bc',GradientType=0 ); /* IE6-9 */
+filter: hue-rotate(calc(0deg - var(--primary-hue)));
 box-shadow:inset 0pt 1pt 0pt rgba(127, 127, 127, 0.2), inset 0pt 2pt 0pt rgba(255, 255, 255, 1);
 
 }

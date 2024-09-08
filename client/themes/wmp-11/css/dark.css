@@ -6,10 +6,9 @@
 --app-fg-color: rgba(0, 0, 0, .5);
 --primary-saturation: 100%;
 --primary-hue: -0deg;
---splatter-bg: url('/themes/wmp-9/images/bg_dark.png');
---font-family: "Tahoma";
---font-size: 11px;
 --image-size: 96pt;
+--splatter-bg: url('/themes/wmp-11/images/bg_dark.png');
+--font-size: 11px;
 } 
 
 sp-throbber {
@@ -21,6 +20,9 @@ sp-throbber {
   height: 100%;
   z-index: 1000;
 }
+sp-header {
+  padding: 12pt;
+}
 
 sp-throbber  * {
   position: fixed;
@@ -29,13 +31,12 @@ sp-throbber  * {
   -webkit-transform: translate(-50%, -50%);
 }
 sp-viewstack {
-  background-color: rgba(0, 0, 0, .0);
+  background-color: rgba(0, 0, 0, .2);
+}
+sp-table {
+  -webkit-font-smoothing : none;
 }
 
-
-sp-aspect {
-  display: none;
-}
 iframe {
     border: 0px;
 }
@@ -56,6 +57,15 @@ sp-header table {
   background-color: rgba(255, 255, 255, .1);
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   box-shadow:inset 0pt -2pt 3pt rgba(255, 255, 255, .5), 0pt 3pt 3pt rgba(0, 0, 0, .05);
+}
+sp-divider {
+  background-color: rgba(255, 255, 255, .2);
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  border-top: 1px solid rgba(0, 0, 0, .2);
+
+}
+sp-table tbody tr:nth-child(odd) td, sp-trackcontext tbody tr:nth-child(odd) td {
+  background-color: rgba(255, 255, 255, .028);
 }
 sp-appheader {
   border-bottom: 1px solid rgba(255, 255 , 255, .1);
@@ -90,13 +100,12 @@ sp-appheader {
 }
 sp-button {
   opacity: 0.8;
-  background-image:url('/themes/wmp-9/images/header.png');
+  background-image:url('/themes/wmp_10/images/header.png');
   text-shadow: 0px -1px 0px rgba(0, 0, 0, .5);
   box-shadow: inset 0px 0px 2px rgba(255, 255, 255, .4);
   background-color: rgba(255, 255, 255, 1);
   color: black;
   border: 1px solid #ddd;
-/*  -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));*/
   background-size: 100% 100%;
   padding:5pt;
   padding-left: 25pt;
@@ -107,7 +116,7 @@ sp-button {
 sp-button.primary {
     color: white;
 
-  background-image:  url('/themes/wmp-9/images/header.png');
+  background-image:  url('/themes/wmp_10/images/header.png');
 }
 sp-button:hover {
   opacity: 1;
@@ -117,6 +126,9 @@ sp-button:active {
   -webkit-filter: brightness(95%);
 }
 .sp-track:nth-child(2n) td {
+  background-color: rgba(0, 0, 0, .03);
+}
+sp-rightsidebar {
 }
 a {
     color: var(--foreground-color);
@@ -141,24 +153,19 @@ table {
 }
 .splatter {
     background-size: 100% ;
-  
-/*    -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));*/
-    background-color: hsl(calc(var(--primary-hue) + 230deg), calc(var(--primary-saturation) - 50%), 40%);
+  background-color: hsl(calc(var(--primary-hue) + 220deg), calc(var(--primary-saturation) - 50%), 40%);
 }
 sp-sidebar {
-  background-color: rgba(255, 255, 255, .0);
+  background-color: rgba(255, 255, 255, .1);
 }
 th {
-  color: black;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/radient-editor/#ecebdb+74,dcd2bc+100 */
 background: rgb(236,235,219); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(236,235,219,1) 74%, rgba(220,210,188,1) 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  rgba(236,235,219,1) 74%,rgba(220,210,188,1) 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(to bottom,  rgba(236,235,219,1) 74%,rgba(220,210,188,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: hue-rotate(calc(0deg - var(--primary-hue)));
-
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecebdb', endColorstr='#dcd2bc',GradientType=0 ); /* IE6-9 */
 box-shadow:inset 0pt 1pt 0pt rgba(127, 127, 127, 0.2), inset 0pt 2pt 0pt rgba(255, 255, 255, 1);
-
 
 }
 th:hover {
@@ -170,28 +177,12 @@ background: linear-gradient(to bottom,  rgba(249,250,248,1) 0%,rgba(243,242,235,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9faf8', endColorstr='#fbaa04',GradientType=0 ); /* IE6-9 */
 
 }
-th:active {
-    background: rgb(191,187,170);
-    background: -moz-linear-gradient(0deg, rgba(191,187,170,1) 74%, rgba(139,134,106,1) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(191,187,170,1) 74%, rgba(139,134,106,1) 100%);
-    background: linear-gradient(0deg, rgba(191,187,170,1) 74%, rgba(139,134,106,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#bfbbaa",endColorstr="#8b866a",GradientType=1);
-}
 sp-appheader, sp-appfooter, sp-bottomtabbar {
     padding: 5pt;
     background-size: 100% 100%;
-  background: transparent;
+    -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
+  background-image:  url('/themes/wmp_10/images/header.png');
     
-}
-sp-tabbar {
-    display: flex;
-  padding-top: 6pt;
-  box-sizing: border-box;
-  border-bottom: 1px solid rgba(0, 0, 0, .2);
-
-    background-color: rgba(255, 255, 255, .5);
-  /*filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));*/
-
 }
 .sp-app {
     background-color: var(--app-bg-color);
@@ -202,7 +193,7 @@ sp-tabbar {
   background-color: black;
 }
 sp-sidebar {
-  border-right: 1pt solid #aaa;
+  border-right: 1pt solid var(--foreground-color) !important;
 }
 table {
   border-collapse: collapse;
@@ -255,10 +246,10 @@ ul.sp-menu {
 }
 .nav-btn:hover {
   border: 1px solid rgba(255, 255, 255, .2);
-  background-image: url('/themes/wmp-9/img/header.png');
+  background-image: url('/themes/chromify/img/header.png');
 }
 .sp-track-selected, .active {
-  background-color: #8899aa;
+  background-color: #316ac5;
   color: white;
 }
 sp-sidebar label {
@@ -268,7 +259,9 @@ sp-nowplaying {
   border-top: 1pt solid var(--foreground-color);
   
 }
-.sp-track-selected, .active {
-  background-color: #316ac5;
-  color: white;
+sp-appheader, sp-appfooter {
+    padding: 5pt;
+    background-size: 100% 100%;
+    background-image:  url('/themes/wmp-11/images/header.png');
+
 }

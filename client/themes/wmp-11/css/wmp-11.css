@@ -62,7 +62,11 @@ sp-mediasidebar sp-mediasidebaritem.active {
 }
 
 
-
+sp-mediasidebaritem.active {
+  background: url('../images/active.png') !important;
+  box-shadow: inset 0 2pt 2pt rgba(0, 0, 0, .5);
+  background-size: 100% 100%;
+}
 
 
 sp-tabbar {
