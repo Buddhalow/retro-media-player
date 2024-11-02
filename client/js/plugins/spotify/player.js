@@ -83,33 +83,26 @@ class PlayerStore extends EventEmitter {
     getDiscoveredTracks(track, playlist = null) {
 
     }
-    getDevices() {
-        return new Promise((resolve, fail) => {
-            fetch(`https://api.spotify.com/v1/me/player/devices`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${window.spotifyToken}`
-                },
-            }).then(r => r.json()).then((result) => {
-                resolve(result.devices);
-            });
-        });
+    async getDevices() {
+        const result = await fetch(`https://api.spotify.com/v1/me/player/devices`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${window.spotifyToken}`
+            },
+        }).then(r => r.json())
+        return result.devices
     }
-    async setActiveDevice(device_id) {
-        return new Promise((resolve, fail) => {
-            fetch(`https://api.spotify.com/v1/me/player`, {
-                method: 'PUT',
-                body: JSON.stringify({ device_ids: [device_id]}),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${window.spotifyToken}`
-                },
-            }).then(r => r.json()).then((result) => {
-                this.state.device_id = device_id;
-                resolve();
-            });
-        });
+    async setActiveDevice(device_id) { 
+        const result = await fetch(`https://api.spotify.com/v1/me/player`, {
+            method: 'PUT',
+            body: JSON.stringify({ device_ids: [device_id]}),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${window.spotifyToken}`
+            },
+        })
+        this.state.device_id = device_id;
     }
     hasDiscoveredTrack(track, playlist = null) {}
 
@@ -130,10 +123,6 @@ class PlayerStore extends EventEmitter {
      **/
     loadState() {
         this.state = JSON.parse(localStorage.getItem('store'));
-    }
-
-    async getDevices() {
-
     }
 
     async playPause() {

@@ -20,10 +20,18 @@ export default class SPTrackTableDelegate {
         }
         let isMobile = window.matchMedia('screen and (max-width: 720pt)').matches;
         if (!isMobile) {
-            store.playTrack({
-                uri: uri,
-                ...row
-            }, tr.getAttribute('data-context-uri'));
+            store.getDevices().then(devices => {
+                debugger
+                store.setActiveDevice(devices[0].id).then(() => {
+                    store.playTrack(
+                        {
+                            uri: uri,
+                            ...row
+                        }, 
+                        tr.getAttribute('data-context-uri')
+                    )
+                })
+            })
         }
     }
 }

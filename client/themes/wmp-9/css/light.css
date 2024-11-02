@@ -184,8 +184,7 @@ sp-tabbar {
   padding-top: 6pt;
   box-sizing: border-box;
   color: white;
-  background-size: cover;
-  background-image:  url('/themes/wmp_9/images/bg_dark.png');
+  background-size: cover; 
     -webkit-filter: hue-rotate(var(--primary-hue)) saturate(var(--primary-saturation));
 }
 .sp-app {

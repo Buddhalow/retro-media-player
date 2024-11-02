@@ -627,7 +627,9 @@ sp-bottomtabbar {
         display: none !important;
     }
     sp-bottomtabbar {
-        padding: 10pt !important;
+        sp-link {
+            padding: 10pt !important;
+        }
         justify-content: space-around !important;
     }
     sp-trackcontext tr {
