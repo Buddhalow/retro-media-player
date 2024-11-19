@@ -21,7 +21,6 @@ export default class SPTrackTableDelegate {
         let isMobile = window.matchMedia('screen and (max-width: 720pt)').matches;
         if (!isMobile) {
             store.getDevices().then(devices => {
-                debugger
                 store.setActiveDevice(devices[0].id).then(() => {
                     store.playTrack(
                         {
