@@ -62,6 +62,8 @@ module.exports = app;
 
 const server = http.createServer(app)
 
-console.log("Listening to 3001")
+const port = process.env.PORT || 3001
 
-server.listen(process.env.PORT || 3001)
+console.log("Listening to " + port)
+
+server.listen(port)
