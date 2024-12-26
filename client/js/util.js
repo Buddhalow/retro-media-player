@@ -59,7 +59,7 @@ export function stringToHHMMSS (str) {
 }
 
 function parseIdentity(identity) {
-  let parts = identity.substr(1).split(/\@/); 
+  let parts = identity.substr(0).split(/\@/); 
   let hostname =
     (parts?.length > 1 ? parts[1] : parts[0]) ?? window.location.hostname;
   return {

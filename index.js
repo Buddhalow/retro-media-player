@@ -65,6 +65,8 @@ module.exports = app;
 
 const server = http.createServer(app)
 
-console.log(process.env)
+const port = process.env.PORT || 2858
 
-server.listen(process.env.PORT)
+console.log("listening on " + port)
+
+server.listen(port)
