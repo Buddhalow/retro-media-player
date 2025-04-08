@@ -19,9 +19,6 @@ This software is for nostalgic only and is a spin off of the OldOS-project (<htt
 * Services: Back-end service in Node, discovered as node modules in service folder.
 * Themes: Themes can be installed into the app into the  client/themes folder which then can be discovered by the app
 
-The goal is to create a framework like CakePHP but for pure front-end work.
+The goal is to create a framework like WordPress but for pure front-end work.
 
-Work in progress
-
-License: MIT
-[![Buy me a coffe](https://cdn.buymeacoffee.com/buttons/default-orange.png "Buy Me A Coffee")](https://www.buymeacoffee.com/buddhalow)
+Work in progress, but as open source development doesn't pay my bills, I would appriciate donations using the 'Sponsor' button
