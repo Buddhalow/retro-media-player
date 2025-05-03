@@ -63,6 +63,8 @@ import SPSelectElement from '/js/controls/select.js';
 import SPFloatingBarElement from '/js/controls/floatingbar.js';
 import SPSpiderElement from '/js/controls/spider.js';
 import SPRightSidebarElement from '/js/controls/rightsidebar.js';
+import SPVisualizerElement from '/js/controls/visualizer.js';
+
 
 window.resources = {};
 
@@ -328,8 +330,9 @@ customElements.define('sp-floatingbar', SPFloatingBarElement);
 customElements.define('sp-spider', SPSpiderElement);
 customElements.define('sp-statusicon', SPStatusIconElement);
 customElements.define('sp-dragelement', SPDragElement);
-const init = async () => {
+customElements.define('sp-visualizer', SPVisualizerElement);
 
+const init = async () => {
     await new Promise(async (resolve, fail) => {
         let result = await fetch('/api/plugin', {
             credentials: 'include',

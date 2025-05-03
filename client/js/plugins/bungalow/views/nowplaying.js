@@ -27,7 +27,9 @@ class SPStartViewElement extends SPViewElement {
             this.style.display = 'flex';
             this.style.flexDirection = 'column';
             this.innerHTML = `
-                <div style="flex: 1; background: black">e</div>
+                <div style="flex: 1; background: black">
+                    <sp-visualizer></sp-visualizer>
+                </div>
                 <div style="flex: 0 0 158pt; background: black !important">
                     <bungalow-configview style="background: black !important" instant="true">
                     </bungalow-configview>
