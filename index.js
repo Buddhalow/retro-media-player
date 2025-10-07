@@ -3,7 +3,10 @@ var fs = require('fs');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session'); 
 var app = express();
+const api = require('./api');
 var bodyParser = require('body-parser');
+
+const apiApp = api().app
 
 app.use(bodyParser());
 
@@ -43,6 +46,7 @@ app.get('/callback/:service', function (req, res) {
 
 app.use(favicon(path.join(__dirname, 'client', 'favicon.ico')))
 
+app.use('/api', apiApp.router)
 app.get('/*', function (req, res) {
   var index = fs.readFileSync(__dirname + '/client/index.html', 'utf8');
   res.write(index);
