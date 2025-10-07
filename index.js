@@ -10,7 +10,7 @@ app.use(bodyParser());
 var http = require('http')
 
 var favicon = require('serve-favicon')
-var api = apiFactory(http);
+
 app.maxConnections = 200;
 process.on('unhandledRejection', (reason, p) => {
   console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
