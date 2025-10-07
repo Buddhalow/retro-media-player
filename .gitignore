@@ -2,5 +2,8 @@
 *.tmp
 mongo.key
 node_modules
+node_modules
+*.tmp
+*.key.json
 
 buddhalow-internal-services.js

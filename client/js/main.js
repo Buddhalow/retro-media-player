@@ -327,23 +327,36 @@ customElements.define("sp-statusicon", SPStatusIconElement);
 customElements.define("sp-dragelement", SPDragElement);
 
 async function loadExtensions(extensionType) {
-  let result = await fetch(`/api/${extensionType}`, {
-    credentials: "include",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((r) => r.json());
+  const objects = {
+    "service": [
+      {
+        "id": "spotify",
+        "type": "service"
+      }
+    ],
+    "plugin": [
+      {
+        "id": "bungalow",
+        "type": "plugin"
+      },
+      {
+        "id": "media",
+        "type": "plugin"
+      }
+    ]
+  }
+  const extensions = objects[extensionType]
 
-  let extensions = result.objects
   return await Promise.all(
     extensions.map(async (extension) => {
       if ((localStorage.getItem(`${extensionType}.${extension.id}.enabled`) == "true") || true) {
         let module = await import(
           `/js/${extensionType}s/${extension.id}/index.js`
         );
+        let manifest = await fetch(`/js/${extensionType}s/${extension.id}/manifest.json`).then(r => r.json())
         return {
           module,
+          manifest,
           loaded: true,
           ...extension,
         };
@@ -360,10 +373,10 @@ async function loadExtensions(extensionType) {
 const init = async () => {
   const plugins = await loadExtensions("plugin");
   for (let plugin of plugins) {
-    if (plugin.elements) {
+    if (plugin.manifest.elements) {
       await Promise.all(
-        Object.keys(plugin.elements).map(async (elementId) => {
-          let view = plugin.elements[elementId];
+        Object.keys(plugin.manifest.elements).map(async (elementId) => {
+          let view = plugin.manifest.elements[elementId];
           let z = await import(
             `/js/plugins/${plugin.id}/elements/${elementId}.js`
           );
@@ -373,11 +386,11 @@ const init = async () => {
         })
       );
     }
-    if (plugin.views) {
-      let viewIds = Object.keys(plugin.views);
+    if (plugin.manifest.views) {
+      let viewIds = Object.keys(plugin.manifest.views);
       await Promise.all(
         viewIds.map(async (viewId) => {
-          let view = plugin.views[viewId];
+          let view = plugin.manifest.views[viewId];
           let z = await import(`/js/plugins/${plugin.id}/views/${viewId}.js`);
           let XViewElement = z.default;
           let tagName = plugin.id + "-" + viewId + "view";
@@ -388,7 +401,7 @@ const init = async () => {
             window.GlobalViewStack.registeredViews.push({
               tag: tagName,
               hidesSideBar: view.hidesSidebar,
-              regex: new RegExp(view.regexp),
+              regex: new RegExp("bungalow:@(?P<user_id>\w+)@(?P<domain>[a-z\.\-]+):" + view.regexp),
             });
           });
         })

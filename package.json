@@ -1,0 +1,31 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "![screencapture-oldify-buddhalow-2021-06-26-15_56_13](https://user-images.githubusercontent.com/5108695/123515294-196e5900-d697-11eb-9950-f61d0ff489b9.png)",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^0.2.10",
+    "body-parser": "^1.20.2",
+    "connect-timeout": "^1.9.0",
+    "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.1.0",
+    "crawler": "^1.5.0",
+    "es6-promise": "^4.2.8",
+    "express": "^3.2.6",
+    "express-router": "^0.0.1",
+    "express-session": "^1.18.0",
+    "lastfmapi": "^0.1.1",
+    "md5": "^2.3.0",
+    "open-graph-scraper": "^6.5.2",
+    "querystring": "^0.2.1",
+    "request": "^2.88.2",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

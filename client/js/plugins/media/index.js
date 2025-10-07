@@ -67,17 +67,9 @@ document.addEventListener('mainmenuload', (e) => {
     sidebarmenu.menu = document.createElement('sp-menu');
     sidebarmenu.label = document.createElement('label');
     sidebarmenu.label.innerHTML = '<i class="fa fa-media"></i> ' + _e('Media');
-  //  sidebarmenu.appendChild(sidebarmenu.label);
+    //  sidebarmenu.appendChild(sidebarmenu.label);
 
     var data =  [
-        {
-            name: _e('Library'),
-            uri: 'media:library'
-        },
-        {
-            name: _e('Playlists'),
-            uri: 'media:library:playlists'
-        }
     ];
     sidebarmenu.menu.dataSource = new SPMenuDataSource(
         data

@@ -1,4 +1,5 @@
 import Uri from "/js/models/uri.js";
+import { getPageIdentity } from "/js/util.js";
 
 /**
  * Viewstack element
@@ -53,7 +54,7 @@ export default class SPViewStackElement extends HTMLElement {
     return (
       uri &&
       this.registeredViews.filter((v) =>
-        v.regex.test(uri.replace("spotify:", "bungalow:"))
+        v.regex.test(uri.replace("spotify:", "bungalow:@user@spotify.com"))
       ).length > 0
     );
   }
@@ -67,6 +68,12 @@ export default class SPViewStackElement extends HTMLElement {
     if (this.uri === url) return;
     if (url === "bungalow:?service=bungalow") {
       url = "bungalow:internal:start";
+    }
+
+    if (newUri.indexOf("bungalow:") != 0) {
+      const identity = getPageIdentity();
+      newUri = `bungalow:@${identity.user}@${identity.hostname}:search:${encodeURIComponent(uri)}`;
+      uri = newUri;
     }
 
     let uri = new Uri(url);

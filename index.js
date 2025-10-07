@@ -1,35 +1,13 @@
 var express = require('express');
-var fs = require('fs');
-var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
-var apiFactory = require('./api');
-var app = express();
-var bodyParser = require('body-parser');
-
-app.use(bodyParser());
-
+var fs = require('fs'); 
+var app = express(); 
+ 
 var http = require('http')
 
 var favicon = require('serve-favicon')
-var api = apiFactory(http);
-app.maxConnections = 200;
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-  // application specific logging, throwing an error, or other logic here
-});
-app.use(cookieParser());
-app.use(cookieSession({
-    secret:'32425235235235',
-    name: 'session',
-    keys: ['key1', 'key2'],
-    cookie: {secure: false}
-}));
-
-
+app.maxConnections = 200;  
 var path = require('path');
-
-app.use('/api', api.app);
-
+ 
 app.use(express.static(__dirname + '/client/'));
 
 app.get('/callback.html', function (req, res) {
@@ -61,10 +39,13 @@ app.get('/', function (req, res) {
     res.write('error').end()
   }
 });
+
 module.exports = app;
 
 const server = http.createServer(app)
 
-console.log(process.env)
+const port = process.env.PORT || 3001
 
-server.listen(process.env.PORT)
+console.log("Listening on " + port)
+
+server.listen()
