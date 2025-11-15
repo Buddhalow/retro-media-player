@@ -65,21 +65,20 @@ export default class SPViewStackElement extends HTMLElement {
    * @param {String} uri The URI to navigate to
    * @returns void
    **/
-  navigate(url, dontPush = false) {
-    if (this.uri === url) return;
+  navigate(uri, dontPush = false) {
+    if (this.uri === uri) return;
+    let url = new Uri(uri);
     if (url === "bungalow:?service=bungalow") {
       url = "bungalow:internal:start";
     }
 
-    let newUri = url.trimRight(":");
+    let newUri = url.toUri().trimRight(":");
 
     if (newUri.indexOf("bungalow:") != 0) {
-      const identity = getPageIdentity();
-      newUri = `bungalow:@${identity.user}@${identity.hostname}:search:${encodeURIComponent(newUri)}`;
+      newUri = `bungalow:search:${encodeURIComponent(uri)}`;
       uri = newUri;
     }
 
-    let uri = new Uri(url);
     let evt = new CustomEvent("beforenavigate");
     this.dispatchEvent(evt);
 
