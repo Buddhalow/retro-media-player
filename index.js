@@ -8,7 +8,25 @@ var favicon = require('serve-favicon')
 app.maxConnections = 200;  
 var path = require('path');
  
-app.use(express.static(__dirname + '/client/'));
+app.use(express.static(__dirname + '/src/'));
+
+
+const privateKey = fs.readFileSync("AuthKey.p8").toString();
+const teamId     = "ABCDE12345";
+const keyId      = "ABCDE12345";
+
+const jwtToken = jwt.sign({}, privateKey, {
+  algorithm: "ES256",
+  expiresIn: "180d",
+  issuer: teamId,
+  header: {
+    alg: "ES256",
+    kid: keyId
+  }
+});
+
+console.log(jwtToken);
+view raw
 
 app.get('/callback.html', function (req, res) {
   var index = fs.readFileSync(__dirname + '/client/callback.html');

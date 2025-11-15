@@ -1,4 +1,4 @@
-FROM node:18.18-alpine3.18 as base
+FROM node:24.24-alpine3.18 AS base
 
 ENV PORT=3000
 ENV HOST=0.0.0.0
@@ -23,15 +23,6 @@ RUN pnpm install
 
 # Bundle app source
 COPY . .
-
-FROM base as development
-
-EXPOSE 3000
-
-ENTRYPOINT [ "node" ]
-CMD ["index.js"]
-
-FROM base as production
 
 EXPOSE 3000
 
