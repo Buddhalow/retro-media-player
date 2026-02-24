@@ -1,5 +1,5 @@
 # retro-media-player
-
+Due to new restrictions imposed on the Spotify API in winter 2025-2026, we are working on switching to another music source, as the current build is now broken due to the API changes*
 ![screencapture-oldify-buddhalow-2021-06-26-15_56_13](https://user-images.githubusercontent.com/5108695/123515294-196e5900-d697-11eb-9950-f61d0ff489b9.png)
 
 An open source music streaming front-end for modern streaming services that can resemble the look and feel of the 2000s versons music players (WMP9/10/11, Spotify v < 0.8).
