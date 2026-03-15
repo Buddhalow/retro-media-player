@@ -1,4 +1,6 @@
 # retro-media-player
+**This project has been in limbo due to the recent changes to Spotify Web API that disables lot of the functionality this app was intended to do. While I evaluating using Apple Music API,
+I decided to create a new similar project in native C++, which now is made possible with a lesser effort thanks to Claude Code. I will provide more info about the new, non HTML5 native C++ UI based replacement of retro-media-player in Q2 2026.**
 Due to new restrictions imposed on the Spotify API in winter 2025-2026, we are working on switching to another music source, as the current build is now broken due to the API changes*
 ![screencapture-oldify-buddhalow-2021-06-26-15_56_13](https://user-images.githubusercontent.com/5108695/123515294-196e5900-d697-11eb-9950-f61d0ff489b9.png)
 
